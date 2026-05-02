@@ -400,7 +400,7 @@ def inject_css() -> None:
     st.markdown(
         """
         <style>
-        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
         :root {
             --ink: #1d1d1f;
@@ -409,8 +409,10 @@ def inject_css() -> None:
             --blue-dark: #0057b8;
             --paper: #f5f5f7;
             --line: rgba(0, 0, 0, 0.08);
-            --violet: #aeb4ff;
-            --lavender: #e8eaff;
+            --inu-blue: #005bac;
+            --inu-blue-dark: #003f88;
+            --inu-blue-light: #dcecff;
+            --inu-blue-soft: #eef6ff;
         }
 
         .stApp {
@@ -451,8 +453,10 @@ def inject_css() -> None:
             margin: -2rem calc(50% - 50vw) 0 calc(50% - 50vw);
             padding: 5.5rem 2rem 6.7rem;
             background:
-                radial-gradient(circle at 50% 48%, rgba(118, 132, 255, 0.46), rgba(118, 132, 255, 0.13) 31%, transparent 55%),
-                linear-gradient(90deg, #ffffff 0%, #f8f8fb 12%, #e9ebff 42%, #e2e5ff 58%, #f8f8fb 88%, #ffffff 100%);
+                radial-gradient(circle at 50% 48%, rgba(0, 91, 172, 0.42), rgba(0, 91, 172, 0.13) 32%, transparent 56%),
+                radial-gradient(circle at 18% 18%, rgba(0, 130, 210, 0.18), transparent 27%),
+                radial-gradient(circle at 82% 18%, rgba(0, 63, 136, 0.16), transparent 27%),
+                linear-gradient(90deg, #ffffff 0%, #f6fbff 12%, #e6f3ff 40%, #dcecff 58%, #f6fbff 88%, #ffffff 100%);
         }
 
         .home-inner {
@@ -468,13 +472,13 @@ def inject_css() -> None:
             margin: 0 auto;
             color: #242428;
             text-align: center;
-            font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
+            font-family: "Press Start 2P", "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, sans-serif;
-            font-size: clamp(5.4rem, 16vw, 13.5rem);
-            line-height: 0.86;
-            font-weight: 900;
+            font-size: clamp(3rem, 9.4vw, 8.4rem);
+            line-height: 1.05;
+            font-weight: 400;
             letter-spacing: 0;
-            text-shadow: 0 22px 44px rgba(74, 78, 140, 0.13);
+            text-shadow: 0 22px 44px rgba(0, 63, 136, 0.15);
         }
 
         .home-subtitle {
@@ -520,16 +524,16 @@ def inject_css() -> None:
             place-items: center;
             pointer-events: none;
             border-radius: 999px;
-            color: #4f55d7;
+            color: var(--inu-blue);
             font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, sans-serif;
             font-weight: 850;
             background:
                 radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.78) 43%, rgba(255,255,255,0.28) 66%, rgba(255,255,255,0) 82%);
-            box-shadow: 0 24px 70px rgba(80, 90, 160, 0.14);
+            box-shadow: 0 24px 70px rgba(0, 63, 136, 0.14);
             backdrop-filter: blur(22px);
             -webkit-backdrop-filter: blur(22px);
-            text-shadow: 0 14px 28px rgba(80, 90, 160, 0.2);
+            text-shadow: 0 14px 28px rgba(0, 63, 136, 0.2);
             animation: floaty 6.5s ease-in-out infinite;
         }
 
@@ -539,7 +543,7 @@ def inject_css() -> None:
             width: clamp(92px, 10vw, 136px);
             height: clamp(92px, 10vw, 136px);
             transform: translate(-50%, -50%);
-            color: #6c49d8;
+            color: var(--inu-blue-dark);
             font-size: clamp(3.8rem, 6.6vw, 5.7rem);
         }
 
@@ -549,8 +553,8 @@ def inject_css() -> None:
         .obj-4 { right: 12%; top: 49%; width: 88px; height: 88px; font-size: 2.8rem; animation-delay: -0.5s; }
         .obj-5 { left: 29%; bottom: 10%; width: 86px; height: 86px; font-size: 2.65rem; animation-delay: -4s; }
         .obj-6 { right: 29%; bottom: 10%; width: 86px; height: 86px; font-size: 2.75rem; animation-delay: -1.8s; }
-        .obj-rainbow-a { left: 50%; top: 6%; transform: translateX(-50%); width: 82px; height: 82px; font-size: 2.8rem; color: #7b61ff; }
-        .obj-rainbow-b { right: 7%; bottom: 3%; width: 110px; height: 110px; font-size: 3.7rem; color: #ff7a45; }
+        .obj-rainbow-a { left: 50%; top: 6%; transform: translateX(-50%); width: 82px; height: 82px; font-size: 2.8rem; color: #0075c9; }
+        .obj-rainbow-b { right: 7%; bottom: 3%; width: 110px; height: 110px; font-size: 3.7rem; color: #0092d8; }
 
         @keyframes floaty {
             0%, 100% { margin-top: 0; }
@@ -897,8 +901,8 @@ def inject_css() -> None:
 
             .home-title {
                 margin-top: 0;
-                font-size: clamp(5.2rem, 23vw, 7.2rem);
-                line-height: 0.9;
+                font-size: clamp(2.35rem, 12vw, 4.1rem);
+                line-height: 1.12;
             }
 
             .home-subtitle {
