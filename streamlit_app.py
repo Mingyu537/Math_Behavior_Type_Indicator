@@ -436,7 +436,12 @@ def inject_css() -> None:
         }
 
         .stApp {
-            background: #f5f5f7;
+            background:
+                radial-gradient(circle at 50% 24%, rgba(0, 91, 172, 0.22), rgba(0, 91, 172, 0.08) 30%, rgba(255,255,255,0) 58%),
+                radial-gradient(circle at 18% 18%, rgba(0, 130, 210, 0.13), transparent 28%),
+                radial-gradient(circle at 82% 18%, rgba(0, 63, 136, 0.12), transparent 28%),
+                linear-gradient(180deg, #ffffff 0%, #f6fbff 18%, #eaf5ff 42%, #f7fbff 72%, #f5f5f7 100%);
+            background-attachment: fixed;
             color: var(--ink);
             font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
@@ -473,10 +478,10 @@ def inject_css() -> None:
             margin: -2rem calc(50% - 50vw) 0 calc(50% - 50vw);
             padding: 5.5rem 2rem 6.7rem;
             background:
-                radial-gradient(circle at 50% 48%, rgba(0, 91, 172, 0.42), rgba(0, 91, 172, 0.13) 32%, transparent 56%),
-                radial-gradient(circle at 18% 18%, rgba(0, 130, 210, 0.18), transparent 27%),
-                radial-gradient(circle at 82% 18%, rgba(0, 63, 136, 0.16), transparent 27%),
-                linear-gradient(90deg, #ffffff 0%, #f6fbff 12%, #e6f3ff 40%, #dcecff 58%, #f6fbff 88%, #ffffff 100%);
+                radial-gradient(circle at 50% 48%, rgba(0, 91, 172, 0.42), rgba(0, 91, 172, 0.13) 32%, transparent 58%),
+                radial-gradient(circle at 18% 18%, rgba(0, 130, 210, 0.18), transparent 28%),
+                radial-gradient(circle at 82% 18%, rgba(0, 63, 136, 0.16), transparent 28%),
+                linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(246,251,255,0.88) 17%, rgba(230,243,255,0.9) 47%, rgba(238,247,255,0.72) 78%, rgba(245,245,247,0) 100%);
         }
 
         .home-inner {
@@ -582,7 +587,6 @@ def inject_css() -> None:
         .obj-5 { left: 18%; bottom: 13%; width: 86px; height: 86px; font-size: 2.65rem; animation-delay: -4s; }
         .obj-6 { right: 18%; bottom: 13%; width: 86px; height: 86px; font-size: 2.75rem; animation-delay: -1.8s; }
         .obj-rainbow-a { left: 50%; top: 5%; transform: translateX(-50%); width: 82px; height: 82px; font-size: 2.8rem; color: #0075c9; }
-        .obj-rainbow-b { right: 7%; bottom: 3%; width: 110px; height: 110px; font-size: 3.7rem; color: #0092d8; }
         .obj-emoji-a { left: 27%; top: 11%; width: 76px; height: 76px; font-size: 2.15rem; animation-delay: -2.7s; }
         .obj-emoji-b { right: 27%; top: 11%; width: 76px; height: 76px; font-size: 2.15rem; animation-delay: -3.4s; }
         .obj-emoji-c { left: 34%; bottom: 4%; width: 74px; height: 74px; font-size: 2.05rem; animation-delay: -1.4s; }
@@ -598,6 +602,15 @@ def inject_css() -> None:
             margin: -4.2rem auto 0;
             position: relative;
             z-index: 4;
+        }
+
+        .start-zone::before {
+            content: "";
+            position: absolute;
+            inset: -5rem -45vw -7rem;
+            z-index: -1;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(238,247,255,0.12), rgba(245,245,247,0));
         }
 
         .apple-shell {
@@ -1111,7 +1124,6 @@ def inject_css() -> None:
             .obj-6 { right: 10%; bottom: 8%; width: 58px; height: 58px; font-size: 1.85rem; }
             .obj-large { bottom: 0.6rem; width: 72px; height: 72px; font-size: 2.8rem; }
             .obj-rainbow-a { left: 50%; top: 3%; width: 64px; height: 64px; font-size: 2.25rem; }
-            .obj-rainbow-b { right: -1%; bottom: 0; width: 82px; height: 82px; font-size: 2.9rem; }
             .obj-emoji-a { left: 24%; top: 8%; width: 52px; height: 52px; font-size: 1.5rem; }
             .obj-emoji-b { right: 24%; top: 8%; width: 52px; height: 52px; font-size: 1.5rem; }
             .obj-emoji-c { left: 30%; bottom: 2%; width: 50px; height: 50px; font-size: 1.42rem; }
@@ -1175,7 +1187,6 @@ def render_home() -> None:
             <div class="hero-object obj-4">◇</div>
             <div class="hero-object obj-5">⌁</div>
             <div class="hero-object obj-6">⟡</div>
-            <div class="hero-object obj-rainbow-b">✺</div>
             <div class="hero-object emoji-object obj-emoji-a">🧠</div>
             <div class="hero-object emoji-object obj-emoji-b">🚀</div>
             <div class="hero-object emoji-object obj-emoji-c">🔥</div>
