@@ -400,15 +400,7 @@ def inject_css() -> None:
     st.markdown(
         """
         <style>
-        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
-
-        @font-face {
-            font-family: "Camood";
-            src: local("Camood"), local("Camood Display"), local("Camood OTF");
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
         :root {
             --ink: #1d1d1f;
@@ -480,11 +472,11 @@ def inject_css() -> None:
             margin: 0 auto;
             color: #242428;
             text-align: center;
-            font-family: "Camood", "Space Grotesk", "Noto Sans KR", -apple-system,
+            font-family: "Press Start 2P", "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, sans-serif;
             font-size: clamp(3rem, 9.4vw, 8.4rem);
             line-height: 1.05;
-            font-weight: 400;
+            font-weight: 300;
             letter-spacing: 0;
             text-shadow: 0 22px 44px rgba(0, 63, 136, 0.15);
         }
@@ -510,12 +502,12 @@ def inject_css() -> None:
             width: 100%;
             max-width: 760px;
             margin: 2rem auto 0;
-            color: rgba(29, 29, 31, 0.62);
+            color: rgba(29, 29, 31, 0.72);
             font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
                 "Apple SD Gothic Neo", sans-serif;
             font-size: clamp(1.05rem, 2vw, 1.28rem);
             line-height: 1.65;
-            font-weight: 300;
+            font-weight: 520;
             text-align: center;
         }
 
