@@ -378,6 +378,26 @@ TYPE_DATA = {
 }
 
 
+PORTRAIT_DATA = {
+    "SVIR": {"skin": "#d9a67d", "hair": "#4c3328", "jacket": "#28344d", "shirt": "#f7efe8", "accent": "#7d8cff", "style": "wavy", "glasses": False, "beard": False, "moustache": True},
+    "SVIP": {"skin": "#d8a982", "hair": "#f1f1e8", "jacket": "#8b5f3d", "shirt": "#fff2dc", "accent": "#f0a43a", "style": "long", "glasses": False, "beard": True, "moustache": True},
+    "SVAR": {"skin": "#d6a27d", "hair": "#2d241f", "jacket": "#23304a", "shirt": "#f6f0e8", "accent": "#5b86d6", "style": "long", "glasses": False, "beard": False, "moustache": True},
+    "SVAP": {"skin": "#d0a184", "hair": "#e5e0d4", "jacket": "#3b4056", "shirt": "#edf7ff", "accent": "#6aa7ff", "style": "round", "glasses": True, "beard": True, "moustache": True},
+    "SNIR": {"skin": "#8f5b3c", "hair": "#1e1714", "jacket": "#24515f", "shirt": "#f5ead8", "accent": "#6ac5ff", "style": "short", "glasses": False, "beard": False, "moustache": False},
+    "SNIP": {"skin": "#d4a37f", "hair": "#3b2f2b", "jacket": "#4b3b67", "shirt": "#f7efe7", "accent": "#ac8cff", "style": "wavy", "glasses": False, "beard": False, "moustache": False},
+    "SNAR": {"skin": "#d2a181", "hair": "#231f20", "jacket": "#1f2b3e", "shirt": "#f2f0ec", "accent": "#8395ff", "style": "short", "glasses": True, "beard": False, "moustache": False},
+    "SNAP": {"skin": "#d8a982", "hair": "#f4f0df", "jacket": "#41506a", "shirt": "#fff7e8", "accent": "#f7c86a", "style": "long", "glasses": False, "beard": False, "moustache": False},
+    "TVIR": {"skin": "#d7a782", "hair": "#efe6d6", "jacket": "#2f4460", "shirt": "#f8f1e6", "accent": "#67a8ff", "style": "round", "glasses": False, "beard": False, "moustache": False},
+    "TVIP": {"skin": "#d0a077", "hair": "#e8e1d3", "jacket": "#6b4b36", "shirt": "#fff1d8", "accent": "#eaa846", "style": "long", "glasses": False, "beard": True, "moustache": True},
+    "TVAR": {"skin": "#d3a07d", "hair": "#d4d0c6", "jacket": "#27324c", "shirt": "#f2f4fb", "accent": "#8a9cff", "style": "short", "glasses": False, "beard": False, "moustache": True},
+    "TVAP": {"skin": "#8f5f46", "hair": "#1c1514", "jacket": "#2f5f7b", "shirt": "#fff5ea", "accent": "#79c8ff", "style": "bob", "glasses": False, "beard": False, "moustache": False},
+    "TNIR": {"skin": "#d1a284", "hair": "#f0eee5", "jacket": "#36445a", "shirt": "#f8f5ee", "accent": "#71b6ff", "style": "wispy", "glasses": True, "beard": False, "moustache": False},
+    "TNIP": {"skin": "#d7a37f", "hair": "#2b2422", "jacket": "#252d40", "shirt": "#f4f2ed", "accent": "#4ea3ff", "style": "short", "glasses": False, "beard": False, "moustache": False},
+    "TNAR": {"skin": "#d5a17d", "hair": "#5b463b", "jacket": "#3d465d", "shirt": "#f7eee5", "accent": "#9b8cff", "style": "bun", "glasses": False, "beard": False, "moustache": False},
+    "TNAP": {"skin": "#d5a27e", "hair": "#4c3529", "jacket": "#26334f", "shirt": "#f3f6fb", "accent": "#5aa2ff", "style": "wavy", "glasses": False, "beard": False, "moustache": False},
+}
+
+
 def rerun() -> None:
     if hasattr(st, "rerun"):
         st.rerun()
@@ -400,7 +420,7 @@ def inject_css() -> None:
     st.markdown(
         """
         <style>
-        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
         :root {
             --ink: #1d1d1f;
@@ -476,22 +496,24 @@ def inject_css() -> None:
                 BlinkMacSystemFont, sans-serif;
             font-size: clamp(3rem, 9.4vw, 8.4rem);
             line-height: 1.05;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0;
             text-shadow: 0 22px 44px rgba(0, 63, 136, 0.15);
         }
 
         .home-subtitle {
             width: 100%;
+            max-width: calc(100vw - 2rem);
             margin: 0.8rem auto 0;
             color: #2f3036;
             text-align: center;
             font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, sans-serif;
-            font-size: clamp(2.1rem, 5.6vw, 5.1rem);
-            line-height: 1.02;
+            font-size: clamp(1.45rem, 4.1vw, 2.95rem);
+            line-height: 1.08;
             font-weight: 850;
             letter-spacing: 0;
+            white-space: nowrap;
         }
 
         .home-copy {
@@ -502,12 +524,12 @@ def inject_css() -> None:
             width: 100%;
             max-width: 760px;
             margin: 2rem auto 0;
-            color: rgba(29, 29, 31, 0.72);
+            color: rgba(29, 29, 31, 0.62);
             font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
                 "Apple SD Gothic Neo", sans-serif;
             font-size: clamp(1.05rem, 2vw, 1.28rem);
             line-height: 1.65;
-            font-weight: 250;
+            font-weight: 300;
             text-align: center;
         }
 
@@ -539,22 +561,32 @@ def inject_css() -> None:
 
         .obj-large {
             left: 50%;
-            bottom: 3.4rem;
+            bottom: 0.9rem;
             width: clamp(92px, 10vw, 136px);
             height: clamp(92px, 10vw, 136px);
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             color: var(--inu-blue-dark);
             font-size: clamp(3.8rem, 6.6vw, 5.7rem);
         }
 
-        .obj-1 { left: 17%; top: 18%; width: 82px; height: 82px; font-size: 2.8rem; animation-delay: -1s; }
-        .obj-2 { right: 17%; top: 18%; width: 82px; height: 82px; font-size: 2.65rem; animation-delay: -2s; }
-        .obj-3 { left: 12%; top: 49%; width: 88px; height: 88px; font-size: 3rem; animation-delay: -3s; }
-        .obj-4 { right: 12%; top: 49%; width: 88px; height: 88px; font-size: 2.8rem; animation-delay: -0.5s; }
-        .obj-5 { left: 29%; bottom: 10%; width: 86px; height: 86px; font-size: 2.65rem; animation-delay: -4s; }
-        .obj-6 { right: 29%; bottom: 10%; width: 86px; height: 86px; font-size: 2.75rem; animation-delay: -1.8s; }
-        .obj-rainbow-a { left: 50%; top: 6%; transform: translateX(-50%); width: 82px; height: 82px; font-size: 2.8rem; color: #0075c9; }
+        .emoji-object {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+            color: inherit;
+            text-shadow: none;
+        }
+
+        .obj-1 { left: 10%; top: 16%; width: 82px; height: 82px; font-size: 2.8rem; animation-delay: -1s; }
+        .obj-2 { right: 10%; top: 16%; width: 82px; height: 82px; font-size: 2.65rem; animation-delay: -2s; }
+        .obj-3 { left: 6%; top: 46%; width: 88px; height: 88px; font-size: 3rem; animation-delay: -3s; }
+        .obj-4 { right: 6%; top: 46%; width: 88px; height: 88px; font-size: 2.8rem; animation-delay: -0.5s; }
+        .obj-5 { left: 18%; bottom: 13%; width: 86px; height: 86px; font-size: 2.65rem; animation-delay: -4s; }
+        .obj-6 { right: 18%; bottom: 13%; width: 86px; height: 86px; font-size: 2.75rem; animation-delay: -1.8s; }
+        .obj-rainbow-a { left: 50%; top: 5%; transform: translateX(-50%); width: 82px; height: 82px; font-size: 2.8rem; color: #0075c9; }
         .obj-rainbow-b { right: 7%; bottom: 3%; width: 110px; height: 110px; font-size: 3.7rem; color: #0092d8; }
+        .obj-emoji-a { left: 27%; top: 11%; width: 76px; height: 76px; font-size: 2.15rem; animation-delay: -2.7s; }
+        .obj-emoji-b { right: 27%; top: 11%; width: 76px; height: 76px; font-size: 2.15rem; animation-delay: -3.4s; }
+        .obj-emoji-c { left: 34%; bottom: 4%; width: 74px; height: 74px; font-size: 2.05rem; animation-delay: -1.4s; }
+        .obj-emoji-d { right: 34%; bottom: 4%; width: 74px; height: 74px; font-size: 2.05rem; animation-delay: -4.2s; }
 
         @keyframes floaty {
             0%, 100% { margin-top: 0; }
@@ -856,6 +888,117 @@ def inject_css() -> None:
             background: linear-gradient(90deg, #0071e3, #8b7cff);
         }
 
+        .axis-guide-section {
+            max-width: 980px;
+            margin: 2.4rem auto 2rem;
+            text-align: left;
+        }
+
+        .axis-guide-title {
+            margin: 0 0 0.35rem;
+            color: #1d1d1f;
+            font-size: clamp(1.65rem, 3.2vw, 2.45rem);
+            line-height: 1.12;
+            font-weight: 840;
+            text-align: center;
+        }
+
+        .axis-guide-copy {
+            max-width: 620px;
+            margin: 0 auto 1.4rem;
+            color: #6e6e73;
+            font-size: 1rem;
+            line-height: 1.58;
+            font-weight: 420;
+            text-align: center;
+        }
+
+        .axis-guide-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .axis-guide-card {
+            min-height: 190px;
+            padding: 1.15rem;
+            border-radius: 22px;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,251,255,0.96));
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .axis-guide-card.active {
+            border-color: rgba(0, 91, 172, 0.25);
+            background:
+                radial-gradient(circle at 90% 0%, rgba(0, 113, 227, 0.2), transparent 34%),
+                linear-gradient(180deg, #ffffff, #eef7ff);
+            box-shadow: 0 20px 52px rgba(0, 91, 172, 0.14);
+        }
+
+        .axis-guide-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.7rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .axis-guide-code {
+            display: inline-grid;
+            place-items: center;
+            width: 2.7rem;
+            height: 2.7rem;
+            border-radius: 50%;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            font-family: "Space Grotesk", "Noto Sans KR", sans-serif;
+            font-size: 1.1rem;
+            font-weight: 850;
+        }
+
+        .axis-guide-card.active .axis-guide-code {
+            background: #005bac;
+            color: #ffffff;
+            box-shadow: 0 10px 24px rgba(0, 91, 172, 0.24);
+        }
+
+        .axis-guide-badge {
+            color: #005bac;
+            font-size: 0.78rem;
+            font-weight: 760;
+            opacity: 0;
+        }
+
+        .axis-guide-card.active .axis-guide-badge {
+            opacity: 1;
+        }
+
+        .axis-guide-name {
+            color: #1d1d1f;
+            font-size: 1.05rem;
+            line-height: 1.2;
+            font-weight: 820;
+            margin-bottom: 0.25rem;
+        }
+
+        .axis-guide-label {
+            color: #005bac;
+            font-size: 0.9rem;
+            font-weight: 720;
+            margin-bottom: 0.65rem;
+        }
+
+        .axis-guide-desc {
+            color: #6e6e73;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            font-weight: 430;
+        }
+
         .stButton > button {
             min-height: 3.25rem;
             border-radius: 999px;
@@ -879,6 +1022,48 @@ def inject_css() -> None:
         .stButton > button:focus {
             color: #ffffff;
             box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.18), 0 18px 36px rgba(0, 113, 227, 0.28);
+        }
+
+        div:has(.likert-guide) + div div[data-testid="stButton"] > button {
+            min-height: 4.1rem !important;
+            border-radius: 22px !important;
+            border: 1px solid rgba(0, 91, 172, 0.16) !important;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,251,255,0.96)) !important;
+            color: #1d1d1f !important;
+            font-family: "Noto Sans KR", "Space Grotesk", -apple-system,
+                BlinkMacSystemFont, sans-serif !important;
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+            box-shadow: 0 12px 28px rgba(0, 63, 136, 0.08) !important;
+            transition: transform 0.18s ease, box-shadow 0.18s ease,
+                border-color 0.18s ease, background 0.18s ease !important;
+        }
+
+        div:has(.likert-guide) + div div[data-testid="stButton"] > button:hover {
+            border-color: rgba(0, 91, 172, 0.34) !important;
+            background:
+                linear-gradient(180deg, #ffffff, #eef7ff) !important;
+            color: #005bac !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 18px 40px rgba(0, 91, 172, 0.16) !important;
+        }
+
+        div:has(.likert-guide) + div div[data-testid="stButton"] > button[kind="primary"],
+        div:has(.likert-guide) + div div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"] {
+            border-color: rgba(0, 91, 172, 0.26) !important;
+            background:
+                radial-gradient(circle at 22% 18%, rgba(255,255,255,0.42), transparent 30%),
+                linear-gradient(135deg, #005bac, #0077ed 58%, #4b8dff) !important;
+            color: #ffffff !important;
+            box-shadow: 0 18px 42px rgba(0, 91, 172, 0.28) !important;
+        }
+
+        div:has(.likert-guide) + div div[data-testid="stButton"] > button[kind="primary"]:hover,
+        div:has(.likert-guide) + div div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:hover {
+            color: #ffffff !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 22px 48px rgba(0, 91, 172, 0.34) !important;
         }
 
         div[data-testid="stAlert"] {
@@ -907,7 +1092,7 @@ def inject_css() -> None:
 
             .home-subtitle {
                 margin-top: 0.75rem;
-                font-size: clamp(1.5rem, 6vw, 2.5rem);
+                font-size: clamp(0.82rem, 3.45vw, 1.45rem);
                 line-height: 1.04;
             }
 
@@ -918,15 +1103,19 @@ def inject_css() -> None:
                 line-height: 1.58;
             }
 
-            .obj-1 { left: 7%; top: 13%; width: 58px; height: 58px; font-size: 1.95rem; }
-            .obj-2 { left: auto; right: 7%; top: 13%; width: 58px; height: 58px; font-size: 1.9rem; }
-            .obj-3 { left: 7%; top: 59%; width: 58px; height: 58px; font-size: 2rem; }
-            .obj-4 { right: 7%; left: auto; top: 59%; width: 58px; height: 58px; font-size: 1.9rem; }
-            .obj-5 { left: 17%; bottom: 11%; width: 66px; height: 66px; font-size: 2.1rem; }
-            .obj-6 { right: 17%; bottom: 11%; width: 66px; height: 66px; font-size: 2.1rem; }
-            .obj-large { bottom: 2.1rem; width: 78px; height: 78px; font-size: 3.05rem; }
+            .obj-1 { left: 5%; top: 13%; width: 52px; height: 52px; font-size: 1.75rem; }
+            .obj-2 { left: auto; right: 5%; top: 13%; width: 52px; height: 52px; font-size: 1.7rem; }
+            .obj-3 { left: 4%; top: 64%; width: 54px; height: 54px; font-size: 1.85rem; }
+            .obj-4 { right: 4%; left: auto; top: 64%; width: 54px; height: 54px; font-size: 1.75rem; }
+            .obj-5 { left: 10%; bottom: 8%; width: 58px; height: 58px; font-size: 1.85rem; }
+            .obj-6 { right: 10%; bottom: 8%; width: 58px; height: 58px; font-size: 1.85rem; }
+            .obj-large { bottom: 0.6rem; width: 72px; height: 72px; font-size: 2.8rem; }
             .obj-rainbow-a { left: 50%; top: 3%; width: 64px; height: 64px; font-size: 2.25rem; }
             .obj-rainbow-b { right: -1%; bottom: 0; width: 82px; height: 82px; font-size: 2.9rem; }
+            .obj-emoji-a { left: 24%; top: 8%; width: 52px; height: 52px; font-size: 1.5rem; }
+            .obj-emoji-b { right: 24%; top: 8%; width: 52px; height: 52px; font-size: 1.5rem; }
+            .obj-emoji-c { left: 30%; bottom: 2%; width: 50px; height: 50px; font-size: 1.42rem; }
+            .obj-emoji-d { right: 30%; bottom: 2%; width: 50px; height: 50px; font-size: 1.42rem; }
 
             .topbar {
                 margin-bottom: 2.6rem;
@@ -935,6 +1124,7 @@ def inject_css() -> None:
             .choice-grid,
             .endpoint-grid,
             .score-grid,
+            .axis-guide-grid,
             .nav-row {
                 grid-template-columns: 1fr;
             }
@@ -953,6 +1143,14 @@ def inject_css() -> None:
 
             .likert-guide {
                 font-size: 0.82rem;
+            }
+
+            .axis-guide-section {
+                margin-top: 2rem;
+            }
+
+            .axis-guide-card {
+                min-height: 0;
             }
 
             .question-title {
@@ -978,9 +1176,13 @@ def render_home() -> None:
             <div class="hero-object obj-5">⌁</div>
             <div class="hero-object obj-6">⟡</div>
             <div class="hero-object obj-rainbow-b">✺</div>
+            <div class="hero-object emoji-object obj-emoji-a">🧠</div>
+            <div class="hero-object emoji-object obj-emoji-b">🚀</div>
+            <div class="hero-object emoji-object obj-emoji-c">🔥</div>
+            <div class="hero-object emoji-object obj-emoji-d">🌈</div>
             <div class="home-inner">
                 <div class="home-title">{APP_TITLE}</div>
-                <div class="home-subtitle">Mathematical Behavior Types Indicator</div>
+                <div class="home-subtitle">Mathematical Behavior Type Indicator</div>
                 <div class="home-copy">
                     <span>수학을 대하는 나의 행동 유형이 무엇인지 알아보아요!</span>
                     <span>나는 어떤 수학자와 비슷할까요?</span>
@@ -1066,6 +1268,7 @@ def render_likert_scale(question: dict) -> None:
                 key=f"{question['id']}_likert_{value}",
                 use_container_width=True,
                 help=caption,
+                type="primary" if is_selected else "secondary",
             ):
                 st.session_state.answers[question["id"]] = value
                 if st.session_state.current_question < TOTAL_QUESTIONS - 1:
@@ -1169,8 +1372,109 @@ def calculate_type_code(scores: dict) -> str:
     return code
 
 
+def render_portrait_svg(type_code: str, result: dict) -> str:
+    portrait = PORTRAIT_DATA[type_code]
+    skin = portrait["skin"]
+    hair = portrait["hair"]
+    jacket = portrait["jacket"]
+    shirt = portrait["shirt"]
+    accent = portrait["accent"]
+    style = portrait["style"]
+
+    if style == "long":
+        hair_shape = f"""
+            <path d="M86 145 C76 92 101 48 158 48 C215 48 243 92 232 148 C218 130 204 101 158 101 C113 101 99 130 86 145Z" fill="{hair}"/>
+            <path d="M82 127 C58 164 66 228 105 253 C95 211 96 166 116 122Z" fill="{hair}" opacity="0.9"/>
+            <path d="M234 127 C258 164 250 228 211 253 C221 211 220 166 200 122Z" fill="{hair}" opacity="0.9"/>
+        """
+    elif style == "bob":
+        hair_shape = f"""
+            <path d="M87 140 C74 84 106 48 159 48 C213 48 244 84 231 140 C224 201 205 230 159 230 C113 230 94 201 87 140Z" fill="{hair}"/>
+            <path d="M104 118 C121 96 195 96 214 118 C204 89 182 70 159 70 C136 70 114 89 104 118Z" fill="#ffffff" opacity="0.13"/>
+        """
+    elif style == "bun":
+        hair_shape = f"""
+            <circle cx="216" cy="78" r="28" fill="{hair}"/>
+            <path d="M88 143 C80 89 110 53 158 53 C207 53 235 89 228 143 C205 118 192 101 158 101 C124 101 111 118 88 143Z" fill="{hair}"/>
+            <path d="M92 132 C79 177 87 218 115 240 C106 199 109 161 125 125Z" fill="{hair}" opacity="0.85"/>
+        """
+    elif style == "round":
+        hair_shape = f"""
+            <path d="M78 142 C67 95 98 55 142 48 C176 30 224 60 236 105 C252 161 222 205 158 207 C97 204 65 179 78 142Z" fill="{hair}"/>
+            <path d="M100 112 C124 84 193 82 218 116 C201 91 184 73 157 73 C130 73 111 91 100 112Z" fill="#ffffff" opacity="0.16"/>
+        """
+    elif style == "wispy":
+        hair_shape = f"""
+            <path d="M90 136 C76 88 110 52 158 52 C210 52 237 90 225 143 C205 121 194 105 158 105 C121 105 109 121 90 136Z" fill="{hair}"/>
+            <path d="M105 83 C93 78 81 80 70 88 C84 62 106 51 133 54Z" fill="{hair}" opacity="0.8"/>
+            <path d="M197 62 C223 55 241 67 251 92 C235 81 222 78 209 84Z" fill="{hair}" opacity="0.78"/>
+        """
+    else:
+        hair_shape = f"""
+            <path d="M90 136 C79 89 109 55 158 55 C207 55 237 89 226 136 C210 114 194 99 158 99 C122 99 106 114 90 136Z" fill="{hair}"/>
+            <path d="M100 103 C117 72 190 70 214 105 C183 89 138 88 100 103Z" fill="#ffffff" opacity="0.13"/>
+        """
+
+    glasses = ""
+    if portrait["glasses"]:
+        glasses = """
+            <g fill="none" stroke="#27324a" stroke-width="5" stroke-linecap="round">
+                <circle cx="133" cy="146" r="18"/>
+                <circle cx="183" cy="146" r="18"/>
+                <path d="M151 146 L165 146"/>
+            </g>
+        """
+
+    beard = ""
+    if portrait["beard"]:
+        beard = f"""
+            <path d="M110 171 C113 223 133 251 158 251 C184 251 204 223 207 171 C193 196 124 196 110 171Z" fill="{hair}" opacity="0.78"/>
+            <path d="M128 209 C144 221 172 221 188 209" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.24" stroke-linecap="round"/>
+        """
+
+    moustache = ""
+    if portrait["moustache"]:
+        moustache = f"""
+            <path d="M137 177 C147 168 158 174 158 181 C158 174 170 168 181 177 C172 188 144 188 137 177Z" fill="{hair}" opacity="0.86"/>
+        """
+
+    return f"""
+        <svg class="portrait-svg" viewBox="0 0 320 360" role="img" aria-label="{escape(result["person"])} 부드러운 초상화">
+            <title>{escape(result["person"])} stylized portrait</title>
+            <defs>
+                <filter id="softPortraitShadow" x="-25%" y="-25%" width="150%" height="150%">
+                    <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#17396b" flood-opacity="0.22"/>
+                </filter>
+                <linearGradient id="portraitShirt" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0%" stop-color="{shirt}"/>
+                    <stop offset="100%" stop-color="#ffffff"/>
+                </linearGradient>
+            </defs>
+            <g filter="url(#softPortraitShadow)">
+                <path d="M69 339 C77 282 110 249 159 249 C208 249 241 282 250 339Z" fill="{jacket}"/>
+                <path d="M126 260 L159 334 L192 260 C181 252 137 252 126 260Z" fill="url(#portraitShirt)"/>
+                <path d="M142 236 L142 266 C149 274 169 274 176 266 L176 236Z" fill="{skin}"/>
+                <ellipse cx="96" cy="150" rx="20" ry="25" fill="{skin}"/>
+                <ellipse cx="220" cy="150" rx="20" ry="25" fill="{skin}"/>
+                {hair_shape}
+                <ellipse cx="158" cy="151" rx="62" ry="79" fill="{skin}"/>
+                <path d="M105 122 C121 101 195 101 212 123 C198 111 179 106 158 106 C137 106 118 111 105 122Z" fill="{hair}" opacity="0.95"/>
+                <circle cx="134" cy="148" r="5.4" fill="#272329"/>
+                <circle cx="183" cy="148" r="5.4" fill="#272329"/>
+                <path d="M159 151 C153 164 153 172 162 174" fill="none" stroke="#8b6048" stroke-width="4" stroke-linecap="round"/>
+                {glasses}
+                {beard}
+                {moustache}
+                <path d="M137 198 C150 209 170 209 183 198" fill="none" stroke="#7a473c" stroke-width="5" stroke-linecap="round"/>
+                <path d="M95 303 C115 285 133 276 159 276 C185 276 205 285 225 303" fill="none" stroke="{accent}" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+            </g>
+        </svg>
+    """
+
+
 def render_flip_card(type_code: str, result: dict) -> None:
     front_title = f"{type_code} ({result['pronunciation']})"
+    portrait_svg = render_portrait_svg(type_code, result)
     card_html = f"""
     <!doctype html>
     <html lang="ko">
@@ -1239,25 +1543,33 @@ def render_flip_card(type_code: str, result: dict) -> None:
         .front::before {{
             content: "";
             position: absolute;
-            width: 260px;
-            height: 260px;
+            width: 280px;
+            height: 310px;
             left: 50%;
-            top: 46%;
-            transform: translate(-50%, -50%) rotate(8deg);
-            border-radius: 42px;
-            background: linear-gradient(145deg, #ffffff, #8f82ff 52%, #5a3ca5);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.74), 0 30px 56px rgba(77, 65, 173, 0.25);
+            top: 51%;
+            transform: translate(-50%, -50%) rotate(5deg);
+            border-radius: 45% 45% 38% 38%;
+            background:
+                radial-gradient(circle at 50% 18%, rgba(255,255,255,0.9), transparent 34%),
+                linear-gradient(145deg, #ffffff, #bfd7ff 50%, #6e88ff);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.74), 0 30px 56px rgba(77, 65, 173, 0.2);
         }}
-        .front::after {{
-            content: "∞";
+        .portrait-wrap {{
             position: absolute;
             left: 50%;
-            top: 46%;
+            top: 52%;
+            z-index: 1;
+            width: 290px;
+            height: 326px;
             transform: translate(-50%, -50%);
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 9rem;
-            font-weight: 850;
-            text-shadow: 0 16px 34px rgba(54, 42, 130, 0.2);
+            display: grid;
+            place-items: center;
+            pointer-events: none;
+        }}
+        .portrait-svg {{
+            width: 100%;
+            height: 100%;
+            display: block;
         }}
         .back {{
             padding: 2rem;
@@ -1294,13 +1606,14 @@ def render_flip_card(type_code: str, result: dict) -> None:
         }}
         .quote {{
             position: relative;
-            z-index: 2;
+            z-index: 3;
             margin-top: auto;
-            padding-top: 16rem;
+            padding-top: 16.5rem;
             color: #1d1d1f;
-            font-size: 1.78rem;
+            font-size: 1.56rem;
             line-height: 1.22;
             font-weight: 820;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.48);
         }}
         .back-title {{
             font-size: 2.1rem;
@@ -1359,6 +1672,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
                         <div class="type">{escape(front_title)}</div>
                         <div class="person">{escape(result["person"])}</div>
                     </div>
+                    <div class="portrait-wrap">{portrait_svg}</div>
                     <div class="quote">“{escape(result["quote"])}”</div>
                 </section>
                 <section class="side back">
@@ -1409,6 +1723,43 @@ def render_score_cards(scores: dict) -> None:
     st.markdown("</div>", unsafe_allow_html=True)
 
 
+def render_axis_guide(type_code: str) -> None:
+    selected_letters = set(type_code)
+    cards = []
+    for letter in ["S", "T", "V", "N", "I", "A", "R", "P"]:
+        meta = AXIS_META[letter]
+        active_class = " active" if letter in selected_letters else ""
+        badge = "내 결과" if letter in selected_letters else "&nbsp;"
+        cards.append(
+            f"""
+            <div class="axis-guide-card{active_class}">
+                <div class="axis-guide-top">
+                    <div class="axis-guide-code">{escape(letter)}</div>
+                    <div class="axis-guide-badge">{badge}</div>
+                </div>
+                <div class="axis-guide-name">{escape(meta["name"])}</div>
+                <div class="axis-guide-label">{escape(meta["label"])}</div>
+                <div class="axis-guide-desc">{escape(meta["description"])}</div>
+            </div>
+            """
+        )
+
+    st.markdown(
+        f"""
+        <section class="axis-guide-section">
+            <h2 class="axis-guide-title">8가지 수학 행동 성향</h2>
+            <p class="axis-guide-copy">
+                결과 코드는 네 개의 축에서 더 가까운 성향을 하나씩 조합해 만들어집니다.
+            </p>
+            <div class="axis-guide-grid">
+                {''.join(cards)}
+            </div>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def render_result() -> None:
     if answered_count() < TOTAL_QUESTIONS:
         st.session_state.screen = "quiz"
@@ -1432,6 +1783,7 @@ def render_result() -> None:
     )
     render_flip_card(type_code, result)
     render_score_cards(scores)
+    render_axis_guide(type_code)
 
     col1, col2 = st.columns(2)
     with col1:
