@@ -400,7 +400,7 @@ def inject_css() -> None:
     st.markdown(
         """
         <style>
-        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css");
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
         :root {
             --ink: #1d1d1f;
@@ -416,9 +416,8 @@ def inject_css() -> None:
         .stApp {
             background: #f5f5f7;
             color: var(--ink);
-            font-family: "Pretendard Variable", Pretendard, -apple-system,
-                BlinkMacSystemFont, "SF Pro Display", "Apple SD Gothic Neo",
-                "Noto Sans KR", sans-serif;
+            font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
+                BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
         }
 
         .main .block-container {
@@ -469,8 +468,8 @@ def inject_css() -> None:
             margin: 0 auto;
             color: #242428;
             text-align: center;
-            font-family: "SF Pro Display", "Pretendard Variable", Pretendard,
-                -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
+                BlinkMacSystemFont, sans-serif;
             font-size: clamp(5.4rem, 16vw, 13.5rem);
             line-height: 0.86;
             font-weight: 900;
@@ -483,6 +482,8 @@ def inject_css() -> None:
             margin: 0.8rem auto 0;
             color: #2f3036;
             text-align: center;
+            font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
+                BlinkMacSystemFont, sans-serif;
             font-size: clamp(2.1rem, 5.6vw, 5.1rem);
             line-height: 1.02;
             font-weight: 850;
@@ -490,12 +491,25 @@ def inject_css() -> None:
         }
 
         .home-copy {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
             max-width: 760px;
             margin: 2rem auto 0;
             color: rgba(29, 29, 31, 0.72);
+            font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+                "Apple SD Gothic Neo", sans-serif;
             font-size: clamp(1.05rem, 2vw, 1.28rem);
             line-height: 1.65;
             font-weight: 520;
+            text-align: center;
+        }
+
+        .home-copy span {
+            display: block;
+            width: 100%;
             text-align: center;
         }
 
@@ -507,8 +521,8 @@ def inject_css() -> None:
             pointer-events: none;
             border-radius: 999px;
             color: #4f55d7;
-            font-family: "SF Pro Display", "Pretendard Variable", Pretendard,
-                -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
+                BlinkMacSystemFont, sans-serif;
             font-weight: 850;
             background:
                 radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.78) 43%, rgba(255,255,255,0.28) 66%, rgba(255,255,255,0) 82%);
@@ -963,10 +977,10 @@ def render_home() -> None:
             <div class="home-inner">
                 <div class="home-title">{APP_TITLE}</div>
                 <div class="home-subtitle">with Math Talent</div>
-                <p class="home-copy">
-                    수학을 대하는 나의 행동 유형이 무엇인지 알아보아요!<br>
-                    나는 어떤 수학자와 비슷할까요?
-                </p>
+                <div class="home-copy">
+                    <span>수학을 대하는 나의 행동 유형이 무엇인지 알아보아요!</span>
+                    <span>나는 어떤 수학자와 비슷할까요?</span>
+                </div>
             </div>
         </section>
         """,
@@ -1159,7 +1173,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
     <head>
     <meta charset="utf-8">
     <style>
-        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css");
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
         * {{
             box-sizing: border-box;
@@ -1170,9 +1184,8 @@ def render_flip_card(type_code: str, result: dict) -> None:
             display: grid;
             place-items: center;
             background: transparent;
-            font-family: "Pretendard Variable", Pretendard, -apple-system,
-                BlinkMacSystemFont, "SF Pro Display", "Apple SD Gothic Neo",
-                "Noto Sans KR", sans-serif;
+            font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
+                BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
         }}
         .scene {{
             width: min(420px, 92vw);
