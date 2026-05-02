@@ -507,7 +507,7 @@ def inject_css() -> None:
                 "Apple SD Gothic Neo", sans-serif;
             font-size: clamp(1.05rem, 2vw, 1.28rem);
             line-height: 1.65;
-            font-weight: 520;
+            font-weight: 250;
             text-align: center;
         }
 
