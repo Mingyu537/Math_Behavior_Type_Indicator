@@ -907,7 +907,7 @@ def inject_css() -> None:
 
             .home-subtitle {
                 margin-top: 0.75rem;
-                font-size: clamp(2.15rem, 10vw, 3.25rem);
+                font-size: clamp(1.5rem, 6vw, 2.5rem);
                 line-height: 1.04;
             }
 
