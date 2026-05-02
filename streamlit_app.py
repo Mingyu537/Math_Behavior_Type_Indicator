@@ -490,12 +490,13 @@ def inject_css() -> None:
         }
 
         .home-copy {
-            max-width: 640px;
-            margin: 2.1rem auto 0;
+            max-width: 760px;
+            margin: 2rem auto 0;
             color: rgba(29, 29, 31, 0.72);
             font-size: clamp(1.05rem, 2vw, 1.28rem);
             line-height: 1.65;
             font-weight: 520;
+            text-align: center;
         }
 
         .hero-object {
@@ -505,33 +506,37 @@ def inject_css() -> None:
             place-items: center;
             pointer-events: none;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.78);
-            box-shadow: 0 24px 60px rgba(80, 90, 160, 0.16);
+            color: #4f55d7;
+            font-family: "SF Pro Display", "Pretendard Variable", Pretendard,
+                -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 850;
+            background:
+                radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.78) 43%, rgba(255,255,255,0.28) 66%, rgba(255,255,255,0) 82%);
+            box-shadow: 0 24px 70px rgba(80, 90, 160, 0.14);
             backdrop-filter: blur(22px);
             -webkit-backdrop-filter: blur(22px);
+            text-shadow: 0 14px 28px rgba(80, 90, 160, 0.2);
             animation: floaty 6.5s ease-in-out infinite;
         }
 
         .obj-large {
             left: 50%;
             bottom: 3.4rem;
-            width: clamp(96px, 11vw, 148px);
-            height: clamp(96px, 11vw, 148px);
+            width: clamp(92px, 10vw, 136px);
+            height: clamp(92px, 10vw, 136px);
             transform: translate(-50%, -50%);
-            border-radius: 34px;
-            background: linear-gradient(145deg, #ffffff, #8d7cff 55%, #5a37a2);
-            box-shadow: 0 28px 72px rgba(77, 65, 173, 0.23);
-            font-size: clamp(3.9rem, 7vw, 6.1rem);
+            color: #6c49d8;
+            font-size: clamp(3.8rem, 6.6vw, 5.7rem);
         }
 
-        .obj-1 { left: 18%; top: 18%; width: 78px; height: 78px; font-size: 2.7rem; animation-delay: -1s; }
-        .obj-2 { right: 22%; top: 17%; width: 94px; height: 94px; font-size: 3.15rem; animation-delay: -2s; }
-        .obj-3 { left: 18%; top: 55%; width: 82px; height: 82px; font-size: 2.65rem; animation-delay: -3s; }
-        .obj-4 { right: 18%; top: 54%; width: 76px; height: 76px; font-size: 2.35rem; animation-delay: -0.5s; }
-        .obj-5 { left: 31%; bottom: 9%; width: 96px; height: 96px; font-size: 3.15rem; animation-delay: -4s; }
-        .obj-6 { right: 31%; bottom: 10%; width: 92px; height: 92px; font-size: 3rem; animation-delay: -1.8s; }
-        .obj-rainbow-a { left: 50%; top: 6%; transform: translateX(-50%); font-size: 4.4rem; background: transparent; box-shadow: none; filter: drop-shadow(0 16px 18px rgba(60, 60, 100, 0.18)); }
-        .obj-rainbow-b { right: 9%; bottom: 2%; font-size: 5.8rem; background: transparent; box-shadow: none; filter: blur(0.2px) drop-shadow(0 20px 24px rgba(60, 60, 100, 0.16)); }
+        .obj-1 { left: 17%; top: 18%; width: 82px; height: 82px; font-size: 2.8rem; animation-delay: -1s; }
+        .obj-2 { right: 17%; top: 18%; width: 82px; height: 82px; font-size: 2.65rem; animation-delay: -2s; }
+        .obj-3 { left: 12%; top: 49%; width: 88px; height: 88px; font-size: 3rem; animation-delay: -3s; }
+        .obj-4 { right: 12%; top: 49%; width: 88px; height: 88px; font-size: 2.8rem; animation-delay: -0.5s; }
+        .obj-5 { left: 29%; bottom: 10%; width: 86px; height: 86px; font-size: 2.65rem; animation-delay: -4s; }
+        .obj-6 { right: 29%; bottom: 10%; width: 86px; height: 86px; font-size: 2.75rem; animation-delay: -1.8s; }
+        .obj-rainbow-a { left: 50%; top: 6%; transform: translateX(-50%); width: 82px; height: 82px; font-size: 2.8rem; color: #7b61ff; }
+        .obj-rainbow-b { right: 7%; bottom: 3%; width: 110px; height: 110px; font-size: 3.7rem; color: #ff7a45; }
 
         @keyframes floaty {
             0%, 100% { margin-top: 0; }
@@ -765,29 +770,6 @@ def inject_css() -> None:
             font-weight: 720;
         }
 
-        .axis-strip {
-            max-width: 980px;
-            margin: 1.5rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 0.8rem;
-        }
-
-        .axis-pill {
-            padding: 0.9rem 1rem;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.78);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            color: #6e6e73;
-            font-size: 0.92rem;
-            text-align: center;
-            font-weight: 650;
-        }
-
-        .axis-pill strong {
-            color: #1d1d1f;
-        }
-
         .nav-row {
             max-width: 980px;
             margin: 1.8rem auto 0;
@@ -918,15 +900,15 @@ def inject_css() -> None:
                 line-height: 1.58;
             }
 
-            .obj-1 { left: 8%; top: 13%; width: 58px; height: 58px; font-size: 2rem; }
-            .obj-2 { left: auto; right: 8%; top: 14%; width: 64px; height: 64px; font-size: 2.1rem; }
-            .obj-3 { left: 7%; top: 60%; width: 58px; height: 58px; font-size: 1.95rem; }
-            .obj-4 { right: 8%; left: auto; top: 60%; width: 54px; height: 54px; font-size: 1.75rem; }
-            .obj-5 { left: 15%; bottom: 11%; width: 70px; height: 70px; font-size: 2.3rem; }
-            .obj-6 { right: 15%; bottom: 12%; width: 66px; height: 66px; font-size: 2.1rem; }
-            .obj-large { bottom: 2.4rem; width: 82px; height: 82px; font-size: 3.25rem; }
-            .obj-rainbow-a { left: 50%; top: 3%; font-size: 3.5rem; }
-            .obj-rainbow-b { right: -2%; bottom: 0; font-size: 4.2rem; }
+            .obj-1 { left: 7%; top: 13%; width: 58px; height: 58px; font-size: 1.95rem; }
+            .obj-2 { left: auto; right: 7%; top: 13%; width: 58px; height: 58px; font-size: 1.9rem; }
+            .obj-3 { left: 7%; top: 59%; width: 58px; height: 58px; font-size: 2rem; }
+            .obj-4 { right: 7%; left: auto; top: 59%; width: 58px; height: 58px; font-size: 1.9rem; }
+            .obj-5 { left: 17%; bottom: 11%; width: 66px; height: 66px; font-size: 2.1rem; }
+            .obj-6 { right: 17%; bottom: 11%; width: 66px; height: 66px; font-size: 2.1rem; }
+            .obj-large { bottom: 2.1rem; width: 78px; height: 78px; font-size: 3.05rem; }
+            .obj-rainbow-a { left: 50%; top: 3%; width: 64px; height: 64px; font-size: 2.25rem; }
+            .obj-rainbow-b { right: -1%; bottom: 0; width: 82px; height: 82px; font-size: 2.9rem; }
 
             .topbar {
                 margin-bottom: 2.6rem;
@@ -934,7 +916,6 @@ def inject_css() -> None:
 
             .choice-grid,
             .endpoint-grid,
-            .axis-strip,
             .score-grid,
             .nav-row {
                 grid-template-columns: 1fr;
@@ -970,21 +951,21 @@ def render_home() -> None:
     st.markdown(
         f"""
         <section class="home-wrap">
-            <div class="hero-object obj-rainbow-a">🌈</div>
-            <div class="hero-object obj-1">∑</div>
-            <div class="hero-object obj-2">π</div>
-            <div class="hero-object obj-3">🔥</div>
+            <div class="hero-object obj-rainbow-a">✦</div>
+            <div class="hero-object obj-1">∫</div>
+            <div class="hero-object obj-2">△</div>
+            <div class="hero-object obj-3">≈</div>
             <div class="hero-object obj-large">∞</div>
-            <div class="hero-object obj-4">√</div>
-            <div class="hero-object obj-5">🧠</div>
-            <div class="hero-object obj-6">⚡</div>
-            <div class="hero-object obj-rainbow-b">🌈</div>
+            <div class="hero-object obj-4">◇</div>
+            <div class="hero-object obj-5">⌁</div>
+            <div class="hero-object obj-6">⟡</div>
+            <div class="hero-object obj-rainbow-b">✺</div>
             <div class="home-inner">
                 <div class="home-title">{APP_TITLE}</div>
                 <div class="home-subtitle">with Math Talent</div>
                 <p class="home-copy">
-                    수학을 대하는 나의 행동 유형을 12개의 5단계 선택으로 확인해 보세요.
-                    결과 카드는 앞면과 뒷면이 회전하는 형태로 나타납니다.
+                    수학을 대하는 나의 행동 유형이 무엇인지 알아보아요!<br>
+                    나는 어떤 수학자와 비슷할까요?
                 </p>
             </div>
         </section>
@@ -1120,19 +1101,6 @@ def render_quiz() -> None:
 
     render_likert_scale(question)
 
-    left_axis, right_axis = question["axis"]
-    st.markdown(
-        f"""
-        <div class="axis-strip">
-            <div class="axis-pill"><strong>{left_axis}</strong> {AXIS_META[left_axis]["name"]}</div>
-            <div class="axis-pill">{AXIS_META[left_axis]["label"]}</div>
-            <div class="axis-pill"><strong>{right_axis}</strong> {AXIS_META[right_axis]["name"]}</div>
-            <div class="axis-pill">{AXIS_META[right_axis]["label"]}</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
     st.markdown('<div class="nav-row">', unsafe_allow_html=True)
     previous_col, next_col = st.columns(2)
     with previous_col:
@@ -1142,7 +1110,7 @@ def render_quiz() -> None:
     with next_col:
         has_answer = question["id"] in st.session_state.answers
         is_last = index == TOTAL_QUESTIONS - 1
-        label = "결과 보기" if is_last else "다음"
+        label = "결과보기" if is_last else "다음"
         if st.button(label, use_container_width=True, disabled=not has_answer):
             if is_last:
                 missing = [item for item in QUESTIONS if item["id"] not in st.session_state.answers]
@@ -1154,11 +1122,6 @@ def render_quiz() -> None:
                 st.session_state.current_question += 1
             rerun()
     st.markdown("</div>", unsafe_allow_html=True)
-
-    if answered_count() == TOTAL_QUESTIONS:
-        if st.button("바로 결과 카드 보기", use_container_width=True):
-            st.session_state.screen = "result"
-            rerun()
 
     st.markdown("</main>", unsafe_allow_html=True)
 
