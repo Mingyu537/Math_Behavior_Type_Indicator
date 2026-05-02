@@ -420,33 +420,36 @@ def inject_css() -> None:
     st.markdown(
         """
         <style>
-        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
         :root {
-            --ink: #1d1d1f;
-            --muted: #6e6e73;
-            --blue: #0071e3;
-            --blue-dark: #0057b8;
-            --paper: #f5f5f7;
-            --line: rgba(0, 0, 0, 0.08);
-            --inu-blue: #005bac;
-            --inu-blue-dark: #003f88;
-            --inu-blue-light: #dcecff;
-            --inu-blue-soft: #eef6ff;
+            --ink: #f6fbff;
+            --muted: rgba(223, 232, 246, 0.68);
+            --quiet: rgba(223, 232, 246, 0.46);
+            --panel: rgba(13, 20, 37, 0.72);
+            --panel-strong: rgba(18, 27, 48, 0.92);
+            --line: rgba(255, 255, 255, 0.11);
+            --cyan: #6ee7ff;
+            --blue: #4f8cff;
+            --violet: #a78bfa;
+            --lime: #b9f66a;
+            --shadow: rgba(0, 0, 0, 0.44);
         }
 
         .stApp {
             background:
-                linear-gradient(180deg, #f8fbff 0%, #edf7ff 26%, #f7fbff 62%, #f5f5f7 100%);
+                radial-gradient(circle at 12% -8%, rgba(79, 140, 255, 0.22), transparent 34%),
+                radial-gradient(circle at 88% 8%, rgba(167, 139, 250, 0.18), transparent 34%),
+                linear-gradient(180deg, #060912 0%, #091120 42%, #101827 100%);
             color: var(--ink);
             font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
         }
 
         .main .block-container {
-            max-width: 1120px;
-            padding-top: 2rem;
-            padding-bottom: 4rem;
+            max-width: 1180px;
+            padding-top: 1.4rem;
+            padding-bottom: 5rem;
         }
 
         header[data-testid="stHeader"] {
@@ -465,7 +468,7 @@ def inject_css() -> None:
 
         .home-wrap {
             position: relative;
-            min-height: 760px;
+            min-height: 820px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -473,23 +476,24 @@ def inject_css() -> None:
             isolation: isolate;
             border-radius: 0;
             margin: -2rem calc(50% - 50vw) 0 calc(50% - 50vw);
-            padding: 6.2rem 2rem 7.8rem;
+            padding: 7rem 2rem 8.5rem;
             background:
-                linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(220,236,255,0.72) 44%, rgba(247,251,255,0) 100%),
-                linear-gradient(108deg, rgba(255,255,255,0.94) 0%, rgba(231,244,255,0.94) 34%, rgba(198,226,255,0.78) 58%, rgba(255,255,255,0.82) 100%);
+                radial-gradient(circle at 50% 50%, rgba(110, 231, 255, 0.16), transparent 28%),
+                radial-gradient(circle at 30% 32%, rgba(79, 140, 255, 0.2), transparent 36%),
+                radial-gradient(circle at 74% 28%, rgba(167, 139, 250, 0.18), transparent 35%),
+                linear-gradient(180deg, #060912 0%, #081120 48%, #0b1424 100%);
         }
 
         .home-wrap::before {
             content: "";
             position: absolute;
-            inset: -18% -10% -12%;
+            inset: -16% -18%;
             z-index: 0;
             background:
-                linear-gradient(116deg, transparent 4%, rgba(0, 91, 172, 0.22) 34%, transparent 63%),
-                linear-gradient(244deg, transparent 8%, rgba(0, 132, 210, 0.14) 38%, transparent 70%),
-                linear-gradient(180deg, rgba(255,255,255,0.78), transparent 72%);
-            filter: blur(34px);
-            opacity: 0.92;
+                conic-gradient(from 138deg at 50% 50%, transparent 0deg, rgba(110, 231, 255, 0.2) 54deg, transparent 116deg, rgba(167, 139, 250, 0.18) 174deg, transparent 236deg, rgba(185, 246, 106, 0.12) 296deg, transparent 360deg);
+            filter: blur(46px);
+            opacity: 0.74;
+            animation: slow-spin 24s linear infinite;
         }
 
         .home-wrap::after {
@@ -499,17 +503,106 @@ def inject_css() -> None:
             z-index: 0;
             pointer-events: none;
             background:
-                linear-gradient(rgba(0,91,172,0.045) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,91,172,0.04) 1px, transparent 1px);
-            background-size: 42px 42px;
-            mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.32) 20%, rgba(0,0,0,0.22) 72%, transparent 100%);
-            -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.32) 20%, rgba(0,0,0,0.22) 72%, transparent 100%);
+                linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 54px 54px;
+            mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.46) 18%, rgba(0,0,0,0.28) 72%, transparent 100%);
+            -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.46) 18%, rgba(0,0,0,0.28) 72%, transparent 100%);
+        }
+
+        .home-visual {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .orbital-frame {
+            position: absolute;
+            left: 50%;
+            top: 49%;
+            width: min(78vw, 920px);
+            aspect-ratio: 1 / 0.46;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            transform: translate(-50%, -50%) rotate(-7deg);
+            box-shadow:
+                inset 0 0 80px rgba(110, 231, 255, 0.04),
+                0 0 120px rgba(79, 140, 255, 0.08);
+        }
+
+        .orbital-frame.secondary {
+            width: min(90vw, 1080px);
+            transform: translate(-50%, -50%) rotate(9deg);
+            opacity: 0.48;
+        }
+
+        .data-ribbon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: min(90vw, 1080px);
+            height: 1px;
+            transform: translate(-50%, -50%) rotate(-18deg);
+            background: linear-gradient(90deg, transparent, rgba(110, 231, 255, 0.58), rgba(167, 139, 250, 0.44), transparent);
+            box-shadow: 0 0 42px rgba(110, 231, 255, 0.28);
+        }
+
+        .data-ribbon.alt {
+            transform: translate(-50%, -50%) rotate(18deg);
+            opacity: 0.52;
+        }
+
+        .signal-node {
+            position: absolute;
+            border-radius: 999px;
+            background:
+                radial-gradient(circle at 34% 28%, rgba(255,255,255,0.95), rgba(255,255,255,0.14) 34%, transparent 62%),
+                linear-gradient(135deg, rgba(110,231,255,0.28), rgba(167,139,250,0.16));
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow:
+                0 0 34px rgba(110, 231, 255, 0.18),
+                inset 0 1px 0 rgba(255,255,255,0.18);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            animation: drift 8s ease-in-out infinite;
+        }
+
+        .node-a { width: 84px; height: 84px; left: 12%; top: 22%; animation-delay: -1s; }
+        .node-b { width: 118px; height: 118px; right: 11%; top: 18%; animation-delay: -3.8s; }
+        .node-c { width: 64px; height: 64px; left: 21%; bottom: 18%; animation-delay: -2.4s; }
+        .node-d { width: 92px; height: 92px; right: 23%; bottom: 15%; animation-delay: -5.2s; }
+
+        .mesh-chip {
+            position: absolute;
+            width: 220px;
+            height: 132px;
+            border-radius: 28px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)),
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 18px);
+            box-shadow: 0 34px 80px rgba(0, 0, 0, 0.32);
+            transform: rotate(-10deg);
+            opacity: 0.54;
+        }
+
+        .chip-left { left: 8%; bottom: 31%; }
+        .chip-right { right: 8%; bottom: 32%; transform: rotate(11deg); }
+
+        @keyframes slow-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -18px, 0); }
         }
 
         .home-inner {
             position: relative;
-            z-index: 4;
-            width: min(100%, 1040px);
+            z-index: 3;
+            width: min(100%, 1120px);
             margin: 0 auto;
             text-align: center;
         }
@@ -517,29 +610,32 @@ def inject_css() -> None:
         .home-title {
             width: 100%;
             margin: 0 auto;
-            color: #20232b;
+            color: transparent;
+            background: linear-gradient(180deg, #ffffff 0%, #bdefff 42%, #6fa8ff 76%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
             text-align: center;
-            font-family: "Press Start 2P", "Space Grotesk", "Noto Sans KR", -apple-system,
+            font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, sans-serif;
-            font-size: clamp(3.1rem, 9.2vw, 8.15rem);
-            line-height: 1.05;
-            font-weight: 400;
-            letter-spacing: 0;
-            text-shadow: 0 22px 54px rgba(0, 63, 136, 0.2);
+            font-size: clamp(5.3rem, 15vw, 13.4rem);
+            line-height: 0.82;
+            font-weight: 700;
+            letter-spacing: -0.045em;
+            filter: drop-shadow(0 34px 76px rgba(79, 140, 255, 0.24));
         }
 
         .home-subtitle {
             width: 100%;
-            max-width: calc(100vw - 2rem);
-            margin: 1.3rem auto 0;
-            color: #242936;
+            max-width: calc(100vw - 2.5rem);
+            margin: 1.9rem auto 0;
+            color: rgba(246, 251, 255, 0.92);
             text-align: center;
             font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, sans-serif;
-            font-size: clamp(1.35rem, 3.85vw, 2.75rem);
-            line-height: 1.08;
-            font-weight: 780;
-            letter-spacing: 0;
+            font-size: clamp(1.25rem, 3.2vw, 3rem);
+            line-height: 1.02;
+            font-weight: 600;
+            letter-spacing: -0.025em;
             white-space: nowrap;
         }
 
@@ -549,9 +645,9 @@ def inject_css() -> None:
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 760px;
-            margin: 1.75rem auto 0;
-            color: rgba(31, 39, 54, 0.58);
+            max-width: 780px;
+            margin: 2rem auto 0;
+            color: rgba(223, 232, 246, 0.68);
             font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
                 "Apple SD Gothic Neo", sans-serif;
             font-size: clamp(1.05rem, 2vw, 1.28rem);
@@ -566,69 +662,16 @@ def inject_css() -> None:
             text-align: center;
         }
 
-        .hero-object {
-            position: absolute;
-            z-index: 2;
-            display: grid;
-            place-items: center;
-            pointer-events: none;
-            border-radius: 999px;
-            color: var(--inu-blue);
-            font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
-                BlinkMacSystemFont, sans-serif;
-            font-weight: 850;
-            background:
-                linear-gradient(145deg, rgba(255,255,255,0.94), rgba(255,255,255,0.42));
-            border: 1px solid rgba(255,255,255,0.68);
-            box-shadow: 0 28px 80px rgba(0, 63, 136, 0.13), inset 0 1px 0 rgba(255,255,255,0.62);
-            backdrop-filter: blur(26px) saturate(1.18);
-            -webkit-backdrop-filter: blur(26px) saturate(1.18);
-            text-shadow: 0 12px 24px rgba(0, 63, 136, 0.18);
-            animation: floaty 7.5s ease-in-out infinite;
-        }
-
-        .obj-large {
-            left: 50%;
-            bottom: 0.9rem;
-            width: clamp(92px, 10vw, 136px);
-            height: clamp(92px, 10vw, 136px);
-            transform: translateX(-50%);
-            color: var(--inu-blue-dark);
-            font-size: clamp(3.8rem, 6.6vw, 5.7rem);
-        }
-
-        .emoji-object {
-            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-            color: inherit;
-            text-shadow: none;
-        }
-
-        .obj-1 { left: 8%; top: 18%; width: 86px; height: 86px; font-size: 2.8rem; animation-delay: -1s; }
-        .obj-2 { right: 8%; top: 18%; width: 86px; height: 86px; font-size: 2.65rem; animation-delay: -2s; }
-        .obj-3 { left: 6%; top: 52%; width: 90px; height: 90px; font-size: 3rem; animation-delay: -3s; }
-        .obj-4 { right: 6%; top: 52%; width: 90px; height: 90px; font-size: 2.8rem; animation-delay: -0.5s; }
-        .obj-5 { left: 18%; bottom: 10%; width: 84px; height: 84px; font-size: 2.55rem; animation-delay: -4s; }
-        .obj-6 { right: 21%; bottom: 10%; width: 84px; height: 84px; font-size: 2.65rem; animation-delay: -1.8s; }
-        .obj-rainbow-a { left: 50%; top: 6%; transform: translateX(-50%); width: 82px; height: 82px; font-size: 2.8rem; color: #0075c9; }
-        .obj-emoji-a { left: 26%; top: 12%; width: 74px; height: 74px; font-size: 2.05rem; animation-delay: -2.7s; }
-        .obj-emoji-b { right: 26%; top: 12%; width: 74px; height: 74px; font-size: 2.05rem; animation-delay: -3.4s; }
-        .obj-emoji-c { left: 37%; bottom: 3.5%; width: 70px; height: 70px; font-size: 1.95rem; animation-delay: -1.4s; }
-        .obj-emoji-d { right: 37%; bottom: 3.5%; width: 70px; height: 70px; font-size: 1.95rem; animation-delay: -4.2s; }
-
-        @keyframes floaty {
-            0%, 100% { margin-top: 0; }
-            50% { margin-top: -18px; }
-        }
-
         .start-zone {
-            max-width: min(880px, calc(100vw - 2rem));
-            margin: -4rem auto 5rem;
+            max-width: min(540px, calc(100vw - 2rem));
+            margin: -4.1rem auto 5rem;
             position: relative;
             z-index: 5;
         }
 
-        .apple-shell {
+        .experience-shell {
             padding: 1.2rem 0 0;
+            color: var(--ink);
         }
 
         .topbar {
@@ -636,8 +679,15 @@ def inject_css() -> None:
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            margin-bottom: 3.8rem;
-            color: rgba(29, 29, 31, 0.82);
+            margin-bottom: 3.2rem;
+            padding: 0.9rem 1rem;
+            border-radius: 999px;
+            color: rgba(246, 251, 255, 0.86);
+            background: rgba(9, 16, 32, 0.58);
+            border: 1px solid var(--line);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             font-size: 0.95rem;
             font-weight: 650;
         }
@@ -646,6 +696,14 @@ def inject_css() -> None:
             display: flex;
             align-items: center;
             gap: 0.65rem;
+            min-width: 0;
+        }
+
+        .brand-text {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .brand-dot {
@@ -654,9 +712,10 @@ def inject_css() -> None:
             display: grid;
             place-items: center;
             border-radius: 50%;
-            color: #fff;
-            background: #1d1d1f;
+            color: #06111f;
+            background: linear-gradient(135deg, var(--cyan), var(--lime));
             font-weight: 850;
+            box-shadow: 0 0 24px rgba(110, 231, 255, 0.24);
         }
 
         .progress-text {
@@ -675,18 +734,20 @@ def inject_css() -> None:
             max-width: 520px;
             margin: 0 auto 2.4rem;
             border-radius: 999px;
-            background: rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.08);
             overflow: hidden;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
         }
 
         .progress-fill {
             height: 100%;
             border-radius: inherit;
-            background: linear-gradient(90deg, #0071e3, #7f7cff);
+            background: linear-gradient(90deg, var(--cyan), var(--blue), var(--violet));
+            box-shadow: 0 0 26px rgba(110, 231, 255, 0.38);
         }
 
         .question-number {
-            color: #86868b;
+            color: var(--quiet);
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 0.8rem;
@@ -711,19 +772,19 @@ def inject_css() -> None:
         .choice-card {
             min-height: 240px;
             padding: 2rem;
-            border-radius: 28px;
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 22px 54px rgba(0, 0, 0, 0.07);
+            border-radius: 26px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: 0 22px 54px var(--shadow);
             transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .choice-card.selected {
-            border-color: rgba(0, 113, 227, 0.44);
-            box-shadow: 0 26px 64px rgba(0, 113, 227, 0.18);
+            border-color: rgba(110, 231, 255, 0.42);
+            box-shadow: 0 26px 64px rgba(79, 140, 255, 0.22);
             background:
-                linear-gradient(180deg, rgba(255,255,255,1), rgba(248,251,255,1)),
-                radial-gradient(circle at top right, rgba(0,113,227,0.12), transparent 38%);
+                radial-gradient(circle at top right, rgba(110,231,255,0.18), transparent 38%),
+                var(--panel-strong);
         }
 
         .choice-code {
@@ -734,27 +795,27 @@ def inject_css() -> None:
             height: 3.1rem;
             margin-bottom: 1.2rem;
             border-radius: 50%;
-            background: #f5f5f7;
-            color: #1d1d1f;
+            background: rgba(255,255,255,0.08);
+            color: var(--ink);
             font-size: 1.2rem;
             font-weight: 820;
         }
 
         .choice-card.selected .choice-code {
-            background: #0071e3;
-            color: #fff;
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            color: #06111f;
         }
 
         .choice-title {
             margin-bottom: 0.8rem;
-            color: #1d1d1f;
+            color: var(--ink);
             font-size: clamp(1.45rem, 3vw, 2.1rem);
             line-height: 1.16;
             font-weight: 760;
         }
 
         .choice-body {
-            color: #6e6e73;
+            color: var(--muted);
             font-size: 1.02rem;
             line-height: 1.62;
             font-weight: 500;
@@ -771,16 +832,21 @@ def inject_css() -> None:
         .endpoint-card {
             min-height: 178px;
             padding: 1.55rem;
-            border-radius: 26px;
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.06);
+            border-radius: 28px;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.035)),
+                rgba(12, 19, 35, 0.74);
+            border: 1px solid var(--line);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
         }
 
         .endpoint-card.right {
             background:
-                linear-gradient(180deg, rgba(255,255,255,1), rgba(248,251,255,1)),
-                radial-gradient(circle at top right, rgba(127, 124, 255, 0.12), transparent 42%);
+                radial-gradient(circle at 96% 0%, rgba(167, 139, 250, 0.18), transparent 42%),
+                linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.035)),
+                rgba(12, 19, 35, 0.74);
         }
 
         .endpoint-topline {
@@ -797,20 +863,20 @@ def inject_css() -> None:
             width: 2.8rem;
             height: 2.8rem;
             border-radius: 50%;
-            background: #f5f5f7;
-            color: #1d1d1f;
+            background: rgba(255,255,255,0.08);
+            color: var(--ink);
             font-size: 1.1rem;
             font-weight: 840;
         }
 
         .endpoint-side {
-            color: #86868b;
+            color: var(--quiet);
             font-size: 0.88rem;
             font-weight: 760;
         }
 
         .endpoint-title {
-            color: #1d1d1f;
+            color: var(--ink);
             font-size: clamp(1.25rem, 2.4vw, 1.75rem);
             line-height: 1.18;
             font-weight: 820;
@@ -818,7 +884,7 @@ def inject_css() -> None:
         }
 
         .endpoint-body {
-            color: #6e6e73;
+            color: var(--muted);
             font-size: 0.98rem;
             line-height: 1.58;
             font-weight: 500;
@@ -830,7 +896,7 @@ def inject_css() -> None:
             display: flex;
             justify-content: space-between;
             gap: 1rem;
-            color: #6e6e73;
+            color: var(--quiet);
             font-size: 0.92rem;
             font-weight: 700;
         }
@@ -840,8 +906,9 @@ def inject_css() -> None:
             margin: 0.85rem auto 0;
             padding: 0.9rem 1rem;
             border-radius: 18px;
-            background: rgba(0, 113, 227, 0.08);
-            color: #0057b8;
+            background: rgba(110, 231, 255, 0.1);
+            border: 1px solid rgba(110, 231, 255, 0.16);
+            color: #c9f6ff;
             text-align: center;
             font-size: 0.98rem;
             font-weight: 720;
@@ -861,7 +928,7 @@ def inject_css() -> None:
 
         .result-title {
             margin: 1.5rem auto 0.8rem;
-            color: #1d1d1f;
+            color: var(--ink);
             font-size: clamp(2.4rem, 7vw, 5.4rem);
             line-height: 1;
             font-weight: 840;
@@ -870,7 +937,7 @@ def inject_css() -> None:
         .result-copy {
             max-width: 620px;
             margin: 0 auto 1.5rem;
-            color: #6e6e73;
+            color: var(--muted);
             font-size: 1.08rem;
             line-height: 1.68;
             font-weight: 520;
@@ -887,16 +954,16 @@ def inject_css() -> None:
         .score-card {
             padding: 1.2rem;
             border-radius: 22px;
-            background: #fff;
-            border: 1px solid rgba(0,0,0,0.06);
-            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.05);
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
             text-align: left;
         }
 
         .score-label {
             display: flex;
             justify-content: space-between;
-            color: #1d1d1f;
+            color: var(--ink);
             font-size: 0.95rem;
             font-weight: 760;
             margin-bottom: 0.8rem;
@@ -905,14 +972,14 @@ def inject_css() -> None:
         .score-track {
             height: 10px;
             border-radius: 999px;
-            background: #f0f0f2;
+            background: rgba(255,255,255,0.08);
             overflow: hidden;
         }
 
         .score-fill {
             height: 100%;
             border-radius: inherit;
-            background: linear-gradient(90deg, #0071e3, #8b7cff);
+            background: linear-gradient(90deg, var(--cyan), var(--blue), var(--violet));
         }
 
         .axis-guide-section {
@@ -923,7 +990,7 @@ def inject_css() -> None:
 
         .axis-guide-title {
             margin: 0 0 0.35rem;
-            color: #1d1d1f;
+            color: var(--ink);
             font-size: clamp(1.65rem, 3.2vw, 2.45rem);
             line-height: 1.12;
             font-weight: 840;
@@ -933,7 +1000,7 @@ def inject_css() -> None:
         .axis-guide-copy {
             max-width: 620px;
             margin: 0 auto 1.4rem;
-            color: #6e6e73;
+            color: var(--muted);
             font-size: 1rem;
             line-height: 1.58;
             font-weight: 420;
@@ -951,19 +1018,19 @@ def inject_css() -> None:
             padding: 1.15rem;
             border-radius: 22px;
             background:
-                linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,251,255,0.96));
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.05);
+                linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.032));
+            border: 1px solid var(--line);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
             position: relative;
             overflow: hidden;
         }
 
         .axis-guide-card.active {
-            border-color: rgba(0, 91, 172, 0.25);
+            border-color: rgba(110, 231, 255, 0.32);
             background:
-                radial-gradient(circle at 90% 0%, rgba(0, 113, 227, 0.2), transparent 34%),
-                linear-gradient(180deg, #ffffff, #eef7ff);
-            box-shadow: 0 20px 52px rgba(0, 91, 172, 0.14);
+                radial-gradient(circle at 90% 0%, rgba(110, 231, 255, 0.18), transparent 34%),
+                linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+            box-shadow: 0 22px 60px rgba(79, 140, 255, 0.18);
         }
 
         .axis-guide-top {
@@ -980,21 +1047,21 @@ def inject_css() -> None:
             width: 2.7rem;
             height: 2.7rem;
             border-radius: 50%;
-            background: #f5f5f7;
-            color: #1d1d1f;
+            background: rgba(255,255,255,0.08);
+            color: var(--ink);
             font-family: "Space Grotesk", "Noto Sans KR", sans-serif;
             font-size: 1.1rem;
             font-weight: 850;
         }
 
         .axis-guide-card.active .axis-guide-code {
-            background: #005bac;
-            color: #ffffff;
-            box-shadow: 0 10px 24px rgba(0, 91, 172, 0.24);
+            background: linear-gradient(135deg, var(--cyan), var(--lime));
+            color: #06111f;
+            box-shadow: 0 10px 26px rgba(110, 231, 255, 0.22);
         }
 
         .axis-guide-badge {
-            color: #005bac;
+            color: var(--cyan);
             font-size: 0.78rem;
             font-weight: 760;
             opacity: 0;
@@ -1005,7 +1072,7 @@ def inject_css() -> None:
         }
 
         .axis-guide-name {
-            color: #1d1d1f;
+            color: var(--ink);
             font-size: 1.05rem;
             line-height: 1.2;
             font-weight: 820;
@@ -1013,14 +1080,14 @@ def inject_css() -> None:
         }
 
         .axis-guide-label {
-            color: #005bac;
+            color: var(--cyan);
             font-size: 0.9rem;
             font-weight: 720;
             margin-bottom: 0.65rem;
         }
 
         .axis-guide-desc {
-            color: #6e6e73;
+            color: var(--muted);
             font-size: 0.92rem;
             line-height: 1.55;
             font-weight: 430;
@@ -1029,70 +1096,72 @@ def inject_css() -> None:
         .stButton > button {
             min-height: 3.65rem;
             border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.36);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             background:
-                linear-gradient(135deg, #005bac 0%, #0077ed 58%, #3f8cff 100%);
-            color: #ffffff;
+                radial-gradient(circle at 18% 18%, rgba(255,255,255,0.3), transparent 30%),
+                linear-gradient(135deg, #6ee7ff 0%, #4f8cff 48%, #a78bfa 100%);
+            color: #06111f;
             font-weight: 760;
             font-size: 1rem;
             letter-spacing: 0;
-            box-shadow: 0 18px 46px rgba(0, 91, 172, 0.26), inset 0 1px 0 rgba(255,255,255,0.24);
+            box-shadow: 0 20px 52px rgba(79, 140, 255, 0.25), inset 0 1px 0 rgba(255,255,255,0.28);
             transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
         }
 
         .stButton > button:hover {
             background:
-                linear-gradient(135deg, #004f9a 0%, #0077ed 52%, #69a7ff 100%);
-            color: #ffffff;
+                radial-gradient(circle at 18% 18%, rgba(255,255,255,0.34), transparent 30%),
+                linear-gradient(135deg, #93f1ff 0%, #5d96ff 50%, #b99cff 100%);
+            color: #06111f;
             transform: translateY(-2px);
-            box-shadow: 0 24px 58px rgba(0, 91, 172, 0.32), inset 0 1px 0 rgba(255,255,255,0.28);
+            box-shadow: 0 26px 68px rgba(79, 140, 255, 0.34), inset 0 1px 0 rgba(255,255,255,0.32);
         }
 
         .stButton > button:focus {
-            color: #ffffff;
-            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.18), 0 18px 36px rgba(0, 113, 227, 0.28);
+            color: #06111f;
+            box-shadow: 0 0 0 4px rgba(110, 231, 255, 0.16), 0 18px 36px rgba(79, 140, 255, 0.28);
         }
 
         div:has(.likert-guide) + div div[data-testid="stButton"] > button {
             min-height: 4.1rem !important;
-            border-radius: 22px !important;
-            border: 1px solid rgba(0, 91, 172, 0.16) !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(255, 255, 255, 0.13) !important;
             background:
-                linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,251,255,0.96)) !important;
-            color: #1d1d1f !important;
+                linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.032)) !important;
+            color: rgba(246, 251, 255, 0.9) !important;
             font-family: "Noto Sans KR", "Space Grotesk", -apple-system,
                 BlinkMacSystemFont, sans-serif !important;
             font-size: 1rem !important;
             font-weight: 700 !important;
-            box-shadow: 0 12px 28px rgba(0, 63, 136, 0.08) !important;
+            box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22) !important;
             transition: transform 0.18s ease, box-shadow 0.18s ease,
                 border-color 0.18s ease, background 0.18s ease !important;
         }
 
         div:has(.likert-guide) + div div[data-testid="stButton"] > button:hover {
-            border-color: rgba(0, 91, 172, 0.34) !important;
+            border-color: rgba(110, 231, 255, 0.34) !important;
             background:
-                linear-gradient(180deg, #ffffff, #eef7ff) !important;
-            color: #005bac !important;
+                linear-gradient(180deg, rgba(110,231,255,0.13), rgba(255,255,255,0.044)) !important;
+            color: #dffbff !important;
             transform: translateY(-3px) !important;
-            box-shadow: 0 18px 40px rgba(0, 91, 172, 0.16) !important;
+            box-shadow: 0 22px 50px rgba(79, 140, 255, 0.18) !important;
         }
 
         div:has(.likert-guide) + div div[data-testid="stButton"] > button[kind="primary"],
         div:has(.likert-guide) + div div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"] {
-            border-color: rgba(0, 91, 172, 0.26) !important;
+            border-color: rgba(110, 231, 255, 0.34) !important;
             background:
-                radial-gradient(circle at 22% 18%, rgba(255,255,255,0.42), transparent 30%),
-                linear-gradient(135deg, #005bac, #0077ed 58%, #4b8dff) !important;
-            color: #ffffff !important;
-            box-shadow: 0 18px 42px rgba(0, 91, 172, 0.28) !important;
+                radial-gradient(circle at 22% 18%, rgba(255,255,255,0.34), transparent 30%),
+                linear-gradient(135deg, #6ee7ff, #4f8cff 56%, #a78bfa) !important;
+            color: #06111f !important;
+            box-shadow: 0 20px 48px rgba(79, 140, 255, 0.3) !important;
         }
 
         div:has(.likert-guide) + div div[data-testid="stButton"] > button[kind="primary"]:hover,
         div:has(.likert-guide) + div div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:hover {
-            color: #ffffff !important;
+            color: #06111f !important;
             transform: translateY(-3px) !important;
-            box-shadow: 0 22px 48px rgba(0, 91, 172, 0.34) !important;
+            box-shadow: 0 24px 56px rgba(79, 140, 255, 0.38) !important;
         }
 
         div[data-testid="stAlert"] {
@@ -1109,20 +1178,20 @@ def inject_css() -> None:
             }
 
             .home-wrap {
-                min-height: 690px;
-                padding: 5rem 1rem 7.4rem;
+                min-height: 720px;
+                padding: 5.6rem 1rem 7.6rem;
             }
 
             .home-title {
                 margin-top: 0;
-                font-size: clamp(2.35rem, 12vw, 4.1rem);
-                line-height: 1.12;
+                font-size: clamp(4.8rem, 23vw, 7rem);
+                line-height: 0.86;
             }
 
             .home-subtitle {
-                margin-top: 0.75rem;
-                font-size: clamp(0.82rem, 3.45vw, 1.45rem);
-                line-height: 1.04;
+                margin-top: 1.15rem;
+                font-size: clamp(0.82rem, 3.6vw, 1.25rem);
+                line-height: 1.08;
             }
 
             .home-copy {
@@ -1132,18 +1201,20 @@ def inject_css() -> None:
                 line-height: 1.58;
             }
 
-            .obj-1 { left: 5%; top: 13%; width: 52px; height: 52px; font-size: 1.75rem; }
-            .obj-2 { left: auto; right: 5%; top: 13%; width: 52px; height: 52px; font-size: 1.7rem; }
-            .obj-3 { left: 4%; top: 64%; width: 54px; height: 54px; font-size: 1.85rem; }
-            .obj-4 { right: 4%; left: auto; top: 64%; width: 54px; height: 54px; font-size: 1.75rem; }
-            .obj-5 { left: 10%; bottom: 8%; width: 58px; height: 58px; font-size: 1.85rem; }
-            .obj-6 { right: 10%; bottom: 8%; width: 58px; height: 58px; font-size: 1.85rem; }
-            .obj-large { bottom: 0.6rem; width: 72px; height: 72px; font-size: 2.8rem; }
-            .obj-rainbow-a { left: 50%; top: 3%; width: 64px; height: 64px; font-size: 2.25rem; }
-            .obj-emoji-a { left: 24%; top: 8%; width: 52px; height: 52px; font-size: 1.5rem; }
-            .obj-emoji-b { right: 24%; top: 8%; width: 52px; height: 52px; font-size: 1.5rem; }
-            .obj-emoji-c { left: 30%; bottom: 2%; width: 50px; height: 50px; font-size: 1.42rem; }
-            .obj-emoji-d { right: 30%; bottom: 2%; width: 50px; height: 50px; font-size: 1.42rem; }
+            .orbital-frame {
+                width: 720px;
+                left: 50%;
+                top: 50%;
+            }
+
+            .mesh-chip {
+                display: none;
+            }
+
+            .node-a { width: 58px; height: 58px; left: 7%; top: 18%; }
+            .node-b { width: 72px; height: 72px; right: 6%; top: 22%; }
+            .node-c { width: 48px; height: 48px; left: 13%; bottom: 18%; }
+            .node-d { width: 62px; height: 62px; right: 13%; bottom: 17%; }
 
             .start-zone {
                 margin-top: -3.8rem;
@@ -1152,6 +1223,7 @@ def inject_css() -> None:
 
             .topbar {
                 margin-bottom: 2.6rem;
+                font-size: 0.82rem;
             }
 
             .choice-grid,
@@ -1200,18 +1272,18 @@ def render_home() -> None:
     st.markdown(
         f"""
         <section class="home-wrap">
-            <div class="hero-object obj-rainbow-a">✦</div>
-            <div class="hero-object obj-1">∫</div>
-            <div class="hero-object obj-2">△</div>
-            <div class="hero-object obj-3">≈</div>
-            <div class="hero-object obj-large">∞</div>
-            <div class="hero-object obj-4">◇</div>
-            <div class="hero-object obj-5">⌁</div>
-            <div class="hero-object obj-6">⟡</div>
-            <div class="hero-object emoji-object obj-emoji-a">🧠</div>
-            <div class="hero-object emoji-object obj-emoji-b">🚀</div>
-            <div class="hero-object emoji-object obj-emoji-c">🔥</div>
-            <div class="hero-object emoji-object obj-emoji-d">🌈</div>
+            <div class="home-visual" aria-hidden="true">
+                <div class="orbital-frame"></div>
+                <div class="orbital-frame secondary"></div>
+                <div class="data-ribbon"></div>
+                <div class="data-ribbon alt"></div>
+                <div class="signal-node node-a"></div>
+                <div class="signal-node node-b"></div>
+                <div class="signal-node node-c"></div>
+                <div class="signal-node node-d"></div>
+                <div class="mesh-chip chip-left"></div>
+                <div class="mesh-chip chip-right"></div>
+            </div>
             <div class="home-inner">
                 <div class="home-title">{APP_TITLE}</div>
                 <div class="home-subtitle">Mathematical Behavior Type Indicator</div>
@@ -1240,7 +1312,7 @@ def render_topbar() -> None:
         <div class="topbar">
             <div class="brand-mark">
                 <div class="brand-dot">M</div>
-                <div>{APP_TITLE} <span style="color:#86868b;">{APP_SUBTITLE}</span></div>
+                <div class="brand-text">{APP_TITLE} <span style="color:rgba(223,232,246,0.52);">{APP_SUBTITLE}</span></div>
             </div>
             <div class="progress-text">{answered}/{TOTAL_QUESTIONS}</div>
         </div>
@@ -1327,7 +1399,7 @@ def advance_to_next_question() -> None:
 
 
 def render_quiz() -> None:
-    st.markdown('<main class="apple-shell">', unsafe_allow_html=True)
+    st.markdown('<main class="experience-shell">', unsafe_allow_html=True)
     render_topbar()
 
     index = st.session_state.current_question
@@ -1549,7 +1621,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
             transform: rotateY(180deg);
         }}
         .card:focus-visible {{
-            outline: 4px solid rgba(0, 113, 227, 0.38);
+            outline: 4px solid rgba(110, 231, 255, 0.34);
             outline-offset: 8px;
             border-radius: 34px;
         }}
@@ -1562,29 +1634,31 @@ def render_flip_card(type_code: str, result: dict) -> None:
             overflow: hidden;
             backface-visibility: hidden;
             border-radius: 34px;
-            border: 1px solid rgba(255, 255, 255, 0.66);
-            box-shadow: 0 34px 90px rgba(42, 52, 118, 0.26);
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            box-shadow: 0 34px 100px rgba(0, 0, 0, 0.42);
         }}
         .front {{
             padding: 2rem;
-            color: #1d1d1f;
+            color: #f6fbff;
             background:
-                radial-gradient(circle at 50% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.08) 32%, transparent 46%),
-                linear-gradient(145deg, #ffffff 0%, #eff1ff 38%, #aeb4ff 100%);
+                radial-gradient(circle at 24% 12%, rgba(110, 231, 255, 0.24), transparent 34%),
+                radial-gradient(circle at 78% 2%, rgba(167, 139, 250, 0.22), transparent 34%),
+                linear-gradient(145deg, #0a1020 0%, #121c33 52%, #0b1729 100%);
         }}
         .front::before {{
             content: "";
             position: absolute;
-            width: 280px;
-            height: 310px;
+            width: 300px;
+            height: 328px;
             left: 50%;
             top: 51%;
             transform: translate(-50%, -50%) rotate(5deg);
             border-radius: 45% 45% 38% 38%;
             background:
-                radial-gradient(circle at 50% 18%, rgba(255,255,255,0.9), transparent 34%),
-                linear-gradient(145deg, #ffffff, #bfd7ff 50%, #6e88ff);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.74), 0 30px 56px rgba(77, 65, 173, 0.2);
+                radial-gradient(circle at 50% 18%, rgba(255,255,255,0.26), transparent 34%),
+                linear-gradient(145deg, rgba(110,231,255,0.28), rgba(79,140,255,0.18) 48%, rgba(167,139,250,0.2));
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 30px 70px rgba(79, 140, 255, 0.14);
         }}
         .portrait-wrap {{
             position: absolute;
@@ -1606,16 +1680,16 @@ def render_flip_card(type_code: str, result: dict) -> None:
         .back {{
             padding: 2rem;
             transform: rotateY(180deg);
-            color: #f5f5f7;
+            color: #f6fbff;
             background:
-                radial-gradient(circle at 22% 15%, rgba(128, 178, 255, 0.46), transparent 32%),
-                radial-gradient(circle at 80% 88%, rgba(179, 136, 255, 0.38), transparent 34%),
-                linear-gradient(145deg, #101218, #202037 52%, #493b8f);
+                radial-gradient(circle at 22% 15%, rgba(110, 231, 255, 0.24), transparent 32%),
+                radial-gradient(circle at 80% 88%, rgba(167, 139, 250, 0.22), transparent 34%),
+                linear-gradient(145deg, #070b16, #111a2e 52%, #18243a);
         }}
         .kicker {{
             position: relative;
             z-index: 2;
-            color: rgba(29, 29, 31, 0.58);
+            color: rgba(223,232,246,0.58);
             font-size: 0.92rem;
             font-weight: 760;
         }}
@@ -1623,7 +1697,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
             position: relative;
             z-index: 2;
             margin-top: 0.35rem;
-            color: #1d1d1f;
+            color: #f6fbff;
             font-size: 2.35rem;
             line-height: 1;
             font-weight: 860;
@@ -1631,7 +1705,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
         .person {{
             position: relative;
             z-index: 2;
-            color: rgba(29, 29, 31, 0.7);
+            color: rgba(223,232,246,0.72);
             font-size: 1.18rem;
             font-weight: 720;
             margin-top: 0.6rem;
@@ -1641,11 +1715,11 @@ def render_flip_card(type_code: str, result: dict) -> None:
             z-index: 3;
             margin-top: auto;
             padding-top: 16.5rem;
-            color: #1d1d1f;
+            color: #f6fbff;
             font-size: 1.56rem;
             line-height: 1.22;
             font-weight: 820;
-            text-shadow: 0 1px 0 rgba(255,255,255,0.48);
+            text-shadow: 0 18px 44px rgba(0,0,0,0.3);
         }}
         .back-title {{
             font-size: 2.1rem;
@@ -1661,8 +1735,8 @@ def render_flip_card(type_code: str, result: dict) -> None:
         .info-block {{
             padding: 1.15rem;
             border-radius: 22px;
-            background: rgba(255,255,255,0.11);
-            border: 1px solid rgba(255,255,255,0.16);
+            background: rgba(255,255,255,0.075);
+            border: 1px solid rgba(255,255,255,0.12);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             margin-top: 1rem;
@@ -1801,7 +1875,7 @@ def render_result() -> None:
     type_code = calculate_type_code(scores)
     result = TYPE_DATA[type_code]
 
-    st.markdown('<main class="apple-shell result-wrap">', unsafe_allow_html=True)
+    st.markdown('<main class="experience-shell result-wrap">', unsafe_allow_html=True)
     render_topbar()
     st.markdown(
         f"""
