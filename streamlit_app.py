@@ -437,11 +437,7 @@ def inject_css() -> None:
 
         .stApp {
             background:
-                radial-gradient(circle at 50% 24%, rgba(0, 91, 172, 0.22), rgba(0, 91, 172, 0.08) 30%, rgba(255,255,255,0) 58%),
-                radial-gradient(circle at 18% 18%, rgba(0, 130, 210, 0.13), transparent 28%),
-                radial-gradient(circle at 82% 18%, rgba(0, 63, 136, 0.12), transparent 28%),
-                linear-gradient(180deg, #ffffff 0%, #f6fbff 18%, #eaf5ff 42%, #f7fbff 72%, #f5f5f7 100%);
-            background-attachment: fixed;
+                linear-gradient(180deg, #f8fbff 0%, #edf7ff 26%, #f7fbff 62%, #f5f5f7 100%);
             color: var(--ink);
             font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
@@ -469,24 +465,50 @@ def inject_css() -> None:
 
         .home-wrap {
             position: relative;
-            min-height: 700px;
+            min-height: 760px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            isolation: isolate;
             border-radius: 0;
             margin: -2rem calc(50% - 50vw) 0 calc(50% - 50vw);
-            padding: 5.5rem 2rem 6.7rem;
+            padding: 6.2rem 2rem 7.8rem;
             background:
-                radial-gradient(circle at 50% 48%, rgba(0, 91, 172, 0.42), rgba(0, 91, 172, 0.13) 32%, transparent 58%),
-                radial-gradient(circle at 18% 18%, rgba(0, 130, 210, 0.18), transparent 28%),
-                radial-gradient(circle at 82% 18%, rgba(0, 63, 136, 0.16), transparent 28%),
-                linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(246,251,255,0.88) 17%, rgba(230,243,255,0.9) 47%, rgba(238,247,255,0.72) 78%, rgba(245,245,247,0) 100%);
+                linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(220,236,255,0.72) 44%, rgba(247,251,255,0) 100%),
+                linear-gradient(108deg, rgba(255,255,255,0.94) 0%, rgba(231,244,255,0.94) 34%, rgba(198,226,255,0.78) 58%, rgba(255,255,255,0.82) 100%);
+        }
+
+        .home-wrap::before {
+            content: "";
+            position: absolute;
+            inset: -18% -10% -12%;
+            z-index: 0;
+            background:
+                linear-gradient(116deg, transparent 4%, rgba(0, 91, 172, 0.22) 34%, transparent 63%),
+                linear-gradient(244deg, transparent 8%, rgba(0, 132, 210, 0.14) 38%, transparent 70%),
+                linear-gradient(180deg, rgba(255,255,255,0.78), transparent 72%);
+            filter: blur(34px);
+            opacity: 0.92;
+        }
+
+        .home-wrap::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(rgba(0,91,172,0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,91,172,0.04) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.32) 20%, rgba(0,0,0,0.22) 72%, transparent 100%);
+            -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.32) 20%, rgba(0,0,0,0.22) 72%, transparent 100%);
         }
 
         .home-inner {
             position: relative;
-            z-index: 3;
+            z-index: 4;
             width: min(100%, 1040px);
             margin: 0 auto;
             text-align: center;
@@ -495,28 +517,28 @@ def inject_css() -> None:
         .home-title {
             width: 100%;
             margin: 0 auto;
-            color: #242428;
+            color: #20232b;
             text-align: center;
             font-family: "Press Start 2P", "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, sans-serif;
-            font-size: clamp(3rem, 9.4vw, 8.4rem);
+            font-size: clamp(3.1rem, 9.2vw, 8.15rem);
             line-height: 1.05;
             font-weight: 400;
             letter-spacing: 0;
-            text-shadow: 0 22px 44px rgba(0, 63, 136, 0.15);
+            text-shadow: 0 22px 54px rgba(0, 63, 136, 0.2);
         }
 
         .home-subtitle {
             width: 100%;
             max-width: calc(100vw - 2rem);
-            margin: 0.8rem auto 0;
-            color: #2f3036;
+            margin: 1.3rem auto 0;
+            color: #242936;
             text-align: center;
             font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
                 BlinkMacSystemFont, sans-serif;
-            font-size: clamp(1.45rem, 4.1vw, 2.95rem);
+            font-size: clamp(1.35rem, 3.85vw, 2.75rem);
             line-height: 1.08;
-            font-weight: 850;
+            font-weight: 780;
             letter-spacing: 0;
             white-space: nowrap;
         }
@@ -528,8 +550,8 @@ def inject_css() -> None:
             justify-content: center;
             width: 100%;
             max-width: 760px;
-            margin: 2rem auto 0;
-            color: rgba(29, 29, 31, 0.62);
+            margin: 1.75rem auto 0;
+            color: rgba(31, 39, 54, 0.58);
             font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
                 "Apple SD Gothic Neo", sans-serif;
             font-size: clamp(1.05rem, 2vw, 1.28rem);
@@ -546,7 +568,7 @@ def inject_css() -> None:
 
         .hero-object {
             position: absolute;
-            z-index: 1;
+            z-index: 2;
             display: grid;
             place-items: center;
             pointer-events: none;
@@ -556,12 +578,13 @@ def inject_css() -> None:
                 BlinkMacSystemFont, sans-serif;
             font-weight: 850;
             background:
-                radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.78) 43%, rgba(255,255,255,0.28) 66%, rgba(255,255,255,0) 82%);
-            box-shadow: 0 24px 70px rgba(0, 63, 136, 0.14);
-            backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
-            text-shadow: 0 14px 28px rgba(0, 63, 136, 0.2);
-            animation: floaty 6.5s ease-in-out infinite;
+                linear-gradient(145deg, rgba(255,255,255,0.94), rgba(255,255,255,0.42));
+            border: 1px solid rgba(255,255,255,0.68);
+            box-shadow: 0 28px 80px rgba(0, 63, 136, 0.13), inset 0 1px 0 rgba(255,255,255,0.62);
+            backdrop-filter: blur(26px) saturate(1.18);
+            -webkit-backdrop-filter: blur(26px) saturate(1.18);
+            text-shadow: 0 12px 24px rgba(0, 63, 136, 0.18);
+            animation: floaty 7.5s ease-in-out infinite;
         }
 
         .obj-large {
@@ -580,17 +603,17 @@ def inject_css() -> None:
             text-shadow: none;
         }
 
-        .obj-1 { left: 10%; top: 16%; width: 82px; height: 82px; font-size: 2.8rem; animation-delay: -1s; }
-        .obj-2 { right: 10%; top: 16%; width: 82px; height: 82px; font-size: 2.65rem; animation-delay: -2s; }
-        .obj-3 { left: 6%; top: 46%; width: 88px; height: 88px; font-size: 3rem; animation-delay: -3s; }
-        .obj-4 { right: 6%; top: 46%; width: 88px; height: 88px; font-size: 2.8rem; animation-delay: -0.5s; }
-        .obj-5 { left: 18%; bottom: 13%; width: 86px; height: 86px; font-size: 2.65rem; animation-delay: -4s; }
-        .obj-6 { right: 18%; bottom: 13%; width: 86px; height: 86px; font-size: 2.75rem; animation-delay: -1.8s; }
-        .obj-rainbow-a { left: 50%; top: 5%; transform: translateX(-50%); width: 82px; height: 82px; font-size: 2.8rem; color: #0075c9; }
-        .obj-emoji-a { left: 27%; top: 11%; width: 76px; height: 76px; font-size: 2.15rem; animation-delay: -2.7s; }
-        .obj-emoji-b { right: 27%; top: 11%; width: 76px; height: 76px; font-size: 2.15rem; animation-delay: -3.4s; }
-        .obj-emoji-c { left: 34%; bottom: 4%; width: 74px; height: 74px; font-size: 2.05rem; animation-delay: -1.4s; }
-        .obj-emoji-d { right: 34%; bottom: 4%; width: 74px; height: 74px; font-size: 2.05rem; animation-delay: -4.2s; }
+        .obj-1 { left: 8%; top: 18%; width: 86px; height: 86px; font-size: 2.8rem; animation-delay: -1s; }
+        .obj-2 { right: 8%; top: 18%; width: 86px; height: 86px; font-size: 2.65rem; animation-delay: -2s; }
+        .obj-3 { left: 6%; top: 52%; width: 90px; height: 90px; font-size: 3rem; animation-delay: -3s; }
+        .obj-4 { right: 6%; top: 52%; width: 90px; height: 90px; font-size: 2.8rem; animation-delay: -0.5s; }
+        .obj-5 { left: 18%; bottom: 10%; width: 84px; height: 84px; font-size: 2.55rem; animation-delay: -4s; }
+        .obj-6 { right: 21%; bottom: 10%; width: 84px; height: 84px; font-size: 2.65rem; animation-delay: -1.8s; }
+        .obj-rainbow-a { left: 50%; top: 6%; transform: translateX(-50%); width: 82px; height: 82px; font-size: 2.8rem; color: #0075c9; }
+        .obj-emoji-a { left: 26%; top: 12%; width: 74px; height: 74px; font-size: 2.05rem; animation-delay: -2.7s; }
+        .obj-emoji-b { right: 26%; top: 12%; width: 74px; height: 74px; font-size: 2.05rem; animation-delay: -3.4s; }
+        .obj-emoji-c { left: 37%; bottom: 3.5%; width: 70px; height: 70px; font-size: 1.95rem; animation-delay: -1.4s; }
+        .obj-emoji-d { right: 37%; bottom: 3.5%; width: 70px; height: 70px; font-size: 1.95rem; animation-delay: -4.2s; }
 
         @keyframes floaty {
             0%, 100% { margin-top: 0; }
@@ -598,19 +621,10 @@ def inject_css() -> None:
         }
 
         .start-zone {
-            max-width: 360px;
-            margin: -4.2rem auto 0;
+            max-width: min(880px, calc(100vw - 2rem));
+            margin: -4rem auto 5rem;
             position: relative;
-            z-index: 4;
-        }
-
-        .start-zone::before {
-            content: "";
-            position: absolute;
-            inset: -5rem -45vw -7rem;
-            z-index: -1;
-            pointer-events: none;
-            background: linear-gradient(180deg, rgba(238,247,255,0.12), rgba(245,245,247,0));
+            z-index: 5;
         }
 
         .apple-shell {
@@ -1013,23 +1027,25 @@ def inject_css() -> None:
         }
 
         .stButton > button {
-            min-height: 3.25rem;
+            min-height: 3.65rem;
             border-radius: 999px;
-            border: 0;
-            background: #0071e3;
+            border: 1px solid rgba(255, 255, 255, 0.36);
+            background:
+                linear-gradient(135deg, #005bac 0%, #0077ed 58%, #3f8cff 100%);
             color: #ffffff;
-            font-weight: 720;
+            font-weight: 760;
             font-size: 1rem;
             letter-spacing: 0;
-            box-shadow: 0 16px 30px rgba(0, 113, 227, 0.23);
+            box-shadow: 0 18px 46px rgba(0, 91, 172, 0.26), inset 0 1px 0 rgba(255,255,255,0.24);
             transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
         }
 
         .stButton > button:hover {
-            background: #0077ed;
+            background:
+                linear-gradient(135deg, #004f9a 0%, #0077ed 52%, #69a7ff 100%);
             color: #ffffff;
-            transform: translateY(-1px);
-            box-shadow: 0 18px 36px rgba(0, 113, 227, 0.28);
+            transform: translateY(-2px);
+            box-shadow: 0 24px 58px rgba(0, 91, 172, 0.32), inset 0 1px 0 rgba(255,255,255,0.28);
         }
 
         .stButton > button:focus {
@@ -1093,8 +1109,8 @@ def inject_css() -> None:
             }
 
             .home-wrap {
-                min-height: 660px;
-                padding: 4.8rem 1rem 6.2rem;
+                min-height: 690px;
+                padding: 5rem 1rem 7.4rem;
             }
 
             .home-title {
@@ -1128,6 +1144,11 @@ def inject_css() -> None:
             .obj-emoji-b { right: 24%; top: 8%; width: 52px; height: 52px; font-size: 1.5rem; }
             .obj-emoji-c { left: 30%; bottom: 2%; width: 50px; height: 50px; font-size: 1.42rem; }
             .obj-emoji-d { right: 30%; bottom: 2%; width: 50px; height: 50px; font-size: 1.42rem; }
+
+            .start-zone {
+                margin-top: -3.8rem;
+                margin-bottom: 4rem;
+            }
 
             .topbar {
                 margin-bottom: 2.6rem;
