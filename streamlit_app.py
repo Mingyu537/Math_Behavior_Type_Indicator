@@ -980,7 +980,7 @@ def render_home() -> None:
             <div class="hero-object obj-rainbow-b">✺</div>
             <div class="home-inner">
                 <div class="home-title">{APP_TITLE}</div>
-                <div class="home-subtitle">with Math Talent</div>
+                <div class="home-subtitle">Mathematical Behavior Types Indicator</div>
                 <div class="home-copy">
                     <span>수학을 대하는 나의 행동 유형이 무엇인지 알아보아요!</span>
                     <span>나는 어떤 수학자와 비슷할까요?</span>
