@@ -11,6 +11,7 @@ APP_SUBTITLE = "Mathematics Behavior Type Indicator"
 TOTAL_QUESTIONS = 12
 TYPE_AXIS_PAIRS = [("S", "T"), ("V", "N"), ("I", "A"), ("R", "P")]
 FIGURE_DIR = Path(__file__).resolve().parent / "assets" / "figures"
+LOGO_DIR = Path(__file__).resolve().parent / "assets" / "logos"
 
 
 TYPE_IMAGE_FILES = {
@@ -766,6 +767,29 @@ def inject_css() -> None:
             font-size: 0.96rem;
             font-weight: 600;
             letter-spacing: 0;
+        }
+
+        .footer-logo-row {
+            width: min(100%, 560px);
+            margin: 1rem auto 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(1rem, 3vw, 1.8rem);
+        }
+
+        .footer-logo {
+            display: block;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .footer-logo.signature {
+            width: clamp(160px, 28vw, 245px);
+        }
+
+        .footer-logo.slogan {
+            width: clamp(150px, 25vw, 225px);
         }
 
         .footer-school {
@@ -1920,6 +1944,20 @@ def inject_css() -> None:
                 padding-top: 1rem;
             }
 
+            .footer-logo-row {
+                max-width: 330px;
+                gap: 0.9rem;
+                flex-wrap: wrap;
+            }
+
+            .footer-logo.signature {
+                width: min(220px, 72vw);
+            }
+
+            .footer-logo.slogan {
+                width: min(205px, 68vw);
+            }
+
             .topbar {
                 margin-bottom: 2.6rem;
                 font-size: 0.82rem;
@@ -2294,10 +2332,26 @@ def render_home() -> None:
 
 
 def render_footer() -> None:
+    signature_uri = logo_data_uri("inu_signature.svg")
+    slogan_uri = logo_data_uri("inu_slogan.svg")
+    logo_markup = ""
+    if signature_uri or slogan_uri:
+        logo_items = []
+        if signature_uri:
+            logo_items.append(
+                f'<img class="footer-logo signature" src="{signature_uri}" alt="인천대학교 시그니처 로고">'
+            )
+        if slogan_uri:
+            logo_items.append(
+                f'<img class="footer-logo slogan" src="{slogan_uri}" alt="인천대학교 슬로건 로고">'
+            )
+        logo_markup = f'<div class="footer-logo-row">{"".join(logo_items)}</div>'
+
     st.markdown(
-        """
+        f"""
         <footer class="app-footer">
             <div class="footer-credit">Designed and developed by Mingyu Kim</div>
+            {logo_markup}
             <div class="footer-school">인천대학교 수학교육과</div>
             <div class="footer-motto">수학으로 세상을 읽고, 교육으로 내일을 잇다</div>
         </footer>
@@ -2326,6 +2380,19 @@ def render_topbar(progress_label=None) -> None:
 
 def answered_count() -> int:
     return sum(1 for question in QUESTIONS if question["id"] in st.session_state.answers)
+
+
+def logo_data_uri(filename: str) -> str:
+    candidate_paths = [
+        LOGO_DIR / filename,
+        Path.cwd() / "assets" / "logos" / filename,
+    ]
+    logo_path = next((path for path in candidate_paths if path.exists()), None)
+    if logo_path is None:
+        return ""
+
+    encoded = base64.b64encode(logo_path.read_bytes()).decode("ascii")
+    return f"data:image/svg+xml;base64,{encoded}"
 
 
 def render_manual_slots() -> None:
@@ -2459,10 +2526,10 @@ def render_manual_result() -> None:
     render_html(
         f"""
         <section class="result-hero">
-            <h1 class="result-title">당신의 MBTI는 {escape(type_code)}</h1>
+            <h1 class="result-title">입력한 수학 MBTI는 {escape(type_code)}</h1>
             <p class="result-copy">
-                {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다. <br>
-                아래 카드를 탭하면 뒤집어서 확인할 수 있습니다.
+                {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.
+                아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.
             </p>
         </section>
         """,
