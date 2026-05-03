@@ -487,6 +487,14 @@ def manual_input_complete() -> bool:
     return manual_answered_count() == len(TYPE_AXIS_PAIRS)
 
 
+def render_html(markup: str) -> None:
+    clean_markup = "\n".join(line.strip() for line in markup.strip().splitlines())
+    if hasattr(st, "html"):
+        st.html(clean_markup)
+    else:
+        st.markdown(clean_markup, unsafe_allow_html=True)
+
+
 def inject_css() -> None:
     st.markdown(
         """
@@ -1398,6 +1406,202 @@ def inject_css() -> None:
             font-weight: 800;
         }
 
+        .personality-section {
+            max-width: 1120px;
+            margin: 3.4rem auto 2.2rem;
+            color: var(--ink);
+        }
+
+        .personality-heading {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .personality-number {
+            width: 4rem;
+            height: 4rem;
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            border: 3px solid #e5ad29;
+            color: var(--ink);
+            background: rgba(255,255,255,0.05);
+            font-family: "Space Grotesk", "Noto Sans KR", sans-serif;
+            font-size: 1.7rem;
+            font-weight: 860;
+        }
+
+        .personality-title {
+            margin: 0;
+            color: var(--ink);
+            font-size: clamp(2.1rem, 5vw, 4.4rem);
+            line-height: 1.02;
+            font-weight: 860;
+        }
+
+        .personality-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(290px, 0.7fr);
+            gap: 1.2rem;
+            align-items: stretch;
+            padding: 1.4rem;
+            border-radius: 28px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--line);
+            box-shadow: 0 24px 76px rgba(0,0,0,0.26);
+        }
+
+        .trait-panel {
+            display: grid;
+            gap: 1.45rem;
+            padding: 1.3rem;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .trait-row {
+            --axis-color: var(--cyan);
+        }
+
+        .trait-value {
+            margin-bottom: 0.48rem;
+            color: var(--axis-color);
+            text-align: center;
+            font-size: 1.16rem;
+            font-weight: 860;
+        }
+
+        .trait-value strong {
+            color: var(--ink);
+            font-weight: 860;
+        }
+
+        .trait-track {
+            position: relative;
+            height: 13px;
+            border-radius: 999px;
+            background: var(--axis-color);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.24);
+        }
+
+        .trait-knob {
+            position: absolute;
+            top: 50%;
+            left: var(--knob-left);
+            width: 1.45rem;
+            height: 1.45rem;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            background: var(--axis-color);
+            transform: translate(-50%, -50%);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+        }
+
+        .trait-labels {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.9rem;
+            margin-top: 0.5rem;
+            color: var(--muted);
+            font-size: 0.93rem;
+            font-weight: 720;
+        }
+
+        .trait-summary {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.9rem;
+            padding: 1.35rem;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.08);
+            text-align: left;
+        }
+
+        .trait-summary-kicker {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 720;
+        }
+
+        .trait-summary-title {
+            color: var(--ink);
+            font-size: 1.65rem;
+            line-height: 1.14;
+            font-weight: 860;
+        }
+
+        .trait-summary-code {
+            color: #e5ad29;
+            font-size: 1.06rem;
+            font-weight: 840;
+        }
+
+        .trait-summary-image {
+            width: 145px;
+            height: 145px;
+            border-radius: 20px;
+            object-fit: cover;
+            object-position: center top;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid var(--line);
+        }
+
+        .trait-summary-desc {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.62;
+            font-weight: 430;
+        }
+
+        .manual-trait-list {
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .manual-trait-item {
+            padding: 1rem;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .manual-trait-name {
+            color: var(--ink);
+            font-size: 1.06rem;
+            line-height: 1.22;
+            font-weight: 840;
+            margin-bottom: 0.35rem;
+        }
+
+        .manual-trait-name span {
+            color: #e5ad29;
+        }
+
+        .manual-trait-desc {
+            color: var(--muted);
+            font-size: 0.94rem;
+            line-height: 1.55;
+            font-weight: 430;
+        }
+
+        .story-copy {
+            max-width: 1000px;
+            margin: 1.8rem auto 0;
+            color: rgba(223, 232, 246, 0.78);
+            font-size: clamp(1.02rem, 1.65vw, 1.2rem);
+            line-height: 1.82;
+            font-weight: 430;
+        }
+
+        .story-copy p {
+            margin: 0 0 1.05rem;
+            color: inherit;
+        }
+
         .manual-stage {
             text-align: center;
             max-width: 980px;
@@ -1719,6 +1923,7 @@ def inject_css() -> None:
             .endpoint-grid,
             .manual-grid,
             .percent-grid,
+            .personality-layout,
             .score-grid,
             .axis-guide-grid,
             .type-detail-grid,
@@ -1752,6 +1957,28 @@ def inject_css() -> None:
 
             .type-detail-card {
                 min-height: 0;
+            }
+
+            .personality-heading {
+                align-items: flex-start;
+                gap: 0.85rem;
+            }
+
+            .personality-number {
+                width: 3.1rem;
+                height: 3.1rem;
+                font-size: 1.25rem;
+                border-width: 2px;
+            }
+
+            .personality-layout {
+                padding: 0.85rem;
+                border-radius: 22px;
+            }
+
+            .trait-panel,
+            .trait-summary {
+                padding: 1rem;
             }
 
             .question-title {
@@ -1871,6 +2098,10 @@ def inject_css() -> None:
             .manual-card,
             .manual-code-slot,
             .percent-card,
+            .personality-layout,
+            .trait-panel,
+            .trait-summary,
+            .manual-trait-item,
             .score-card,
             .axis-guide-card,
             .type-detail-card {
@@ -1919,11 +2150,23 @@ def inject_css() -> None:
             .manual-card,
             .manual-code-slot,
             .percent-card,
+            .personality-layout,
+            .trait-panel,
+            .trait-summary,
+            .manual-trait-item,
             .score-card,
             .axis-guide-card,
             .type-detail-card {
                 backdrop-filter: blur(18px) saturate(1.08);
                 -webkit-backdrop-filter: blur(18px) saturate(1.08);
+            }
+
+            .personality-number {
+                background: rgba(255,255,255,0.7);
+            }
+
+            .story-copy {
+                color: rgba(31, 48, 74, 0.76);
             }
 
             .choice-code,
@@ -2218,6 +2461,7 @@ def render_manual_result() -> None:
         unsafe_allow_html=True,
     )
     render_flip_card(type_code, result)
+    render_manual_trait_profile(type_code)
     render_axis_guide(type_code)
     render_type_descriptions(type_code)
 
@@ -2830,13 +3074,12 @@ def render_score_cards(scores: dict) -> None:
             """
         )
 
-    st.markdown(
+    render_html(
         f"""
         <div class="score-grid">
             {''.join(cards)}
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
 
@@ -2850,52 +3093,110 @@ def percentage_pair(scores: dict, left: str, right: str) -> tuple:
 
 
 def render_percentage_bars(scores: dict, type_code: str) -> None:
-    cards = []
+    axis_colors = ["#3fa0bb", "#e5ad29", "#36a873", "#8b63a6"]
+    rows = []
     for index, (left, right) in enumerate(TYPE_AXIS_PAIRS):
         left_percent, right_percent = percentage_pair(scores, left, right)
         winner = type_code[index] if index < len(type_code) else left
+        winner_percent = left_percent if winner == left else right_percent
+        knob_left = right_percent
+        color = axis_colors[index % len(axis_colors)]
         pair_title = f"{left}/{right}"
-        rows = []
-        for letter, percent in ((left, left_percent), (right, right_percent)):
-            rows.append(
-                f"""
-                <div class="percent-row">
-                    <div class="percent-row-top">
-                        <span><span class="percent-letter">{escape(letter)}</span> {escape(AXIS_META[letter]["label"])}</span>
-                        <span>{percent:.0f}%</span>
-                    </div>
-                    <div class="percent-track">
-                        <div class="percent-fill" style="width:{percent:.1f}%;"></div>
-                    </div>
-                </div>
-                """
-            )
-        cards.append(
+        rows.append(
             f"""
-            <div class="percent-card">
-                <div class="percent-card-title">
-                    <span>{escape(pair_title)}</span>
-                    <span class="percent-winner">{escape(winner)} 선택</span>
+            <div class="trait-row" style="--axis-color:{color}; --knob-left:{knob_left:.1f}%;">
+                <div class="trait-value">{winner_percent:.0f}% <strong>{escape(AXIS_META[winner]["label"])}</strong></div>
+                <div class="trait-track" aria-label="{escape(pair_title)} 결과">
+                    <div class="trait-knob"></div>
                 </div>
-                {''.join(rows)}
+                <div class="trait-labels">
+                    <span>{escape(left)} · {escape(AXIS_META[left]["label"])}</span>
+                    <span>{escape(right)} · {escape(AXIS_META[right]["label"])}</span>
+                </div>
             </div>
             """
         )
 
-    st.markdown(
+    result = TYPE_DATA[type_code]
+    data_uri = image_data_uri(type_code)
+    image_markup = (
+        f'<img class="trait-summary-image" src="{data_uri}" alt="{escape(result["person"])} 결과 이미지">'
+        if data_uri
+        else ""
+    )
+    render_html(
         f"""
-        <section class="percent-section">
-            <h2 class="percent-title">알파벳별 결과 퍼센트</h2>
-            <p class="percent-copy">
-                테스트 답변을 바탕으로 각 축에서 어느 알파벳에 더 가까운지 퍼센트로 보여줍니다.
-                모두 중간을 선택한 축은 50% 대 50%로 표시됩니다.
-            </p>
-            <div class="percent-grid">
-                {''.join(cards)}
+        <section class="personality-section">
+            <div class="personality-heading">
+                <div class="personality-number">1</div>
+                <h2 class="personality-title">성격 특성</h2>
+            </div>
+            <div class="personality-layout">
+                <div class="trait-panel">
+                    {''.join(rows)}
+                </div>
+                <aside class="trait-summary">
+                    {image_markup}
+                    <div class="trait-summary-kicker">여러분의 수학 유형:</div>
+                    <div class="trait-summary-title">{escape(result["person"])}</div>
+                    <div class="trait-summary-code">{escape(type_code)} ({escape(result["pronunciation"])})</div>
+                    <div class="trait-summary-desc">{escape(result["description"])}</div>
+                </aside>
+            </div>
+            <div class="story-copy">
+                <p>{escape(result["description"])}</p>
+                <p>{escape(result["tendency"])} 성향이 두드러지며, {escape(result["person"])}의 대표 업적인 {escape(result["achievement"])}처럼 수학적 사고를 자신만의 방식으로 펼쳐 나갈 수 있습니다.</p>
             </div>
         </section>
         """,
-        unsafe_allow_html=True,
+    )
+
+
+def render_manual_trait_profile(type_code: str) -> None:
+    result = TYPE_DATA[type_code]
+    data_uri = image_data_uri(type_code)
+    image_markup = (
+        f'<img class="trait-summary-image" src="{data_uri}" alt="{escape(result["person"])} 결과 이미지">'
+        if data_uri
+        else ""
+    )
+    trait_items = []
+    for letter in type_code:
+        meta = AXIS_META[letter]
+        trait_items.append(
+            f"""
+            <div class="manual-trait-item">
+                <div class="manual-trait-name"><span>{escape(letter)}</span> {escape(meta["label"])} · {escape(meta["name"])}</div>
+                <div class="manual-trait-desc">{escape(meta["description"])}</div>
+            </div>
+            """
+        )
+
+    render_html(
+        f"""
+        <section class="personality-section">
+            <div class="personality-heading">
+                <div class="personality-number">1</div>
+                <h2 class="personality-title">성격 특성</h2>
+            </div>
+            <div class="personality-layout">
+                <div class="trait-panel manual-trait-list">
+                    {''.join(trait_items)}
+                </div>
+                <aside class="trait-summary">
+                    {image_markup}
+                    <div class="trait-summary-kicker">입력한 수학 유형:</div>
+                    <div class="trait-summary-title">{escape(result["person"])}</div>
+                    <div class="trait-summary-code">{escape(type_code)} ({escape(result["pronunciation"])})</div>
+                    <div class="trait-summary-desc">{escape(result["description"])}</div>
+                </aside>
+            </div>
+            <div class="story-copy">
+                <p>{escape(result["description"])}</p>
+                <p>{escape(result["tendency"])} 성향이 조합된 유형입니다. 대표적으로 {escape(result["person"])}의 {escape(result["achievement"])}처럼, 자신에게 맞는 방식으로 수학적 사고를 발전시킬 수 있습니다.</p>
+            </div>
+        </section>
+        """
     )
 
 
@@ -2920,7 +3221,7 @@ def render_axis_guide(type_code: str) -> None:
             """
         )
 
-    st.markdown(
+    render_html(
         f"""
         <section class="axis-guide-section">
             <h2 class="axis-guide-title">8가지 수학 행동 성향</h2>
@@ -2932,7 +3233,6 @@ def render_axis_guide(type_code: str) -> None:
             </div>
         </section>
         """,
-        unsafe_allow_html=True,
     )
 
 
@@ -2960,7 +3260,7 @@ def render_type_descriptions(type_code: str) -> None:
             """
         )
 
-    st.markdown(
+    render_html(
         f"""
         <section class="type-detail-section">
             <h2 class="type-detail-title">16가지 수학 MBTI 유형</h2>
@@ -2973,7 +3273,6 @@ def render_type_descriptions(type_code: str) -> None:
             </div>
         </section>
         """,
-        unsafe_allow_html=True,
     )
 
 
