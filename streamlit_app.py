@@ -669,6 +669,39 @@ def inject_css() -> None:
             z-index: 5;
         }
 
+        .app-footer {
+            width: min(100%, 760px);
+            margin: 3.2rem auto 0;
+            padding: 1.5rem 1rem 0;
+            text-align: center;
+            color: rgba(223, 232, 246, 0.62);
+            font-family: "Noto Sans KR", "Space Grotesk", -apple-system,
+                BlinkMacSystemFont, sans-serif;
+        }
+
+        .footer-credit {
+            color: rgba(246, 251, 255, 0.78);
+            font-family: "Space Grotesk", "Noto Sans KR", -apple-system,
+                BlinkMacSystemFont, sans-serif;
+            font-size: 0.96rem;
+            font-weight: 600;
+            letter-spacing: 0;
+        }
+
+        .footer-school {
+            margin-top: 0.55rem;
+            color: rgba(223, 232, 246, 0.7);
+            font-size: 0.94rem;
+            font-weight: 500;
+        }
+
+        .footer-motto {
+            margin-top: 0.28rem;
+            color: rgba(223, 232, 246, 0.48);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
         .experience-shell {
             padding: 1.2rem 0 0;
             color: var(--ink);
@@ -1122,46 +1155,97 @@ def inject_css() -> None:
             box-shadow: 0 0 0 4px rgba(110, 231, 255, 0.16), 0 18px 36px rgba(79, 140, 255, 0.28);
         }
 
-        div:has(.likert-guide) + div div[data-testid="stButton"] > button {
-            min-height: 4.1rem !important;
-            border-radius: 20px !important;
-            border: 1px solid rgba(255, 255, 255, 0.13) !important;
-            background:
-                linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.032)) !important;
-            color: rgba(246, 251, 255, 0.9) !important;
+        .stButton > button,
+        .stButton > button[kind],
+        .stButton > button[data-testid^="stBaseButton"] {
             font-family: "Noto Sans KR", "Space Grotesk", -apple-system,
                 BlinkMacSystemFont, sans-serif !important;
+            line-height: 1.15 !important;
+            white-space: nowrap !important;
+        }
+
+        .stButton > button *,
+        .stButton > button p,
+        .stButton > button span {
+            color: inherit !important;
+            opacity: 1 !important;
+            white-space: nowrap !important;
+        }
+
+        .stButton > button[kind="secondary"],
+        .stButton > button[data-testid="stBaseButton-secondary"] {
+            min-height: 3.85rem !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            background:
+                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.16), transparent 34%),
+                linear-gradient(145deg, rgba(255,255,255,0.115), rgba(255,255,255,0.038)) !important;
+            color: rgba(248, 252, 255, 0.96) !important;
             font-size: 1rem !important;
-            font-weight: 700 !important;
-            box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22) !important;
-            transition: transform 0.18s ease, box-shadow 0.18s ease,
-                border-color 0.18s ease, background 0.18s ease !important;
+            font-weight: 780 !important;
+            text-shadow: 0 1px 12px rgba(0, 0, 0, 0.26) !important;
+            box-shadow:
+                0 18px 46px rgba(0, 0, 0, 0.24),
+                inset 0 1px 0 rgba(255,255,255,0.18) !important;
+            backdrop-filter: blur(18px) saturate(1.22) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(1.22) !important;
         }
 
-        div:has(.likert-guide) + div div[data-testid="stButton"] > button:hover {
-            border-color: rgba(110, 231, 255, 0.34) !important;
+        .stButton > button[kind="secondary"]:hover,
+        .stButton > button[data-testid="stBaseButton-secondary"]:hover {
+            border-color: rgba(110, 231, 255, 0.38) !important;
             background:
-                linear-gradient(180deg, rgba(110,231,255,0.13), rgba(255,255,255,0.044)) !important;
-            color: #dffbff !important;
+                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.22), transparent 34%),
+                linear-gradient(145deg, rgba(110,231,255,0.16), rgba(255,255,255,0.055)) !important;
+            color: #ffffff !important;
             transform: translateY(-3px) !important;
-            box-shadow: 0 22px 50px rgba(79, 140, 255, 0.18) !important;
+            box-shadow:
+                0 24px 58px rgba(79, 140, 255, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.22) !important;
         }
 
-        div:has(.likert-guide) + div div[data-testid="stButton"] > button[kind="primary"],
-        div:has(.likert-guide) + div div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"] {
-            border-color: rgba(110, 231, 255, 0.34) !important;
+        .stButton > button[kind="primary"],
+        .stButton > button[data-testid="stBaseButton-primary"] {
+            min-height: 3.85rem !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(210, 250, 255, 0.52) !important;
             background:
-                radial-gradient(circle at 22% 18%, rgba(255,255,255,0.34), transparent 30%),
-                linear-gradient(135deg, #6ee7ff, #4f8cff 56%, #a78bfa) !important;
+                radial-gradient(circle at 22% 18%, rgba(255,255,255,0.44), transparent 30%),
+                linear-gradient(135deg, rgba(124,236,255,0.86) 0%, rgba(91,152,255,0.74) 52%, rgba(170,140,255,0.7) 100%) !important;
             color: #06111f !important;
-            box-shadow: 0 20px 48px rgba(79, 140, 255, 0.3) !important;
+            font-size: 1rem !important;
+            font-weight: 860 !important;
+            box-shadow:
+                0 22px 58px rgba(79, 140, 255, 0.34),
+                inset 0 1px 0 rgba(255,255,255,0.4) !important;
+            backdrop-filter: blur(18px) saturate(1.25) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(1.25) !important;
         }
 
-        div:has(.likert-guide) + div div[data-testid="stButton"] > button[kind="primary"]:hover,
-        div:has(.likert-guide) + div div[data-testid="stButton"] > button[data-testid="stBaseButton-primary"]:hover {
+        .stButton > button[kind="primary"]:hover,
+        .stButton > button[data-testid="stBaseButton-primary"]:hover {
             color: #06111f !important;
             transform: translateY(-3px) !important;
-            box-shadow: 0 24px 56px rgba(79, 140, 255, 0.38) !important;
+            box-shadow:
+                0 28px 68px rgba(79, 140, 255, 0.42),
+                inset 0 1px 0 rgba(255,255,255,0.46) !important;
+        }
+
+        div[data-testid="column"] .stButton > button {
+            min-height: 4.15rem !important;
+            width: 100% !important;
+            padding: 0.85rem 0.9rem !important;
+        }
+
+        .stButton > button:disabled,
+        .stButton > button[disabled] {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)) !important;
+            color: rgba(223, 232, 246, 0.44) !important;
+            box-shadow: none !important;
+            opacity: 1 !important;
+            transform: none !important;
         }
 
         div[data-testid="stAlert"] {
@@ -1219,6 +1303,11 @@ def inject_css() -> None:
             .start-zone {
                 margin-top: -3.8rem;
                 margin-bottom: 4rem;
+            }
+
+            .app-footer {
+                margin-top: 2.5rem;
+                padding-top: 1rem;
             }
 
             .topbar {
@@ -1303,6 +1392,19 @@ def render_home() -> None:
         st.session_state.answers = {}
         rerun()
     st.markdown("</div>", unsafe_allow_html=True)
+
+
+def render_footer() -> None:
+    st.markdown(
+        """
+        <footer class="app-footer">
+            <div class="footer-credit">Designed and developed by Mingyu Kim</div>
+            <div class="footer-school">인천대학교 수학교육과</div>
+            <div class="footer-motto">수학으로 세상을 읽고, 교육으로 내일을 잇다</div>
+        </footer>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def render_topbar() -> None:
@@ -1924,6 +2026,7 @@ def main() -> None:
         render_quiz()
     else:
         render_result()
+    render_footer()
 
 
 if __name__ == "__main__":
