@@ -276,6 +276,7 @@ TYPE_DATA = {
         "pronunciation": "스비르",
         "person": "앙리 푸앵카레",
         "quote": "우주의 모양을 주무르는 상상력 대가!",
+        "description": "혼자 깊게 몰입해 도형과 공간의 큰 그림을 떠올리는 유형입니다. 정답을 바로 계산하기보다 구조를 상상하고, 원리의 연결을 발견할 때 강해집니다.",
         "tendency": "혼자서(S) 공간 형태를(V) 직관적으로 상상하며(I) 탐구(R)",
         "achievement": "위상수학의 토대 마련",
     },
@@ -284,6 +285,7 @@ TYPE_DATA = {
         "pronunciation": "스빕",
         "person": "아르키메데스",
         "quote": "유레카! 실용 수학의 끝판왕!",
+        "description": "혼자 관찰하고 상상한 아이디어를 실제 문제 해결로 이어 가는 유형입니다. 도형적 감각이 뛰어나고, 떠오른 원리를 도구나 발명으로 바꾸는 힘이 있습니다.",
         "tendency": "홀로 사색하다(S) 도형의 원리를(V) 번뜩이는 직관으로 깨달아(I) 발명에 응용(P)",
         "achievement": "부력의 원리 발견, 나선 양수기 발명",
     },
@@ -292,6 +294,7 @@ TYPE_DATA = {
         "pronunciation": "스바르",
         "person": "르네 데카르트",
         "quote": "도형의 위치를 지도로 그린 사색가!",
+        "description": "혼자 차분히 생각하며 눈에 보이는 형태를 논리적으로 정리하는 유형입니다. 그림과 좌표, 조건을 연결해 복잡한 문제를 분석하는 데 강합니다.",
         "tendency": "혼자 누워(S) 기하학을(V) 논리적으로 분석해(A) 좌표평면을 탐구(R)",
         "achievement": "해석기하학 창시",
     },
@@ -300,6 +303,7 @@ TYPE_DATA = {
         "pronunciation": "스밥",
         "person": "브누아 망델브로",
         "quote": "끝없는 반복 무늬를 찾아낸 마법사!",
+        "description": "시각적 패턴을 꼼꼼히 분석해 현실의 복잡한 모양을 설명하는 유형입니다. 혼자 탐색하면서도 결과물을 그래픽, 모델, 자료로 구현하는 데 능합니다.",
         "tendency": "홀로 개척하며(S) 자연의 복잡한 모양을(V) 컴퓨터로 분석해(A) 그래픽에 응용(P)",
         "achievement": "프랙탈 기하학 개척",
     },
@@ -308,6 +312,7 @@ TYPE_DATA = {
         "pronunciation": "스니르",
         "person": "스리니바사 라마누잔",
         "quote": "숫자의 비밀을 꿰뚫어 본 마술사!",
+        "description": "숫자와 식에서 남들이 놓치는 규칙을 직관적으로 잡아내는 유형입니다. 조용히 몰입할수록 아이디어가 깊어지고, 공식의 숨은 질서를 찾는 데 강합니다.",
         "tendency": "고향에서 홀로(S) 숫자의 규칙을(N) 직관으로 찾아내어(I) 수많은 공식을 탐구(R)",
         "achievement": "수론 및 무한급수 분야의 막대한 기여",
     },
@@ -316,6 +321,7 @@ TYPE_DATA = {
         "pronunciation": "스닙",
         "person": "블레즈 파스칼",
         "quote": "주사위 게임에서 수학의 미래를 발견!",
+        "description": "숫자 감각과 빠른 아이디어를 실제 계산과 확률적 판단에 연결하는 유형입니다. 혼자 생각을 정리하다가도 쓸모 있는 방식으로 수학을 바꾸는 힘이 있습니다.",
         "tendency": "사색에 빠져(S) 통계를(N) 직관적으로 떠올려(I) 최초의 계산기와 확률에 응용(P)",
         "achievement": "확률론의 선구자, 기계식 계산기 발명",
     },
@@ -324,6 +330,7 @@ TYPE_DATA = {
         "pronunciation": "스나르",
         "person": "쿠르트 괴델",
         "quote": "수학의 한계를 증명해 낸 은둔자!",
+        "description": "기호와 명제를 끝까지 따져 보며 논리의 빈틈을 찾는 유형입니다. 혼자 깊게 생각할 때 강하고, 수학 체계 자체를 탐구하는 질문에 끌립니다.",
         "tendency": "고독한 환경에서(S) 수학 기호를(N) 철저히 논리적으로 분석해(A) 한계를 탐구(R)",
         "achievement": "불완전성 정리 증명",
     },
@@ -332,6 +339,7 @@ TYPE_DATA = {
         "pronunciation": "스냅",
         "person": "아이작 뉴턴",
         "quote": "우주의 법칙을 수학으로 풀어낸 거인!",
+        "description": "숫자와 식을 치밀하게 분석해 현실의 법칙을 설명하는 유형입니다. 혼자 집중해 계산과 원리를 다듬고, 이론을 실제 현상에 적용하는 데 강합니다.",
         "tendency": "고향에 홀로 머물며(S) 미적분을(N) 치밀하게 분석해(A) 우주 물리학에 응용(P)",
         "achievement": "미적분학 및 고전역학 완성",
     },
@@ -340,6 +348,7 @@ TYPE_DATA = {
         "pronunciation": "트비르",
         "person": "레온하르트 오일러",
         "quote": "새로운 수학의 지도를 그린 열정가!",
+        "description": "사람들과 생각을 나누며 시각적 관계와 연결 구조를 빠르게 파악하는 유형입니다. 큰 그림을 직관적으로 잡고 새로운 탐구 주제로 확장하는 데 능합니다.",
         "tendency": "동료들과 소통하며(T) 점과 선의 연결을(V) 직관적으로 파악해(I) 탐구(R)",
         "achievement": "한붓그리기(그래프 이론) 창시",
     },
@@ -348,6 +357,7 @@ TYPE_DATA = {
         "pronunciation": "트빕",
         "person": "피타고라스",
         "quote": "세상이 수로 이루어졌다고 믿은 마스터!",
+        "description": "함께 배우고 토론하면서 도형적 직관을 생활 속 질서로 연결하는 유형입니다. 비율, 조화, 형태를 빠르게 감지하고 실제 활용 가능성을 찾습니다.",
         "tendency": "학파를 이끌며(T) 삼각형의 비율을(V) 직관적으로 깨달아(I) 음악과 건축에 응용(P)",
         "achievement": "피타고라스의 정리 증명",
     },
@@ -356,6 +366,7 @@ TYPE_DATA = {
         "pronunciation": "트바르",
         "person": "다비트 힐베르트",
         "quote": "수학자들의 23가지 숙제를 내준 대장!",
+        "description": "여럿이 논의하는 장에서 도형과 구조를 체계적으로 분석하는 유형입니다. 문제를 명확히 세우고, 앞으로 탐구할 방향을 정리하는 데 강합니다.",
         "tendency": "제자들을 양성하며(T) 기하학의 토대를(V) 논리적으로 분석해(A) 미래 과제 탐구(R)",
         "achievement": "현대 수학의 23가지 미해결 문제 제시",
     },
@@ -364,6 +375,7 @@ TYPE_DATA = {
         "pronunciation": "트밥",
         "person": "캐서린 존슨",
         "quote": "달로 가는 길을 계산해 낸 인간 계산기!",
+        "description": "팀 안에서 시각적 경로와 조건을 정확히 분석해 실제 목표를 달성하는 유형입니다. 복잡한 상황을 차분히 계산하고 적용하는 실전 감각이 좋습니다.",
         "tendency": "동료들과 협력하며(T) 우주선의 궤도를(V) 날카로운 논리로 분석해(A) 우주 탐사에 응용(P)",
         "achievement": "아폴로 11호 달 착륙 궤도 계산",
     },
@@ -372,6 +384,7 @@ TYPE_DATA = {
         "pronunciation": "트니르",
         "person": "폴 에르되시",
         "quote": "전 세계를 돌아다닌 수학 배낭여행자!",
+        "description": "다른 사람과 문제를 주고받으며 숫자 세계의 새로운 아이디어를 찾아내는 유형입니다. 직관적인 패턴 감각이 좋고, 순수한 탐구 자체에서 에너지를 얻습니다.",
         "tendency": "전 세계 학자들과 협업하며(T) 숫자의 규칙을(N) 엄청난 직관으로(I) 순수하게 탐구(R)",
         "achievement": "조합론 및 그래프 이론의 대가",
     },
@@ -380,6 +393,7 @@ TYPE_DATA = {
         "pronunciation": "트닙",
         "person": "존 폰 노이만",
         "quote": "컴퓨터 구조를 처음 만든 아이디어 뱅크!",
+        "description": "팀과 함께 복잡한 계산 아이디어를 빠르게 떠올리고 실제 시스템으로 연결하는 유형입니다. 수치적 직관과 응용 감각이 모두 강합니다.",
         "tendency": "거대한 팀을 이끌며(T) 엄청난 연산을(N) 직관적으로 처리해(I) 컴퓨터와 경제학에 응용(P)",
         "achievement": "게임 이론 창시 및 현대 컴퓨터 구조 설계",
     },
@@ -388,6 +402,7 @@ TYPE_DATA = {
         "pronunciation": "트나르",
         "person": "에미 뇌터",
         "quote": "우주의 대칭성을 밝혀낸 위대한 스승!",
+        "description": "함께 토론하면서 수식과 구조를 엄밀하게 분석하는 유형입니다. 복잡한 개념의 핵심 원리를 정리하고, 깊은 이론으로 발전시키는 데 강합니다.",
         "tendency": "제자들과 함께(T) 복잡한 수식을(N) 논리적으로 분석해(A) 물리학과 대수학을 탐구(R)",
         "achievement": "뇌터의 정리, 현대 추상대수학 확립",
     },
@@ -396,6 +411,7 @@ TYPE_DATA = {
         "pronunciation": "트냅",
         "person": "앨런 튜링",
         "quote": "생각하는 기계를 만든 암호 해독 천재!",
+        "description": "팀 안에서 기호와 규칙을 논리적으로 분석해 실제 문제를 해결하는 유형입니다. 추상적인 계산 원리를 기술, 암호, 알고리즘 같은 응용으로 바꾸는 데 능합니다.",
         "tendency": "암호 해독 팀과 협력해(T) 기호를(N) 논리적으로 분석하여(A) 전쟁을 끝내는 데 응용(P)",
         "achievement": "튜링 기계 고안, 현대 컴퓨터 과학의 아버지",
     },
@@ -1040,6 +1056,7 @@ def inject_css() -> None:
             font-size: clamp(2.4rem, 7vw, 5.4rem);
             line-height: 1;
             font-weight: 840;
+            text-align: center;
         }
 
         .result-copy {
@@ -1049,6 +1066,7 @@ def inject_css() -> None:
             font-size: 1.08rem;
             line-height: 1.68;
             font-weight: 520;
+            text-align: center;
         }
 
         .score-grid {
@@ -1199,6 +1217,185 @@ def inject_css() -> None:
             font-size: 0.92rem;
             line-height: 1.55;
             font-weight: 430;
+        }
+
+        .percent-section,
+        .type-detail-section {
+            max-width: 980px;
+            margin: 2.4rem auto 2rem;
+            text-align: left;
+        }
+
+        .percent-title,
+        .type-detail-title {
+            margin: 0 0 0.35rem;
+            color: var(--ink);
+            font-size: clamp(1.65rem, 3.2vw, 2.45rem);
+            line-height: 1.12;
+            font-weight: 840;
+            text-align: center;
+        }
+
+        .percent-copy,
+        .type-detail-copy {
+            max-width: 650px;
+            margin: 0 auto 1.4rem;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.58;
+            font-weight: 420;
+            text-align: center;
+        }
+
+        .percent-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .percent-card,
+        .type-detail-card {
+            border-radius: 22px;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.032));
+            border: 1px solid var(--line);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+        }
+
+        .percent-card {
+            padding: 1.15rem;
+        }
+
+        .percent-card-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.7rem;
+            margin-bottom: 0.85rem;
+            color: var(--ink);
+            font-size: 1.02rem;
+            font-weight: 820;
+        }
+
+        .percent-winner {
+            color: var(--cyan);
+            font-size: 0.86rem;
+            font-weight: 780;
+            white-space: nowrap;
+        }
+
+        .percent-row {
+            margin-top: 0.8rem;
+        }
+
+        .percent-row-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.7rem;
+            margin-bottom: 0.42rem;
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 720;
+        }
+
+        .percent-letter {
+            color: var(--ink);
+            font-weight: 860;
+        }
+
+        .percent-track {
+            height: 11px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+        }
+
+        .percent-fill {
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--cyan), var(--blue), var(--violet));
+            box-shadow: 0 0 22px rgba(110, 231, 255, 0.28);
+        }
+
+        .type-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .type-detail-card {
+            min-height: 255px;
+            padding: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .type-detail-card.active {
+            border-color: rgba(110, 231, 255, 0.34);
+            background:
+                radial-gradient(circle at 92% 0%, rgba(110, 231, 255, 0.18), transparent 34%),
+                linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+            box-shadow: 0 24px 64px rgba(79, 140, 255, 0.2);
+        }
+
+        .type-detail-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.8rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .type-detail-code {
+            color: var(--ink);
+            font-family: "Space Grotesk", "Noto Sans KR", sans-serif;
+            font-size: 1.28rem;
+            line-height: 1;
+            font-weight: 860;
+        }
+
+        .type-detail-badge {
+            color: var(--cyan);
+            font-size: 0.78rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .type-detail-person {
+            color: var(--cyan);
+            font-size: 1rem;
+            line-height: 1.28;
+            font-weight: 780;
+            margin-bottom: 0.55rem;
+        }
+
+        .type-detail-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.58;
+            font-weight: 430;
+            margin-bottom: 0.9rem;
+        }
+
+        .type-detail-meta {
+            display: grid;
+            gap: 0.55rem;
+            padding-top: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .type-detail-meta-item {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.48;
+            font-weight: 430;
+        }
+
+        .type-detail-meta-item strong {
+            color: var(--ink);
+            font-weight: 800;
         }
 
         .manual-stage {
@@ -1521,8 +1718,10 @@ def inject_css() -> None:
             .choice-grid,
             .endpoint-grid,
             .manual-grid,
+            .percent-grid,
             .score-grid,
             .axis-guide-grid,
+            .type-detail-grid,
             .nav-row {
                 grid-template-columns: 1fr;
             }
@@ -1548,6 +1747,10 @@ def inject_css() -> None:
             }
 
             .axis-guide-card {
+                min-height: 0;
+            }
+
+            .type-detail-card {
                 min-height: 0;
             }
 
@@ -1667,8 +1870,10 @@ def inject_css() -> None:
             .endpoint-card,
             .manual-card,
             .manual-code-slot,
+            .percent-card,
             .score-card,
-            .axis-guide-card {
+            .axis-guide-card,
+            .type-detail-card {
                 background:
                     linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,255,255,0.44)) !important;
                 border-color: rgba(20, 45, 82, 0.12) !important;
@@ -1685,7 +1890,8 @@ def inject_css() -> None:
 
             .endpoint-card.right,
             .manual-card.active,
-            .axis-guide-card.active {
+            .axis-guide-card.active,
+            .type-detail-card.active {
                 background:
                     radial-gradient(circle at 96% 0%, rgba(98, 82, 216, 0.12), transparent 42%),
                     linear-gradient(145deg, rgba(255,255,255,0.86), rgba(255,255,255,0.46)) !important;
@@ -1712,8 +1918,10 @@ def inject_css() -> None:
             .endpoint-card,
             .manual-card,
             .manual-code-slot,
+            .percent-card,
             .score-card,
-            .axis-guide-card {
+            .axis-guide-card,
+            .type-detail-card {
                 backdrop-filter: blur(18px) saturate(1.08);
                 -webkit-backdrop-filter: blur(18px) saturate(1.08);
             }
@@ -1998,7 +2206,6 @@ def render_manual_result() -> None:
     type_code = manual_type_code()
     result = TYPE_DATA[type_code]
 
-    st.markdown('<main class="experience-shell result-wrap">', unsafe_allow_html=True)
     render_topbar("입력 완료")
     st.markdown(
         f"""
@@ -2012,6 +2219,7 @@ def render_manual_result() -> None:
     )
     render_flip_card(type_code, result)
     render_axis_guide(type_code)
+    render_type_descriptions(type_code)
 
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -2029,9 +2237,6 @@ def render_manual_result() -> None:
             st.session_state.screen = "home"
             reset_manual_state()
             rerun()
-
-    st.markdown("</main>", unsafe_allow_html=True)
-
 
 def render_endpoint_card(question: dict, side: str, side_label: str) -> None:
     option = question[side]
@@ -2605,27 +2810,93 @@ def render_flip_card(type_code: str, result: dict) -> None:
 
 
 def render_score_cards(scores: dict) -> None:
-    st.markdown('<div class="score-grid">', unsafe_allow_html=True)
+    cards = []
     for left, right in TYPE_AXIS_PAIRS:
         left_score = scores[left]
         right_score = scores[right]
         winner = left if left_score >= right_score else right
         width = max(left_score, right_score) / 6 * 100
-        st.markdown(
+        cards.append(
             f"""
             <div class="score-card">
                 <div class="score-label">
-                    <span>{left}/{right}</span>
-                    <span>{winner} {AXIS_META[winner]["label"]}</span>
+                    <span>{escape(left)}/{escape(right)}</span>
+                    <span>{escape(winner)} {escape(AXIS_META[winner]["label"])}</span>
                 </div>
                 <div class="score-track">
                     <div class="score-fill" style="width:{width:.0f}%;"></div>
                 </div>
             </div>
-            """,
-            unsafe_allow_html=True,
+            """
         )
-    st.markdown("</div>", unsafe_allow_html=True)
+
+    st.markdown(
+        f"""
+        <div class="score-grid">
+            {''.join(cards)}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def percentage_pair(scores: dict, left: str, right: str) -> tuple:
+    left_score = scores[left]
+    right_score = scores[right]
+    total = left_score + right_score
+    if total == 0:
+        return 50.0, 50.0
+    return left_score / total * 100, right_score / total * 100
+
+
+def render_percentage_bars(scores: dict, type_code: str) -> None:
+    cards = []
+    for index, (left, right) in enumerate(TYPE_AXIS_PAIRS):
+        left_percent, right_percent = percentage_pair(scores, left, right)
+        winner = type_code[index] if index < len(type_code) else left
+        pair_title = f"{left}/{right}"
+        rows = []
+        for letter, percent in ((left, left_percent), (right, right_percent)):
+            rows.append(
+                f"""
+                <div class="percent-row">
+                    <div class="percent-row-top">
+                        <span><span class="percent-letter">{escape(letter)}</span> {escape(AXIS_META[letter]["label"])}</span>
+                        <span>{percent:.0f}%</span>
+                    </div>
+                    <div class="percent-track">
+                        <div class="percent-fill" style="width:{percent:.1f}%;"></div>
+                    </div>
+                </div>
+                """
+            )
+        cards.append(
+            f"""
+            <div class="percent-card">
+                <div class="percent-card-title">
+                    <span>{escape(pair_title)}</span>
+                    <span class="percent-winner">{escape(winner)} 선택</span>
+                </div>
+                {''.join(rows)}
+            </div>
+            """
+        )
+
+    st.markdown(
+        f"""
+        <section class="percent-section">
+            <h2 class="percent-title">알파벳별 결과 퍼센트</h2>
+            <p class="percent-copy">
+                테스트 답변을 바탕으로 각 축에서 어느 알파벳에 더 가까운지 퍼센트로 보여줍니다.
+                모두 중간을 선택한 축은 50% 대 50%로 표시됩니다.
+            </p>
+            <div class="percent-grid">
+                {''.join(cards)}
+            </div>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def render_axis_guide(type_code: str) -> None:
@@ -2665,6 +2936,47 @@ def render_axis_guide(type_code: str) -> None:
     )
 
 
+def render_type_descriptions(type_code: str) -> None:
+    cards = []
+    sorted_types = sorted(TYPE_DATA.items(), key=lambda item: item[1]["number"])
+    for code, data in sorted_types:
+        active_class = " active" if code == type_code else ""
+        badge = "내 결과" if code == type_code else f'Card {data["number"]:02d}'
+        title = f"{code} ({data['pronunciation']})"
+        cards.append(
+            f"""
+            <div class="type-detail-card{active_class}">
+                <div class="type-detail-top">
+                    <div class="type-detail-code">{escape(title)}</div>
+                    <div class="type-detail-badge">{escape(badge)}</div>
+                </div>
+                <div class="type-detail-person">{escape(data["person"])}</div>
+                <div class="type-detail-desc">{escape(data["description"])}</div>
+                <div class="type-detail-meta">
+                    <div class="type-detail-meta-item"><strong>성향</strong> {escape(data["tendency"])}</div>
+                    <div class="type-detail-meta-item"><strong>대표 업적</strong> {escape(data["achievement"])}</div>
+                </div>
+            </div>
+            """
+        )
+
+    st.markdown(
+        f"""
+        <section class="type-detail-section">
+            <h2 class="type-detail-title">16가지 수학 MBTI 유형</h2>
+            <p class="type-detail-copy">
+                네 개의 알파벳 조합에 따라 결과 유형이 달라집니다.
+                현재 결과는 강조 표시되어 있습니다.
+            </p>
+            <div class="type-detail-grid">
+                {''.join(cards)}
+            </div>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def render_result() -> None:
     if answered_count() < TOTAL_QUESTIONS:
         st.session_state.screen = "quiz"
@@ -2674,7 +2986,6 @@ def render_result() -> None:
     type_code = calculate_type_code(scores)
     result = TYPE_DATA[type_code]
 
-    st.markdown('<main class="experience-shell result-wrap">', unsafe_allow_html=True)
     render_topbar()
     st.markdown(
         f"""
@@ -2687,8 +2998,9 @@ def render_result() -> None:
         unsafe_allow_html=True,
     )
     render_flip_card(type_code, result)
-    render_score_cards(scores)
+    render_percentage_bars(scores, type_code)
     render_axis_guide(type_code)
+    render_type_descriptions(type_code)
 
     col1, col2 = st.columns(2)
     with col1:
@@ -2701,9 +3013,6 @@ def render_result() -> None:
             st.session_state.screen = "home"
             reset_quiz_state()
             rerun()
-
-    st.markdown("</main>", unsafe_allow_html=True)
-
 
 def main() -> None:
     st.set_page_config(
