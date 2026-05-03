@@ -9,6 +9,7 @@ import streamlit.components.v1 as components
 APP_TITLE = "MBTI"
 APP_SUBTITLE = "Mathematics Behavior Type Indicator"
 TOTAL_QUESTIONS = 12
+TYPE_AXIS_PAIRS = [("S", "T"), ("V", "N"), ("I", "A"), ("R", "P")]
 FIGURE_DIR = Path(__file__).resolve().parent / "assets" / "figures"
 
 
@@ -433,10 +434,41 @@ def initialize_state() -> None:
         "screen": "home",
         "current_question": 0,
         "answers": {},
+        "manual_letters": {},
     }
     for key, value in defaults.items():
         if key not in st.session_state:
             st.session_state[key] = value
+
+
+def reset_quiz_state() -> None:
+    st.session_state.current_question = 0
+    st.session_state.answers = {}
+
+
+def reset_manual_state() -> None:
+    st.session_state.manual_letters = {}
+
+
+def pair_key(left: str, right: str) -> str:
+    return f"{left}{right}"
+
+
+def manual_letters() -> list:
+    selected = st.session_state.manual_letters
+    return [selected.get(pair_key(left, right), "") for left, right in TYPE_AXIS_PAIRS]
+
+
+def manual_type_code() -> str:
+    return "".join(manual_letters())
+
+
+def manual_answered_count() -> int:
+    return sum(1 for letter in manual_letters() if letter)
+
+
+def manual_input_complete() -> bool:
+    return manual_answered_count() == len(TYPE_AXIS_PAIRS)
 
 
 def inject_css() -> None:
@@ -1169,6 +1201,132 @@ def inject_css() -> None:
             font-weight: 430;
         }
 
+        .manual-stage {
+            text-align: center;
+            max-width: 980px;
+            margin: 0 auto 2.2rem;
+        }
+
+        .manual-title {
+            color: var(--ink);
+            font-size: clamp(2.4rem, 6.8vw, 5rem);
+            line-height: 1.04;
+            font-weight: 840;
+            margin: 0;
+        }
+
+        .manual-copy {
+            max-width: 680px;
+            margin: 1rem auto 1.6rem;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.62;
+            font-weight: 460;
+        }
+
+        .manual-code-row {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.8rem;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .manual-code-slot {
+            min-height: 5.2rem;
+            display: grid;
+            place-items: center;
+            border-radius: 24px;
+            border: 1px solid var(--line);
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+                rgba(12, 19, 35, 0.7);
+            color: rgba(223, 232, 246, 0.38);
+            font-family: "Space Grotesk", "Noto Sans KR", sans-serif;
+            font-size: 2rem;
+            font-weight: 860;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+        }
+
+        .manual-code-slot.filled {
+            color: #06111f;
+            background:
+                radial-gradient(circle at 18% 18%, rgba(255,255,255,0.34), transparent 32%),
+                linear-gradient(135deg, var(--cyan), var(--blue), var(--violet));
+            border-color: rgba(210, 250, 255, 0.42);
+            box-shadow: 0 22px 60px rgba(79, 140, 255, 0.28);
+        }
+
+        .manual-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.9rem;
+            max-width: 980px;
+            margin: 0 auto 1.6rem;
+        }
+
+        .manual-card {
+            min-height: 212px;
+            padding: 1.2rem;
+            border-radius: 24px;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.032)),
+                rgba(12, 19, 35, 0.7);
+            border: 1px solid var(--line);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+            text-align: left;
+        }
+
+        .manual-card.active {
+            border-color: rgba(110, 231, 255, 0.34);
+            background:
+                radial-gradient(circle at 90% 0%, rgba(110, 231, 255, 0.18), transparent 34%),
+                linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04)),
+                rgba(12, 19, 35, 0.82);
+            box-shadow: 0 24px 64px rgba(79, 140, 255, 0.2);
+        }
+
+        .manual-card-kicker {
+            color: var(--quiet);
+            font-size: 0.82rem;
+            font-weight: 760;
+            margin-bottom: 0.7rem;
+        }
+
+        .manual-card-title {
+            color: var(--ink);
+            font-size: 1.3rem;
+            line-height: 1.18;
+            font-weight: 840;
+            margin-bottom: 1rem;
+        }
+
+        .manual-option {
+            padding: 0.75rem 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .manual-option-code {
+            color: var(--cyan);
+            font-size: 1.08rem;
+            font-weight: 860;
+        }
+
+        .manual-option-name {
+            margin-left: 0.25rem;
+            color: var(--ink);
+            font-size: 0.98rem;
+            font-weight: 760;
+        }
+
+        .manual-option-desc {
+            margin-top: 0.28rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.45;
+            font-weight: 420;
+        }
+
         .stButton > button {
             min-height: 3.65rem;
             border-radius: 999px;
@@ -1362,6 +1520,7 @@ def inject_css() -> None:
 
             .choice-grid,
             .endpoint-grid,
+            .manual-grid,
             .score-grid,
             .axis-guide-grid,
             .nav-row {
@@ -1394,6 +1553,21 @@ def inject_css() -> None:
 
             .question-title {
                 font-size: 2.35rem;
+            }
+
+            .manual-code-row {
+                gap: 0.55rem;
+            }
+
+            .manual-code-slot {
+                min-height: 4.35rem;
+                border-radius: 18px;
+                font-size: 1.7rem;
+            }
+
+            .manual-card {
+                min-height: 0;
+                border-radius: 22px;
             }
         }
         </style>
@@ -1491,6 +1665,8 @@ def inject_css() -> None:
             .mesh-chip,
             .topbar,
             .endpoint-card,
+            .manual-card,
+            .manual-code-slot,
             .score-card,
             .axis-guide-card {
                 background:
@@ -1508,6 +1684,7 @@ def inject_css() -> None:
             }
 
             .endpoint-card.right,
+            .manual-card.active,
             .axis-guide-card.active {
                 background:
                     radial-gradient(circle at 96% 0%, rgba(98, 82, 216, 0.12), transparent 42%),
@@ -1533,6 +1710,8 @@ def inject_css() -> None:
 
             .choice-card,
             .endpoint-card,
+            .manual-card,
+            .manual-code-slot,
             .score-card,
             .axis-guide-card {
                 backdrop-filter: blur(18px) saturate(1.08);
@@ -1552,6 +1731,14 @@ def inject_css() -> None:
                 background:
                     radial-gradient(circle at top right, rgba(0,119,200,0.12), transparent 38%),
                     rgba(255,255,255,0.88);
+            }
+
+            .manual-code-slot.filled {
+                color: #ffffff !important;
+                background:
+                    radial-gradient(circle at 18% 18%, rgba(255,255,255,0.28), transparent 32%),
+                    linear-gradient(135deg, #005bac, #0077c8, #6252d8) !important;
+                border-color: rgba(0, 91, 172, 0.2) !important;
             }
 
             .likert-selected {
@@ -1635,11 +1822,17 @@ def render_home() -> None:
         unsafe_allow_html=True,
     )
     st.markdown('<div class="start-zone">', unsafe_allow_html=True)
-    if st.button("테스트 시작하기", use_container_width=True, type="primary"):
-        st.session_state.screen = "quiz"
-        st.session_state.current_question = 0
-        st.session_state.answers = {}
-        rerun()
+    left_col, right_col = st.columns(2, gap="small")
+    with left_col:
+        if st.button("결과 입력하기", use_container_width=True, type="primary"):
+            st.session_state.screen = "input"
+            reset_manual_state()
+            rerun()
+    with right_col:
+        if st.button("테스트 하기", use_container_width=True, type="primary"):
+            st.session_state.screen = "quiz"
+            reset_quiz_state()
+            rerun()
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -1656,8 +1849,10 @@ def render_footer() -> None:
     )
 
 
-def render_topbar() -> None:
+def render_topbar(progress_label=None) -> None:
     answered = answered_count()
+    if progress_label is None:
+        progress_label = f"{answered}/{TOTAL_QUESTIONS}"
     st.markdown(
         f"""
         <div class="topbar">
@@ -1665,7 +1860,7 @@ def render_topbar() -> None:
                 <div class="brand-dot">M</div>
                 <div class="brand-text">{APP_TITLE} <span style="color:rgba(223,232,246,0.52);">{APP_SUBTITLE}</span></div>
             </div>
-            <div class="progress-text">{answered}/{TOTAL_QUESTIONS}</div>
+            <div class="progress-text">{escape(str(progress_label))}</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -1674,6 +1869,168 @@ def render_topbar() -> None:
 
 def answered_count() -> int:
     return sum(1 for question in QUESTIONS if question["id"] in st.session_state.answers)
+
+
+def render_manual_slots() -> None:
+    slots = []
+    for letter in manual_letters():
+        class_name = "manual-code-slot filled" if letter else "manual-code-slot"
+        slots.append(f'<div class="{class_name}">{escape(letter or "·")}</div>')
+
+    st.markdown(
+        f"""
+        <div class="manual-code-row">
+            {''.join(slots)}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_manual_axis_card(index: int, left: str, right: str) -> None:
+    selected = st.session_state.manual_letters.get(pair_key(left, right), "")
+    active_class = " active" if selected else ""
+    status = f"{selected} 선택됨" if selected else "선택 대기"
+    left_meta = AXIS_META[left]
+    right_meta = AXIS_META[right]
+    st.markdown(
+        f"""
+        <div class="manual-card{active_class}">
+            <div class="manual-card-kicker">{index:02d} · {escape(status)}</div>
+            <div class="manual-card-title">
+                {escape(left_meta["label"])} / {escape(right_meta["label"])}
+            </div>
+            <div class="manual-option">
+                <span class="manual-option-code">{escape(left)}</span>
+                <span class="manual-option-name">{escape(left_meta["name"])}</span>
+                <div class="manual-option-desc">{escape(left_meta["description"])}</div>
+            </div>
+            <div class="manual-option">
+                <span class="manual-option-code">{escape(right)}</span>
+                <span class="manual-option-name">{escape(right_meta["name"])}</span>
+                <div class="manual-option-desc">{escape(right_meta["description"])}</div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def select_manual_letter(left: str, right: str, letter: str) -> None:
+    st.session_state.manual_letters[pair_key(left, right)] = letter
+    if manual_input_complete():
+        st.session_state.screen = "input_result"
+    rerun()
+
+
+def render_manual_input() -> None:
+    progress_count = manual_answered_count()
+    progress = progress_count / len(TYPE_AXIS_PAIRS) * 100
+
+    st.markdown('<main class="experience-shell">', unsafe_allow_html=True)
+    render_topbar(f"입력 {progress_count}/{len(TYPE_AXIS_PAIRS)}")
+    st.markdown(
+        f"""
+        <section class="manual-stage">
+            <div class="progress-track">
+                <div class="progress-fill" style="width: {progress:.1f}%;"></div>
+            </div>
+            <h1 class="manual-title">결과 입력하기</h1>
+            <p class="manual-copy">
+                네 개의 축에서 알파벳을 하나씩 선택하면 결과 코드가 완성됩니다.
+            </p>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
+    render_manual_slots()
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    columns = st.columns(len(TYPE_AXIS_PAIRS), gap="small")
+    for index, (column, (left, right)) in enumerate(zip(columns, TYPE_AXIS_PAIRS), start=1):
+        selected = st.session_state.manual_letters.get(pair_key(left, right), "")
+        with column:
+            render_manual_axis_card(index, left, right)
+            left_col, right_col = st.columns(2, gap="small")
+            with left_col:
+                if st.button(
+                    left,
+                    key=f"manual_{left}{right}_{left}",
+                    use_container_width=True,
+                    type="primary" if selected == left else "secondary",
+                    help=f'{AXIS_META[left]["name"]} · {AXIS_META[left]["label"]}',
+                ):
+                    select_manual_letter(left, right, left)
+            with right_col:
+                if st.button(
+                    right,
+                    key=f"manual_{left}{right}_{right}",
+                    use_container_width=True,
+                    type="primary" if selected == right else "secondary",
+                    help=f'{AXIS_META[right]["name"]} · {AXIS_META[right]["label"]}',
+                ):
+                    select_manual_letter(left, right, right)
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("선택 초기화", use_container_width=True):
+            reset_manual_state()
+            rerun()
+    with col2:
+        if st.button("테스트 하기", use_container_width=True):
+            st.session_state.screen = "quiz"
+            reset_quiz_state()
+            rerun()
+    with col3:
+        if st.button("홈으로", use_container_width=True):
+            st.session_state.screen = "home"
+            reset_manual_state()
+            rerun()
+
+    st.markdown("</main>", unsafe_allow_html=True)
+
+
+def render_manual_result() -> None:
+    if not manual_input_complete():
+        st.session_state.screen = "input"
+        rerun()
+
+    type_code = manual_type_code()
+    result = TYPE_DATA[type_code]
+
+    st.markdown('<main class="experience-shell result-wrap">', unsafe_allow_html=True)
+    render_topbar("입력 완료")
+    st.markdown(
+        f"""
+        <h1 class="result-title">입력한 수학 MBTI는 {escape(type_code)}</h1>
+        <p class="result-copy">
+            {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.
+            아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.
+        </p>
+        """,
+        unsafe_allow_html=True,
+    )
+    render_flip_card(type_code, result)
+    render_axis_guide(type_code)
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("다시 입력하기", use_container_width=True):
+            st.session_state.screen = "input"
+            reset_manual_state()
+            rerun()
+    with col2:
+        if st.button("테스트 하기", use_container_width=True):
+            st.session_state.screen = "quiz"
+            reset_quiz_state()
+            rerun()
+    with col3:
+        if st.button("홈으로", use_container_width=True):
+            st.session_state.screen = "home"
+            reset_manual_state()
+            rerun()
+
+    st.markdown("</main>", unsafe_allow_html=True)
 
 
 def render_endpoint_card(question: dict, side: str, side_label: str) -> None:
@@ -1820,9 +2177,8 @@ def calculate_scores() -> dict:
 
 
 def calculate_type_code(scores: dict) -> str:
-    pairs = [("S", "T"), ("V", "N"), ("I", "A"), ("R", "P")]
     code = ""
-    for left, right in pairs:
+    for left, right in TYPE_AXIS_PAIRS:
         code += left if scores[left] >= scores[right] else right
     return code
 
@@ -2249,9 +2605,8 @@ def render_flip_card(type_code: str, result: dict) -> None:
 
 
 def render_score_cards(scores: dict) -> None:
-    pairs = [("S", "T"), ("V", "N"), ("I", "A"), ("R", "P")]
     st.markdown('<div class="score-grid">', unsafe_allow_html=True)
-    for left, right in pairs:
+    for left, right in TYPE_AXIS_PAIRS:
         left_score = scores[left]
         right_score = scores[right]
         winner = left if left_score >= right_score else right
@@ -2339,14 +2694,12 @@ def render_result() -> None:
     with col1:
         if st.button("다시 검사하기", use_container_width=True):
             st.session_state.screen = "quiz"
-            st.session_state.current_question = 0
-            st.session_state.answers = {}
+            reset_quiz_state()
             rerun()
     with col2:
         if st.button("홈으로", use_container_width=True):
             st.session_state.screen = "home"
-            st.session_state.current_question = 0
-            st.session_state.answers = {}
+            reset_quiz_state()
             rerun()
 
     st.markdown("</main>", unsafe_allow_html=True)
@@ -2364,6 +2717,10 @@ def main() -> None:
 
     if st.session_state.screen == "home":
         render_home()
+    elif st.session_state.screen == "input":
+        render_manual_input()
+    elif st.session_state.screen == "input_result":
+        render_manual_result()
     elif st.session_state.screen == "quiz":
         render_quiz()
     else:
