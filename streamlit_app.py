@@ -2462,7 +2462,7 @@ def render_manual_result() -> None:
             <h1 class="result-title">당신의 MBTI는 {escape(type_code)}</h1>
             <p class="result-copy">
                 {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다. <br>
-                아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.
+                아래 카드를 탭하면 뒤집어서 확인할 수 있습니다.
             </p>
         </section>
         """,
