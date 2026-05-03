@@ -277,8 +277,8 @@ TYPE_DATA = {
         "person": "앙리 푸앵카레",
         "quote": "우주의 모양을 주무르는 상상력 대가!",
         "description": "혼자 깊게 몰입해 도형과 공간의 큰 그림을 떠올리는 유형입니다. 정답을 바로 계산하기보다 구조를 상상하고, 원리의 연결을 발견할 때 강해집니다.",
-        "tendency": "혼자서(S) 공간 형태를(V) 직관적으로 상상하며(I) 탐구(R)",
-        "achievement": "위상수학의 토대 마련",
+        "tendency": "혼자서[S] 공간 형태를[V] 직관적으로 상상하며[I] 탐구[R]",
+        "achievement": "위상수학의 기초를 세우고 푸앵카레 추측을 제기했으며, 삼체 문제 연구로 현대 동역학계 이론의 문을 열었습니다.",
     },
     "SVIP": {
         "number": 2,
@@ -286,8 +286,8 @@ TYPE_DATA = {
         "person": "아르키메데스",
         "quote": "유레카! 실용 수학의 끝판왕!",
         "description": "혼자 관찰하고 상상한 아이디어를 실제 문제 해결로 이어 가는 유형입니다. 도형적 감각이 뛰어나고, 떠오른 원리를 도구나 발명으로 바꾸는 힘이 있습니다.",
-        "tendency": "홀로 사색하다(S) 도형의 원리를(V) 번뜩이는 직관으로 깨달아(I) 발명에 응용(P)",
-        "achievement": "부력의 원리 발견, 나선 양수기 발명",
+        "tendency": "홀로 사색하다[S] 도형의 원리를[V] 번뜩이는 직관으로 깨달아[I] 발명에 응용[P]",
+        "achievement": "부력의 원리, 지레의 법칙, 원주율 근사, 구와 원기둥의 부피 관계를 밝혔고 나선 양수기를 고안했습니다.",
     },
     "SVAR": {
         "number": 3,
@@ -295,8 +295,8 @@ TYPE_DATA = {
         "person": "르네 데카르트",
         "quote": "도형의 위치를 지도로 그린 사색가!",
         "description": "혼자 차분히 생각하며 눈에 보이는 형태를 논리적으로 정리하는 유형입니다. 그림과 좌표, 조건을 연결해 복잡한 문제를 분석하는 데 강합니다.",
-        "tendency": "혼자 누워(S) 기하학을(V) 논리적으로 분석해(A) 좌표평면을 탐구(R)",
-        "achievement": "해석기하학 창시",
+        "tendency": "혼자 누워[S] 기하학을[V] 논리적으로 분석해[A] 좌표평면을 탐구[R]",
+        "achievement": "좌표평면을 도입해 기하와 대수를 연결한 해석기하학을 만들고, 데카르트 좌표계의 토대를 세웠습니다.",
     },
     "SVAP": {
         "number": 4,
@@ -304,8 +304,8 @@ TYPE_DATA = {
         "person": "브누아 망델브로",
         "quote": "끝없는 반복 무늬를 찾아낸 마법사!",
         "description": "시각적 패턴을 꼼꼼히 분석해 현실의 복잡한 모양을 설명하는 유형입니다. 혼자 탐색하면서도 결과물을 그래픽, 모델, 자료로 구현하는 데 능합니다.",
-        "tendency": "홀로 개척하며(S) 자연의 복잡한 모양을(V) 컴퓨터로 분석해(A) 그래픽에 응용(P)",
-        "achievement": "프랙탈 기하학 개척",
+        "tendency": "홀로 개척하며[S] 자연의 복잡한 모양을[V] 컴퓨터로 분석해[A] 그래픽에 응용[P]",
+        "achievement": "망델브로 집합을 대중화하고 프랙탈 기하학을 개척해 구름, 해안선, 산맥 같은 자연 형태를 수학으로 설명했습니다.",
     },
     "SNIR": {
         "number": 5,
@@ -313,8 +313,8 @@ TYPE_DATA = {
         "person": "스리니바사 라마누잔",
         "quote": "숫자의 비밀을 꿰뚫어 본 마술사!",
         "description": "숫자와 식에서 남들이 놓치는 규칙을 직관적으로 잡아내는 유형입니다. 조용히 몰입할수록 아이디어가 깊어지고, 공식의 숨은 질서를 찾는 데 강합니다.",
-        "tendency": "고향에서 홀로(S) 숫자의 규칙을(N) 직관으로 찾아내어(I) 수많은 공식을 탐구(R)",
-        "achievement": "수론 및 무한급수 분야의 막대한 기여",
+        "tendency": "고향에서 홀로[S] 숫자의 규칙을[N] 직관으로 찾아내어[I] 수많은 공식을 탐구[R]",
+        "achievement": "분할수, 타우 함수, 모듈러 형식, 무한급수와 연분수 등 수론 전반에 수많은 독창적인 공식을 남겼습니다.",
     },
     "SNIP": {
         "number": 6,
@@ -322,8 +322,8 @@ TYPE_DATA = {
         "person": "블레즈 파스칼",
         "quote": "주사위 게임에서 수학의 미래를 발견!",
         "description": "숫자 감각과 빠른 아이디어를 실제 계산과 확률적 판단에 연결하는 유형입니다. 혼자 생각을 정리하다가도 쓸모 있는 방식으로 수학을 바꾸는 힘이 있습니다.",
-        "tendency": "사색에 빠져(S) 통계를(N) 직관적으로 떠올려(I) 최초의 계산기와 확률에 응용(P)",
-        "achievement": "확률론의 선구자, 기계식 계산기 발명",
+        "tendency": "사색에 빠져[S] 통계를[N] 직관적으로 떠올려[I] 최초의 계산기와 확률에 응용[P]",
+        "achievement": "파스칼의 삼각형을 체계화하고 페르마와 함께 확률론을 열었으며, 기계식 계산기 파스칼린을 제작했습니다.",
     },
     "SNAR": {
         "number": 7,
@@ -331,8 +331,8 @@ TYPE_DATA = {
         "person": "쿠르트 괴델",
         "quote": "수학의 한계를 증명해 낸 은둔자!",
         "description": "기호와 명제를 끝까지 따져 보며 논리의 빈틈을 찾는 유형입니다. 혼자 깊게 생각할 때 강하고, 수학 체계 자체를 탐구하는 질문에 끌립니다.",
-        "tendency": "고독한 환경에서(S) 수학 기호를(N) 철저히 논리적으로 분석해(A) 한계를 탐구(R)",
-        "achievement": "불완전성 정리 증명",
+        "tendency": "고독한 환경에서[S] 수학 기호를[N] 철저히 논리적으로 분석해[A] 한계를 탐구[R]",
+        "achievement": "불완전성 정리로 형식 수학 체계의 한계를 증명하고, 논리학과 집합론, 계산 가능성 이론에 큰 영향을 남겼습니다.",
     },
     "SNAP": {
         "number": 8,
@@ -340,8 +340,8 @@ TYPE_DATA = {
         "person": "아이작 뉴턴",
         "quote": "우주의 법칙을 수학으로 풀어낸 거인!",
         "description": "숫자와 식을 치밀하게 분석해 현실의 법칙을 설명하는 유형입니다. 혼자 집중해 계산과 원리를 다듬고, 이론을 실제 현상에 적용하는 데 강합니다.",
-        "tendency": "고향에 홀로 머물며(S) 미적분을(N) 치밀하게 분석해(A) 우주 물리학에 응용(P)",
-        "achievement": "미적분학 및 고전역학 완성",
+        "tendency": "고향에 홀로 머물며[S] 미적분을[N] 치밀하게 분석해[A] 우주 물리학에 응용[P]",
+        "achievement": "미적분학을 발전시키고 운동 법칙과 만유인력 법칙을 세웠으며, 프린키피아로 고전역학의 체계를 완성했습니다.",
     },
     "TVIR": {
         "number": 9,
@@ -349,8 +349,8 @@ TYPE_DATA = {
         "person": "레온하르트 오일러",
         "quote": "새로운 수학의 지도를 그린 열정가!",
         "description": "사람들과 생각을 나누며 시각적 관계와 연결 구조를 빠르게 파악하는 유형입니다. 큰 그림을 직관적으로 잡고 새로운 탐구 주제로 확장하는 데 능합니다.",
-        "tendency": "동료들과 소통하며(T) 점과 선의 연결을(V) 직관적으로 파악해(I) 탐구(R)",
-        "achievement": "한붓그리기(그래프 이론) 창시",
+        "tendency": "동료들과 소통하며[T] 점과 선의 연결을[V] 직관적으로 파악해[I] 탐구[R]",
+        "achievement": "쾨니히스베르크의 다리 문제로 그래프 이론을 열고, 오일러 공식, 수론, 해석학에 폭넓게 기여했습니다.",
     },
     "TVIP": {
         "number": 10,
@@ -358,8 +358,8 @@ TYPE_DATA = {
         "person": "피타고라스",
         "quote": "세상이 수로 이루어졌다고 믿은 마스터!",
         "description": "함께 배우고 토론하면서 도형적 직관을 생활 속 질서로 연결하는 유형입니다. 비율, 조화, 형태를 빠르게 감지하고 실제 활용 가능성을 찾습니다.",
-        "tendency": "학파를 이끌며(T) 삼각형의 비율을(V) 직관적으로 깨달아(I) 음악과 건축에 응용(P)",
-        "achievement": "피타고라스의 정리 증명",
+        "tendency": "학파를 이끌며[T] 삼각형의 비율을[V] 직관적으로 깨달아[I] 음악과 건축에 응용[P]",
+        "achievement": "피타고라스 정리를 대표로 수와 비율의 조화, 음계와 수학의 관계를 탐구해 수학적 세계관의 출발점을 만들었습니다.",
     },
     "TVAR": {
         "number": 11,
@@ -367,8 +367,8 @@ TYPE_DATA = {
         "person": "다비트 힐베르트",
         "quote": "수학자들의 23가지 숙제를 내준 대장!",
         "description": "여럿이 논의하는 장에서 도형과 구조를 체계적으로 분석하는 유형입니다. 문제를 명확히 세우고, 앞으로 탐구할 방향을 정리하는 데 강합니다.",
-        "tendency": "제자들을 양성하며(T) 기하학의 토대를(V) 논리적으로 분석해(A) 미래 과제 탐구(R)",
-        "achievement": "현대 수학의 23가지 미해결 문제 제시",
+        "tendency": "제자들을 양성하며[T] 기하학의 토대를[V] 논리적으로 분석해[A] 미래 과제 탐구[R]",
+        "achievement": "힐베르트의 23문제를 제시하고 공리주의 수학을 이끌었으며, 힐베르트 공간과 불변식 이론 등 현대 수학의 기반을 넓혔습니다.",
     },
     "TVAP": {
         "number": 12,
@@ -376,8 +376,8 @@ TYPE_DATA = {
         "person": "캐서린 존슨",
         "quote": "달로 가는 길을 계산해 낸 인간 계산기!",
         "description": "팀 안에서 시각적 경로와 조건을 정확히 분석해 실제 목표를 달성하는 유형입니다. 복잡한 상황을 차분히 계산하고 적용하는 실전 감각이 좋습니다.",
-        "tendency": "동료들과 협력하며(T) 우주선의 궤도를(V) 날카로운 논리로 분석해(A) 우주 탐사에 응용(P)",
-        "achievement": "아폴로 11호 달 착륙 궤도 계산",
+        "tendency": "동료들과 협력하며[T] 우주선의 궤도를[V] 날카로운 논리로 분석해[A] 우주 탐사에 응용[P]",
+        "achievement": "NASA에서 머큐리와 아폴로 임무의 궤도 계산을 수행했고, 아폴로 11호 달 착륙과 아폴로 13호 귀환에 기여했습니다.",
     },
     "TNIR": {
         "number": 13,
@@ -385,8 +385,8 @@ TYPE_DATA = {
         "person": "폴 에르되시",
         "quote": "전 세계를 돌아다닌 수학 배낭여행자!",
         "description": "다른 사람과 문제를 주고받으며 숫자 세계의 새로운 아이디어를 찾아내는 유형입니다. 직관적인 패턴 감각이 좋고, 순수한 탐구 자체에서 에너지를 얻습니다.",
-        "tendency": "전 세계 학자들과 협업하며(T) 숫자의 규칙을(N) 엄청난 직관으로(I) 순수하게 탐구(R)",
-        "achievement": "조합론 및 그래프 이론의 대가",
+        "tendency": "전 세계 학자들과 협업하며[T] 숫자의 규칙을[N] 엄청난 직관으로[I] 순수하게 탐구[R]",
+        "achievement": "조합론, 그래프 이론, 수론에서 수많은 논문을 남겼고, 에르되시 수와 확률적 방법으로 협업 수학의 상징이 되었습니다.",
     },
     "TNIP": {
         "number": 14,
@@ -394,8 +394,8 @@ TYPE_DATA = {
         "person": "존 폰 노이만",
         "quote": "컴퓨터 구조를 처음 만든 아이디어 뱅크!",
         "description": "팀과 함께 복잡한 계산 아이디어를 빠르게 떠올리고 실제 시스템으로 연결하는 유형입니다. 수치적 직관과 응용 감각이 모두 강합니다.",
-        "tendency": "거대한 팀을 이끌며(T) 엄청난 연산을(N) 직관적으로 처리해(I) 컴퓨터와 경제학에 응용(P)",
-        "achievement": "게임 이론 창시 및 현대 컴퓨터 구조 설계",
+        "tendency": "거대한 팀을 이끌며[T] 엄청난 연산을[N] 직관적으로 처리해[I] 컴퓨터와 경제학에 응용[P]",
+        "achievement": "게임 이론, 폰 노이만 구조, 셀룰러 오토마타, 양자역학의 수학적 기초 등 응용수학과 컴퓨터 과학의 기반을 세웠습니다.",
     },
     "TNAR": {
         "number": 15,
@@ -403,8 +403,8 @@ TYPE_DATA = {
         "person": "에미 뇌터",
         "quote": "우주의 대칭성을 밝혀낸 위대한 스승!",
         "description": "함께 토론하면서 수식과 구조를 엄밀하게 분석하는 유형입니다. 복잡한 개념의 핵심 원리를 정리하고, 깊은 이론으로 발전시키는 데 강합니다.",
-        "tendency": "제자들과 함께(T) 복잡한 수식을(N) 논리적으로 분석해(A) 물리학과 대수학을 탐구(R)",
-        "achievement": "뇌터의 정리, 현대 추상대수학 확립",
+        "tendency": "제자들과 함께[T] 복잡한 수식을[N] 논리적으로 분석해[A] 물리학과 대수학을 탐구[R]",
+        "achievement": "뇌터의 정리로 대칭성과 보존 법칙을 연결하고, 환과 아이디얼 이론을 발전시켜 현대 추상대수학의 기초를 세웠습니다.",
     },
     "TNAP": {
         "number": 16,
@@ -412,8 +412,8 @@ TYPE_DATA = {
         "person": "앨런 튜링",
         "quote": "생각하는 기계를 만든 암호 해독 천재!",
         "description": "팀 안에서 기호와 규칙을 논리적으로 분석해 실제 문제를 해결하는 유형입니다. 추상적인 계산 원리를 기술, 암호, 알고리즘 같은 응용으로 바꾸는 데 능합니다.",
-        "tendency": "암호 해독 팀과 협력해(T) 기호를(N) 논리적으로 분석하여(A) 전쟁을 끝내는 데 응용(P)",
-        "achievement": "튜링 기계 고안, 현대 컴퓨터 과학의 아버지",
+        "tendency": "암호 해독 팀과 협력해[T] 기호를[N] 논리적으로 분석하여[A] 전쟁을 끝내는 데 응용[P]",
+        "achievement": "튜링 기계와 계산 가능성 이론을 세우고, 제2차 세계대전 암호 해독과 인공지능 개념 형성에 결정적으로 기여했습니다.",
     },
 }
 
@@ -1058,8 +1058,14 @@ def inject_css() -> None:
             text-align: center;
         }
 
+        .result-hero {
+            width: min(100%, 840px);
+            margin: 1.5rem auto 1.8rem;
+            text-align: center;
+        }
+
         .result-title {
-            margin: 1.5rem auto 0.8rem;
+            margin: 0 auto 0.8rem;
             color: var(--ink);
             font-size: clamp(2.4rem, 7vw, 5.4rem);
             line-height: 1;
@@ -1074,7 +1080,7 @@ def inject_css() -> None:
             font-size: 1.08rem;
             line-height: 1.68;
             font-weight: 520;
-            text-align: center;
+            text-align: center !important;
         }
 
         .score-grid {
@@ -1415,30 +1421,30 @@ def inject_css() -> None:
         .personality-heading {
             display: flex;
             align-items: center;
-            gap: 1.1rem;
-            margin-bottom: 1.8rem;
+            gap: 0.9rem;
+            margin-bottom: 1.25rem;
         }
 
         .personality-number {
-            width: 4rem;
-            height: 4rem;
+            width: 3.1rem;
+            height: 3.1rem;
             display: grid;
             place-items: center;
             flex: 0 0 auto;
             border-radius: 50%;
-            border: 3px solid #e5ad29;
+            border: 2px solid #e5ad29;
             color: var(--ink);
             background: rgba(255,255,255,0.05);
             font-family: "Space Grotesk", "Noto Sans KR", sans-serif;
-            font-size: 1.7rem;
+            font-size: 1.25rem;
             font-weight: 860;
         }
 
         .personality-title {
             margin: 0;
             color: var(--ink);
-            font-size: clamp(2.1rem, 5vw, 4.4rem);
-            line-height: 1.02;
+            font-size: clamp(1.75rem, 3.2vw, 2.8rem);
+            line-height: 1.08;
             font-weight: 860;
         }
 
@@ -1965,9 +1971,9 @@ def inject_css() -> None:
             }
 
             .personality-number {
-                width: 3.1rem;
-                height: 3.1rem;
-                font-size: 1.25rem;
+                width: 2.7rem;
+                height: 2.7rem;
+                font-size: 1.08rem;
                 border-width: 2px;
             }
 
@@ -2450,15 +2456,16 @@ def render_manual_result() -> None:
     result = TYPE_DATA[type_code]
 
     render_topbar("입력 완료")
-    st.markdown(
+    render_html(
         f"""
-        <h1 class="result-title">입력한 수학 MBTI는 {escape(type_code)}</h1>
-        <p class="result-copy">
-            {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.
-            아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.
-        </p>
+        <section class="result-hero">
+            <h1 class="result-title">입력한 수학 MBTI는 {escape(type_code)}</h1>
+            <p class="result-copy">
+                {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.
+                아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.
+            </p>
+        </section>
         """,
-        unsafe_allow_html=True,
     )
     render_flip_card(type_code, result)
     render_manual_trait_profile(type_code)
@@ -2766,8 +2773,15 @@ def render_result_portrait(type_code: str, result: dict) -> str:
 
 
 def render_flip_card(type_code: str, result: dict) -> None:
-    front_title = f"{type_code} ({result['pronunciation']})"
+    front_title = f"{type_code} [{result['pronunciation']}]"
     portrait_markup = render_result_portrait(type_code, result)
+    portrait_accent = PORTRAIT_DATA.get(type_code, {}).get("accent", "#4f8cff")
+    accent_hex = portrait_accent.lstrip("#")
+    try:
+        accent_rgb = tuple(int(accent_hex[index:index + 2], 16) for index in (0, 2, 4))
+    except ValueError:
+        accent_rgb = (79, 140, 255)
+    portrait_accent_soft = f"rgba({accent_rgb[0]}, {accent_rgb[1]}, {accent_rgb[2]}, 0.22)"
     light_card_css = """
         @media (prefers-color-scheme: light) {
             :root {
@@ -2778,11 +2792,8 @@ def render_flip_card(type_code: str, result: dict) -> None:
                 box-shadow: 0 34px 94px rgba(24, 54, 92, 0.18);
             }
             .front {
-                color: #0c1728;
-                background:
-                    radial-gradient(circle at 24% 12%, rgba(0, 119, 200, 0.16), transparent 34%),
-                    radial-gradient(circle at 78% 2%, rgba(98, 82, 216, 0.12), transparent 34%),
-                    linear-gradient(145deg, #ffffff 0%, #edf6ff 52%, #dcecff 100%);
+                color: var(--front-ink);
+                background: var(--front-bg);
             }
             .back {
                 color: #f6fbff;
@@ -2792,17 +2803,19 @@ def render_flip_card(type_code: str, result: dict) -> None:
                     linear-gradient(145deg, #0c1728, #173457 52%, #005bac);
             }
             .kicker {
-                color: rgba(31, 48, 74, 0.58);
+                color: var(--front-muted);
             }
             .type {
-                color: #0c1728;
+                color: var(--front-ink);
             }
             .person {
-                color: rgba(31, 48, 74, 0.72);
+                color: var(--front-muted-strong);
             }
             .quote {
-                color: #0c1728;
-                text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+                color: var(--front-ink);
+                text-shadow:
+                    0 1px 0 rgba(255,255,255,0.62),
+                    0 14px 34px rgba(68, 92, 132, 0.18);
             }
         }
     """
@@ -2816,6 +2829,18 @@ def render_flip_card(type_code: str, result: dict) -> None:
 
         :root {{
             color-scheme: dark;
+            --card-accent: {portrait_accent};
+            --front-ink: #091528;
+            --front-muted: rgba(48, 63, 86, 0.62);
+            --front-muted-strong: rgba(48, 63, 86, 0.78);
+            --front-bg-top: #f8fbff;
+            --front-bg-mid: #e9f3ff;
+            --front-bg-bottom: #d7e8ff;
+            --portrait-edge: rgba(220, 234, 255, 0.96);
+            --front-bg:
+                radial-gradient(circle at 20% 10%, rgba(255,255,255,0.96), transparent 28%),
+                radial-gradient(circle at 82% 2%, {portrait_accent_soft}, transparent 34%),
+                linear-gradient(150deg, var(--front-bg-top) 0%, var(--front-bg-mid) 48%, var(--front-bg-bottom) 100%);
         }}
 
         * {{
@@ -2870,11 +2895,8 @@ def render_flip_card(type_code: str, result: dict) -> None:
         }}
         .front {{
             padding: 2rem;
-            color: #f6fbff;
-            background:
-                radial-gradient(circle at 24% 12%, rgba(110, 231, 255, 0.24), transparent 34%),
-                radial-gradient(circle at 78% 2%, rgba(167, 139, 250, 0.22), transparent 34%),
-                linear-gradient(145deg, #0a1020 0%, #121c33 52%, #0b1729 100%);
+            color: var(--front-ink);
+            background: var(--front-bg);
         }}
         .portrait-wrap {{
             position: absolute;
@@ -2889,9 +2911,26 @@ def render_flip_card(type_code: str, result: dict) -> None:
             pointer-events: none;
             overflow: hidden;
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 28px 72px rgba(0, 0, 0, 0.3);
+            border: 0;
+            background:
+                radial-gradient(circle at 50% 42%, rgba(255,255,255,0.34), transparent 42%),
+                linear-gradient(160deg, var(--front-bg-mid), var(--front-bg-bottom));
+            box-shadow:
+                0 24px 58px rgba(72, 104, 158, 0.16),
+                inset 0 0 38px rgba(255,255,255,0.48);
+            isolation: isolate;
+        }}
+        .portrait-wrap::after {{
+            content: "";
+            position: absolute;
+            inset: -2px;
+            z-index: 2;
+            pointer-events: none;
+            border-radius: 32px;
+            box-shadow:
+                inset 0 0 36px 32px var(--portrait-edge),
+                inset 0 -34px 46px 14px var(--front-bg-bottom),
+                inset 0 28px 42px 8px rgba(248,251,255,0.74);
         }}
         .portrait-image,
         .portrait-svg {{
@@ -2902,6 +2941,8 @@ def render_flip_card(type_code: str, result: dict) -> None:
         .portrait-image {{
             object-fit: cover;
             object-position: center top;
+            border-radius: 30px;
+            filter: saturate(1.02) contrast(1.01);
         }}
         .portrait-missing {{
             width: 100%;
@@ -2926,7 +2967,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
             word-break: break-all;
         }}
         .back {{
-            padding: 2rem;
+            padding: 1.7rem;
             transform: rotateY(180deg);
             color: #f6fbff;
             background:
@@ -2937,7 +2978,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
         .kicker {{
             position: relative;
             z-index: 2;
-            color: rgba(223,232,246,0.58);
+            color: var(--front-muted);
             font-size: 0.92rem;
             font-weight: 760;
         }}
@@ -2945,7 +2986,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
             position: relative;
             z-index: 2;
             margin-top: 0.35rem;
-            color: #f6fbff;
+            color: var(--front-ink);
             font-size: 2.35rem;
             line-height: 1;
             font-weight: 860;
@@ -2953,7 +2994,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
         .person {{
             position: relative;
             z-index: 2;
-            color: rgba(223,232,246,0.72);
+            color: var(--front-muted-strong);
             font-size: 1.18rem;
             font-weight: 720;
             margin-top: 0.6rem;
@@ -2962,44 +3003,52 @@ def render_flip_card(type_code: str, result: dict) -> None:
             position: relative;
             z-index: 3;
             margin-top: auto;
-            padding-top: 16.5rem;
-            color: #f6fbff;
-            font-size: 1.56rem;
-            line-height: 1.22;
+            padding-top: 16rem;
+            color: var(--front-ink);
+            font-size: clamp(1.24rem, 4.5vw, 1.48rem);
+            line-height: 1.28;
             font-weight: 820;
-            text-shadow: 0 18px 44px rgba(0,0,0,0.3);
+            text-shadow:
+                0 1px 0 rgba(255,255,255,0.62),
+                0 14px 34px rgba(68, 92, 132, 0.18);
+            word-break: keep-all;
+            overflow-wrap: normal;
+            text-wrap: balance;
+            line-break: strict;
         }}
         .back-title {{
-            font-size: 2.1rem;
+            font-size: 1.82rem;
             line-height: 1.08;
             font-weight: 840;
         }}
         .back-code {{
             color: rgba(255,255,255,0.64);
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 720;
-            margin-bottom: 0.7rem;
+            margin-bottom: 0.58rem;
         }}
         .info-block {{
-            padding: 1.15rem;
-            border-radius: 22px;
+            padding: 0.95rem;
+            border-radius: 18px;
             background: rgba(255,255,255,0.075);
             border: 1px solid rgba(255,255,255,0.12);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            margin-top: 1rem;
+            margin-top: 0.72rem;
         }}
         .info-label {{
             color: rgba(255,255,255,0.62);
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             font-weight: 760;
-            margin-bottom: 0.45rem;
+            margin-bottom: 0.36rem;
         }}
         .info-text {{
             color: rgba(255,255,255,0.94);
-            font-size: 1.05rem;
-            line-height: 1.58;
+            font-size: 0.92rem;
+            line-height: 1.46;
             font-weight: 560;
+            word-break: keep-all;
+            line-break: strict;
         }}
         .number {{
             align-self: flex-start;
@@ -3137,9 +3186,9 @@ def render_percentage_bars(scores: dict, type_code: str) -> None:
                 </div>
                 <aside class="trait-summary">
                     {image_markup}
-                    <div class="trait-summary-kicker">여러분의 수학 유형:</div>
+                    <div class="trait-summary-kicker">당신의 성격 유형:</div>
                     <div class="trait-summary-title">{escape(result["person"])}</div>
-                    <div class="trait-summary-code">{escape(type_code)} ({escape(result["pronunciation"])})</div>
+                    <div class="trait-summary-code">{escape(type_code)} [{escape(result["pronunciation"])}]</div>
                     <div class="trait-summary-desc">{escape(result["description"])}</div>
                 </aside>
             </div>
@@ -3185,9 +3234,9 @@ def render_manual_trait_profile(type_code: str) -> None:
                 </div>
                 <aside class="trait-summary">
                     {image_markup}
-                    <div class="trait-summary-kicker">입력한 수학 유형:</div>
+                    <div class="trait-summary-kicker">당신의 성격 유형:</div>
                     <div class="trait-summary-title">{escape(result["person"])}</div>
-                    <div class="trait-summary-code">{escape(type_code)} ({escape(result["pronunciation"])})</div>
+                    <div class="trait-summary-code">{escape(type_code)} [{escape(result["pronunciation"])}]</div>
                     <div class="trait-summary-desc">{escape(result["description"])}</div>
                 </aside>
             </div>
@@ -3242,7 +3291,7 @@ def render_type_descriptions(type_code: str) -> None:
     for code, data in sorted_types:
         active_class = " active" if code == type_code else ""
         badge = "내 결과" if code == type_code else f'Card {data["number"]:02d}'
-        title = f"{code} ({data['pronunciation']})"
+        title = f"{code} [{data['pronunciation']}]"
         cards.append(
             f"""
             <div class="type-detail-card{active_class}">
@@ -3286,15 +3335,16 @@ def render_result() -> None:
     result = TYPE_DATA[type_code]
 
     render_topbar()
-    st.markdown(
+    render_html(
         f"""
-        <h1 class="result-title">당신의 수학 MBTI는 {escape(type_code)}</h1>
-        <p class="result-copy">
-            {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.
-            아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.
-        </p>
+        <section class="result-hero">
+            <h1 class="result-title">당신의 수학 MBTI는 {escape(type_code)}</h1>
+            <p class="result-copy">
+                {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.
+                아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.
+            </p>
+        </section>
         """,
-        unsafe_allow_html=True,
     )
     render_flip_card(type_code, result)
     render_percentage_bars(scores, type_code)
