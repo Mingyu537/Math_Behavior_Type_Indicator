@@ -433,7 +433,6 @@ def initialize_state() -> None:
         "screen": "home",
         "current_question": 0,
         "answers": {},
-        "theme_mode": "dark",
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -447,6 +446,7 @@ def inject_css() -> None:
         @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
         :root {
+            color-scheme: dark;
             --ink: #f6fbff;
             --muted: rgba(223, 232, 246, 0.68);
             --quiet: rgba(223, 232, 246, 0.46);
@@ -1215,15 +1215,16 @@ def inject_css() -> None:
             white-space: nowrap !important;
         }
 
+        .stButton > button:not([kind="primary"]):not([data-testid="stBaseButton-primary"]),
         .stButton > button[kind="secondary"],
         .stButton > button[data-testid="stBaseButton-secondary"] {
             min-height: 3.85rem !important;
             border-radius: 20px !important;
-            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            border: 1px solid rgba(255, 255, 255, 0.24) !important;
             background:
-                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.16), transparent 34%),
-                linear-gradient(145deg, rgba(255,255,255,0.115), rgba(255,255,255,0.038)) !important;
-            color: rgba(248, 252, 255, 0.96) !important;
+                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.13), transparent 34%),
+                linear-gradient(145deg, rgba(17, 27, 48, 0.94), rgba(8, 14, 28, 0.86)) !important;
+            color: #ffffff !important;
             font-size: 1rem !important;
             font-weight: 780 !important;
             text-shadow: 0 1px 12px rgba(0, 0, 0, 0.26) !important;
@@ -1234,12 +1235,13 @@ def inject_css() -> None:
             -webkit-backdrop-filter: blur(18px) saturate(1.22) !important;
         }
 
+        .stButton > button:not([kind="primary"]):not([data-testid="stBaseButton-primary"]):hover,
         .stButton > button[kind="secondary"]:hover,
         .stButton > button[data-testid="stBaseButton-secondary"]:hover {
             border-color: rgba(110, 231, 255, 0.38) !important;
             background:
-                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.22), transparent 34%),
-                linear-gradient(145deg, rgba(110,231,255,0.16), rgba(255,255,255,0.055)) !important;
+                radial-gradient(circle at 18% 12%, rgba(110, 231, 255, 0.2), transparent 34%),
+                linear-gradient(145deg, rgba(19, 36, 65, 0.96), rgba(9, 18, 35, 0.9)) !important;
             color: #ffffff !important;
             transform: translateY(-3px) !important;
             box-shadow:
@@ -1399,11 +1401,12 @@ def inject_css() -> None:
         unsafe_allow_html=True,
     )
 
-    if st.session_state.get("theme_mode") == "light":
-        st.markdown(
-            """
-            <style>
+    st.markdown(
+        """
+        <style>
+        @media (prefers-color-scheme: light) {
             :root {
+                color-scheme: light;
                 --ink: #0c1728;
                 --muted: rgba(31, 48, 74, 0.68);
                 --quiet: rgba(31, 48, 74, 0.48);
@@ -1557,6 +1560,7 @@ def inject_css() -> None:
                 color: #005bac;
             }
 
+            .stButton > button:not([kind="primary"]):not([data-testid="stBaseButton-primary"]),
             .stButton > button[kind="secondary"],
             .stButton > button[data-testid="stBaseButton-secondary"] {
                 border-color: rgba(20, 45, 82, 0.14) !important;
@@ -1570,6 +1574,7 @@ def inject_css() -> None:
                     inset 0 1px 0 rgba(255,255,255,0.65) !important;
             }
 
+            .stButton > button:not([kind="primary"]):not([data-testid="stBaseButton-primary"]):hover,
             .stButton > button[kind="secondary"]:hover,
             .stButton > button[data-testid="stBaseButton-secondary"]:hover {
                 border-color: rgba(0, 91, 172, 0.28) !important;
@@ -1594,10 +1599,11 @@ def inject_css() -> None:
                 background: rgba(20, 45, 82, 0.045) !important;
                 color: rgba(31, 48, 74, 0.34) !important;
             }
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def render_home() -> None:
@@ -1648,18 +1654,6 @@ def render_footer() -> None:
         """,
         unsafe_allow_html=True,
     )
-
-
-def render_theme_toggle() -> None:
-    current_mode = st.session_state.get("theme_mode", "dark")
-    next_mode = "light" if current_mode == "dark" else "dark"
-    label = "Light mode" if current_mode == "dark" else "Dark mode"
-
-    st.markdown('<div class="theme-toggle-row">', unsafe_allow_html=True)
-    if st.button(label, key="theme_toggle_button"):
-        st.session_state.theme_mode = next_mode
-        rerun()
-    st.markdown("</div>", unsafe_allow_html=True)
 
 
 def render_topbar() -> None:
@@ -1933,14 +1927,17 @@ def render_portrait_svg(type_code: str, result: dict) -> str:
     """
 
 
-@st.cache_data(show_spinner=False)
 def image_data_uri(type_code: str) -> str:
     image_file = TYPE_IMAGE_FILES.get(type_code)
     if not image_file:
         return ""
 
-    image_path = FIGURE_DIR / image_file
-    if not image_path.exists():
+    candidate_paths = [
+        FIGURE_DIR / image_file,
+        Path.cwd() / "assets" / "figures" / image_file,
+    ]
+    image_path = next((path for path in candidate_paths if path.exists()), None)
+    if image_path is None:
         return ""
 
     encoded = base64.b64encode(image_path.read_bytes()).decode("ascii")
@@ -1954,52 +1951,56 @@ def render_result_portrait(type_code: str, result: dict) -> str:
             f'<img class="portrait-image" src="{data_uri}" '
             f'alt="{escape(result["person"])} 결과 이미지">'
         )
-    return render_portrait_svg(type_code, result)
+    missing_file = TYPE_IMAGE_FILES.get(type_code, "unknown.png")
+    return (
+        '<div class="portrait-missing">'
+        '<strong>이미지 파일을 찾을 수 없습니다.</strong>'
+        f'<span>assets/figures/{escape(missing_file)}</span>'
+        '</div>'
+    )
 
 
 def render_flip_card(type_code: str, result: dict) -> None:
     front_title = f"{type_code} ({result['pronunciation']})"
     portrait_markup = render_result_portrait(type_code, result)
     light_card_css = """
-        .side {
-            border-color: rgba(20, 45, 82, 0.12);
-            box-shadow: 0 34px 94px rgba(24, 54, 92, 0.18);
+        @media (prefers-color-scheme: light) {
+            :root {
+                color-scheme: light;
+            }
+            .side {
+                border-color: rgba(20, 45, 82, 0.12);
+                box-shadow: 0 34px 94px rgba(24, 54, 92, 0.18);
+            }
+            .front {
+                color: #0c1728;
+                background:
+                    radial-gradient(circle at 24% 12%, rgba(0, 119, 200, 0.16), transparent 34%),
+                    radial-gradient(circle at 78% 2%, rgba(98, 82, 216, 0.12), transparent 34%),
+                    linear-gradient(145deg, #ffffff 0%, #edf6ff 52%, #dcecff 100%);
+            }
+            .back {
+                color: #f6fbff;
+                background:
+                    radial-gradient(circle at 22% 15%, rgba(0, 119, 200, 0.32), transparent 32%),
+                    radial-gradient(circle at 80% 88%, rgba(98, 82, 216, 0.24), transparent 34%),
+                    linear-gradient(145deg, #0c1728, #173457 52%, #005bac);
+            }
+            .kicker {
+                color: rgba(31, 48, 74, 0.58);
+            }
+            .type {
+                color: #0c1728;
+            }
+            .person {
+                color: rgba(31, 48, 74, 0.72);
+            }
+            .quote {
+                color: #0c1728;
+                text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+            }
         }
-        .front {
-            color: #0c1728;
-            background:
-                radial-gradient(circle at 24% 12%, rgba(0, 119, 200, 0.16), transparent 34%),
-                radial-gradient(circle at 78% 2%, rgba(98, 82, 216, 0.12), transparent 34%),
-                linear-gradient(145deg, #ffffff 0%, #edf6ff 52%, #dcecff 100%);
-        }
-        .front::before {
-            background:
-                radial-gradient(circle at 50% 18%, rgba(255,255,255,0.82), transparent 34%),
-                linear-gradient(145deg, rgba(255,255,255,0.88), rgba(185,218,255,0.66) 48%, rgba(98,82,216,0.18));
-            border-color: rgba(20, 45, 82, 0.1);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 30px 64px rgba(0, 91, 172, 0.14);
-        }
-        .back {
-            color: #f6fbff;
-            background:
-                radial-gradient(circle at 22% 15%, rgba(0, 119, 200, 0.32), transparent 32%),
-                radial-gradient(circle at 80% 88%, rgba(98, 82, 216, 0.24), transparent 34%),
-                linear-gradient(145deg, #0c1728, #173457 52%, #005bac);
-        }
-        .kicker {
-            color: rgba(31, 48, 74, 0.58);
-        }
-        .type {
-            color: #0c1728;
-        }
-        .person {
-            color: rgba(31, 48, 74, 0.72);
-        }
-        .quote {
-            color: #0c1728;
-            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-        }
-    """ if st.session_state.get("theme_mode") == "light" else ""
+    """
     card_html = f"""
     <!doctype html>
     <html lang="ko">
@@ -2007,6 +2008,10 @@ def render_flip_card(type_code: str, result: dict) -> None:
     <meta charset="utf-8">
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+        :root {{
+            color-scheme: dark;
+        }}
 
         * {{
             box-sizing: border-box;
@@ -2066,36 +2071,22 @@ def render_flip_card(type_code: str, result: dict) -> None:
                 radial-gradient(circle at 78% 2%, rgba(167, 139, 250, 0.22), transparent 34%),
                 linear-gradient(145deg, #0a1020 0%, #121c33 52%, #0b1729 100%);
         }}
-        .front::before {{
-            content: "";
-            position: absolute;
-            width: 300px;
-            height: 328px;
-            left: 50%;
-            top: 51%;
-            transform: translate(-50%, -50%) rotate(5deg);
-            border-radius: 45% 45% 38% 38%;
-            background:
-                radial-gradient(circle at 50% 18%, rgba(255,255,255,0.26), transparent 34%),
-                linear-gradient(145deg, rgba(110,231,255,0.28), rgba(79,140,255,0.18) 48%, rgba(167,139,250,0.2));
-            border: 1px solid rgba(255,255,255,0.12);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 30px 70px rgba(79, 140, 255, 0.14);
-        }}
         .portrait-wrap {{
             position: absolute;
             left: 50%;
-            top: 52%;
+            top: 53%;
             z-index: 1;
-            width: 292px;
-            height: 342px;
+            width: min(342px, 82vw);
+            height: 386px;
             transform: translate(-50%, -50%);
             display: grid;
             place-items: center;
             pointer-events: none;
             overflow: hidden;
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 28px 72px rgba(0, 0, 0, 0.3);
         }}
         .portrait-image,
         .portrait-svg {{
@@ -2106,6 +2097,28 @@ def render_flip_card(type_code: str, result: dict) -> None:
         .portrait-image {{
             object-fit: cover;
             object-position: center top;
+        }}
+        .portrait-missing {{
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            gap: 0.4rem;
+            padding: 1.2rem;
+            text-align: center;
+            color: #f6fbff;
+            background: rgba(239, 68, 68, 0.22);
+            font-family: "Noto Sans KR", sans-serif;
+            line-height: 1.45;
+        }}
+        .portrait-missing strong,
+        .portrait-missing span {{
+            display: block;
+        }}
+        .portrait-missing span {{
+            color: rgba(255,255,255,0.72);
+            font-size: 0.88rem;
+            word-break: break-all;
         }}
         .back {{
             padding: 2rem;
@@ -2348,7 +2361,6 @@ def main() -> None:
     )
     initialize_state()
     inject_css()
-    render_theme_toggle()
 
     if st.session_state.screen == "home":
         render_home()
