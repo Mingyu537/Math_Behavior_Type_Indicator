@@ -2459,9 +2459,9 @@ def render_manual_result() -> None:
     render_html(
         f"""
         <section class="result-hero">
-            <h1 class="result-title">입력한 수학 MBTI는 {escape(type_code)}</h1>
+            <h1 class="result-title">당신의 MBTI는 {escape(type_code)}</h1>
             <p class="result-copy">
-                {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.
+                {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다. <br>
                 아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.
             </p>
         </section>
