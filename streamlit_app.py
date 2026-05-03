@@ -1,4 +1,6 @@
+import base64
 from html import escape
+from pathlib import Path
 
 import streamlit as st
 import streamlit.components.v1 as components
@@ -7,6 +9,27 @@ import streamlit.components.v1 as components
 APP_TITLE = "MBTI"
 APP_SUBTITLE = "Mathematics Behavior Type Indicator"
 TOTAL_QUESTIONS = 12
+FIGURE_DIR = Path(__file__).resolve().parent / "assets" / "figures"
+
+
+TYPE_IMAGE_FILES = {
+    "SVIR": "poincare.png",
+    "SVIP": "archimedes.png",
+    "SVAR": "descartes.png",
+    "SVAP": "mandelbrot.png",
+    "SNIR": "ramanujan.png",
+    "SNIP": "pascal.png",
+    "SNAR": "godel.png",
+    "SNAP": "newton.png",
+    "TVIR": "euler.png",
+    "TVIP": "pythagoras.png",
+    "TVAR": "hilbert.png",
+    "TVAP": "katherine_johnson.png",
+    "TNIR": "erdos.png",
+    "TNIP": "von_neumann.png",
+    "TNAR": "noether.png",
+    "TNAP": "turing.png",
+}
 
 
 LIKERT_OPTIONS = [
@@ -410,6 +433,7 @@ def initialize_state() -> None:
         "screen": "home",
         "current_question": 0,
         "answers": {},
+        "theme_mode": "dark",
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -700,6 +724,25 @@ def inject_css() -> None:
             color: rgba(223, 232, 246, 0.48);
             font-size: 0.9rem;
             font-weight: 300;
+        }
+
+        .theme-toggle-row {
+            max-width: 1180px;
+            margin: 0 auto 0.9rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .theme-toggle-row .stButton {
+            width: min(190px, 46vw);
+        }
+
+        .theme-toggle-row .stButton > button {
+            min-height: 2.7rem !important;
+            border-radius: 999px !important;
+            font-size: 0.88rem !important;
+            font-weight: 760 !important;
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18) !important;
         }
 
         .experience-shell {
@@ -1356,6 +1399,206 @@ def inject_css() -> None:
         unsafe_allow_html=True,
     )
 
+    if st.session_state.get("theme_mode") == "light":
+        st.markdown(
+            """
+            <style>
+            :root {
+                --ink: #0c1728;
+                --muted: rgba(31, 48, 74, 0.68);
+                --quiet: rgba(31, 48, 74, 0.48);
+                --panel: rgba(255, 255, 255, 0.72);
+                --panel-strong: rgba(255, 255, 255, 0.92);
+                --line: rgba(20, 45, 82, 0.12);
+                --cyan: #0077c8;
+                --blue: #005bac;
+                --violet: #6252d8;
+                --lime: #43bf76;
+                --shadow: rgba(24, 54, 92, 0.16);
+            }
+
+            .stApp {
+                background:
+                    radial-gradient(circle at 14% -8%, rgba(0, 91, 172, 0.18), transparent 34%),
+                    radial-gradient(circle at 86% 4%, rgba(98, 82, 216, 0.12), transparent 32%),
+                    linear-gradient(180deg, #f8fbff 0%, #edf6ff 42%, #ffffff 100%);
+                color: var(--ink);
+            }
+
+            .home-wrap {
+                background:
+                    radial-gradient(circle at 50% 48%, rgba(0, 91, 172, 0.14), transparent 30%),
+                    radial-gradient(circle at 28% 28%, rgba(0, 119, 200, 0.16), transparent 36%),
+                    radial-gradient(circle at 74% 28%, rgba(98, 82, 216, 0.12), transparent 35%),
+                    linear-gradient(180deg, #f8fbff 0%, #edf6ff 52%, #ffffff 100%);
+            }
+
+            .home-wrap::before {
+                background:
+                    conic-gradient(from 138deg at 50% 50%, transparent 0deg, rgba(0, 119, 200, 0.14) 54deg, transparent 116deg, rgba(98, 82, 216, 0.12) 174deg, transparent 236deg, rgba(67, 191, 118, 0.1) 296deg, transparent 360deg);
+                opacity: 0.92;
+            }
+
+            .home-wrap::after {
+                background:
+                    linear-gradient(rgba(0,91,172,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,91,172,0.044) 1px, transparent 1px);
+                mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 18%, rgba(0,0,0,0.18) 72%, transparent 100%);
+                -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 18%, rgba(0,0,0,0.18) 72%, transparent 100%);
+            }
+
+            .home-title {
+                background: linear-gradient(180deg, #06111f 0%, #005bac 54%, #6252d8 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                filter: drop-shadow(0 28px 64px rgba(0, 91, 172, 0.18));
+            }
+
+            .home-subtitle {
+                color: rgba(12, 23, 40, 0.92);
+            }
+
+            .home-copy,
+            .app-footer,
+            .footer-school {
+                color: rgba(31, 48, 74, 0.66);
+            }
+
+            .footer-credit {
+                color: rgba(12, 23, 40, 0.78);
+            }
+
+            .footer-motto {
+                color: rgba(31, 48, 74, 0.48);
+            }
+
+            .orbital-frame {
+                border-color: rgba(0, 91, 172, 0.16);
+                box-shadow:
+                    inset 0 0 70px rgba(0, 119, 200, 0.05),
+                    0 0 110px rgba(0, 91, 172, 0.08);
+            }
+
+            .data-ribbon {
+                background: linear-gradient(90deg, transparent, rgba(0, 119, 200, 0.4), rgba(98, 82, 216, 0.28), transparent);
+                box-shadow: 0 0 38px rgba(0, 91, 172, 0.18);
+            }
+
+            .signal-node,
+            .mesh-chip,
+            .topbar,
+            .endpoint-card,
+            .score-card,
+            .axis-guide-card {
+                background:
+                    linear-gradient(145deg, rgba(255,255,255,0.82), rgba(255,255,255,0.44)) !important;
+                border-color: rgba(20, 45, 82, 0.12) !important;
+                box-shadow: 0 24px 70px rgba(24, 54, 92, 0.13) !important;
+            }
+
+            .topbar {
+                color: rgba(12, 23, 40, 0.84);
+            }
+
+            .progress-text {
+                color: rgba(31, 48, 74, 0.58);
+            }
+
+            .endpoint-card.right,
+            .axis-guide-card.active {
+                background:
+                    radial-gradient(circle at 96% 0%, rgba(98, 82, 216, 0.12), transparent 42%),
+                    linear-gradient(145deg, rgba(255,255,255,0.86), rgba(255,255,255,0.46)) !important;
+            }
+
+            .brand-text span {
+                color: rgba(31, 48, 74, 0.52) !important;
+            }
+
+            .brand-dot,
+            .choice-card.selected .choice-code,
+            .axis-guide-card.active .axis-guide-code {
+                color: #ffffff !important;
+                background: linear-gradient(135deg, #005bac, #0077c8) !important;
+            }
+
+            .progress-track,
+            .score-track {
+                background: rgba(20, 45, 82, 0.09);
+                box-shadow: inset 0 0 0 1px rgba(20, 45, 82, 0.06);
+            }
+
+            .choice-card,
+            .endpoint-card,
+            .score-card,
+            .axis-guide-card {
+                backdrop-filter: blur(18px) saturate(1.08);
+                -webkit-backdrop-filter: blur(18px) saturate(1.08);
+            }
+
+            .choice-code,
+            .endpoint-code,
+            .axis-guide-code {
+                background: rgba(0, 91, 172, 0.08);
+                color: var(--ink);
+            }
+
+            .choice-card.selected {
+                border-color: rgba(0, 91, 172, 0.22);
+                box-shadow: 0 24px 60px rgba(0, 91, 172, 0.16);
+                background:
+                    radial-gradient(circle at top right, rgba(0,119,200,0.12), transparent 38%),
+                    rgba(255,255,255,0.88);
+            }
+
+            .likert-selected {
+                background: rgba(0, 91, 172, 0.08);
+                border-color: rgba(0, 91, 172, 0.14);
+                color: #005bac;
+            }
+
+            .stButton > button[kind="secondary"],
+            .stButton > button[data-testid="stBaseButton-secondary"] {
+                border-color: rgba(20, 45, 82, 0.14) !important;
+                background:
+                    radial-gradient(circle at 18% 12%, rgba(255,255,255,0.9), transparent 34%),
+                    linear-gradient(145deg, rgba(255,255,255,0.76), rgba(255,255,255,0.38)) !important;
+                color: #0c1728 !important;
+                text-shadow: none !important;
+                box-shadow:
+                    0 18px 46px rgba(24, 54, 92, 0.12),
+                    inset 0 1px 0 rgba(255,255,255,0.65) !important;
+            }
+
+            .stButton > button[kind="secondary"]:hover,
+            .stButton > button[data-testid="stBaseButton-secondary"]:hover {
+                border-color: rgba(0, 91, 172, 0.28) !important;
+                background:
+                    radial-gradient(circle at 18% 12%, rgba(255,255,255,0.96), transparent 34%),
+                    linear-gradient(145deg, rgba(230,244,255,0.86), rgba(255,255,255,0.5)) !important;
+                color: #005bac !important;
+            }
+
+            .stButton > button[kind="primary"],
+            .stButton > button[data-testid="stBaseButton-primary"] {
+                color: #ffffff !important;
+                background:
+                    radial-gradient(circle at 22% 18%, rgba(255,255,255,0.32), transparent 30%),
+                    linear-gradient(135deg, #005bac 0%, #0077c8 54%, #6252d8 100%) !important;
+                box-shadow: 0 22px 58px rgba(0, 91, 172, 0.24), inset 0 1px 0 rgba(255,255,255,0.28) !important;
+            }
+
+            .stButton > button:disabled,
+            .stButton > button[disabled] {
+                border-color: rgba(20, 45, 82, 0.08) !important;
+                background: rgba(20, 45, 82, 0.045) !important;
+                color: rgba(31, 48, 74, 0.34) !important;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+
 
 def render_home() -> None:
     st.markdown(
@@ -1386,7 +1629,7 @@ def render_home() -> None:
         unsafe_allow_html=True,
     )
     st.markdown('<div class="start-zone">', unsafe_allow_html=True)
-    if st.button("테스트 시작하기", use_container_width=True):
+    if st.button("테스트 시작하기", use_container_width=True, type="primary"):
         st.session_state.screen = "quiz"
         st.session_state.current_question = 0
         st.session_state.answers = {}
@@ -1405,6 +1648,18 @@ def render_footer() -> None:
         """,
         unsafe_allow_html=True,
     )
+
+
+def render_theme_toggle() -> None:
+    current_mode = st.session_state.get("theme_mode", "dark")
+    next_mode = "light" if current_mode == "dark" else "dark"
+    label = "Light mode" if current_mode == "dark" else "Dark mode"
+
+    st.markdown('<div class="theme-toggle-row">', unsafe_allow_html=True)
+    if st.button(label, key="theme_toggle_button"):
+        st.session_state.theme_mode = next_mode
+        rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 def render_topbar() -> None:
@@ -1678,9 +1933,73 @@ def render_portrait_svg(type_code: str, result: dict) -> str:
     """
 
 
+@st.cache_data(show_spinner=False)
+def image_data_uri(type_code: str) -> str:
+    image_file = TYPE_IMAGE_FILES.get(type_code)
+    if not image_file:
+        return ""
+
+    image_path = FIGURE_DIR / image_file
+    if not image_path.exists():
+        return ""
+
+    encoded = base64.b64encode(image_path.read_bytes()).decode("ascii")
+    return f"data:image/png;base64,{encoded}"
+
+
+def render_result_portrait(type_code: str, result: dict) -> str:
+    data_uri = image_data_uri(type_code)
+    if data_uri:
+        return (
+            f'<img class="portrait-image" src="{data_uri}" '
+            f'alt="{escape(result["person"])} 결과 이미지">'
+        )
+    return render_portrait_svg(type_code, result)
+
+
 def render_flip_card(type_code: str, result: dict) -> None:
     front_title = f"{type_code} ({result['pronunciation']})"
-    portrait_svg = render_portrait_svg(type_code, result)
+    portrait_markup = render_result_portrait(type_code, result)
+    light_card_css = """
+        .side {
+            border-color: rgba(20, 45, 82, 0.12);
+            box-shadow: 0 34px 94px rgba(24, 54, 92, 0.18);
+        }
+        .front {
+            color: #0c1728;
+            background:
+                radial-gradient(circle at 24% 12%, rgba(0, 119, 200, 0.16), transparent 34%),
+                radial-gradient(circle at 78% 2%, rgba(98, 82, 216, 0.12), transparent 34%),
+                linear-gradient(145deg, #ffffff 0%, #edf6ff 52%, #dcecff 100%);
+        }
+        .front::before {
+            background:
+                radial-gradient(circle at 50% 18%, rgba(255,255,255,0.82), transparent 34%),
+                linear-gradient(145deg, rgba(255,255,255,0.88), rgba(185,218,255,0.66) 48%, rgba(98,82,216,0.18));
+            border-color: rgba(20, 45, 82, 0.1);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 30px 64px rgba(0, 91, 172, 0.14);
+        }
+        .back {
+            color: #f6fbff;
+            background:
+                radial-gradient(circle at 22% 15%, rgba(0, 119, 200, 0.32), transparent 32%),
+                radial-gradient(circle at 80% 88%, rgba(98, 82, 216, 0.24), transparent 34%),
+                linear-gradient(145deg, #0c1728, #173457 52%, #005bac);
+        }
+        .kicker {
+            color: rgba(31, 48, 74, 0.58);
+        }
+        .type {
+            color: #0c1728;
+        }
+        .person {
+            color: rgba(31, 48, 74, 0.72);
+        }
+        .quote {
+            color: #0c1728;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+        }
+    """ if st.session_state.get("theme_mode") == "light" else ""
     card_html = f"""
     <!doctype html>
     <html lang="ko">
@@ -1767,17 +2086,26 @@ def render_flip_card(type_code: str, result: dict) -> None:
             left: 50%;
             top: 52%;
             z-index: 1;
-            width: 290px;
-            height: 326px;
+            width: 292px;
+            height: 342px;
             transform: translate(-50%, -50%);
             display: grid;
             place-items: center;
             pointer-events: none;
+            overflow: hidden;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.22);
         }}
+        .portrait-image,
         .portrait-svg {{
             width: 100%;
             height: 100%;
             display: block;
+        }}
+        .portrait-image {{
+            object-fit: cover;
+            object-position: center top;
         }}
         .back {{
             padding: 2rem;
@@ -1869,6 +2197,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
                 transition: none;
             }}
         }}
+        {light_card_css}
     </style>
     </head>
     <body>
@@ -1880,7 +2209,7 @@ def render_flip_card(type_code: str, result: dict) -> None:
                         <div class="type">{escape(front_title)}</div>
                         <div class="person">{escape(result["person"])}</div>
                     </div>
-                    <div class="portrait-wrap">{portrait_svg}</div>
+                    <div class="portrait-wrap">{portrait_markup}</div>
                     <div class="quote">“{escape(result["quote"])}”</div>
                 </section>
                 <section class="side back">
@@ -2019,6 +2348,7 @@ def main() -> None:
     )
     initialize_state()
     inject_css()
+    render_theme_toggle()
 
     if st.session_state.screen == "home":
         render_home()
