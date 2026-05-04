@@ -452,6 +452,8 @@ def initialize_state() -> None:
         "current_question": 0,
         "answers": {},
         "manual_letters": {},
+        "quiz_progress_previous": 0.0,
+        "manual_progress_previous": 0.0,
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -461,10 +463,12 @@ def initialize_state() -> None:
 def reset_quiz_state() -> None:
     st.session_state.current_question = 0
     st.session_state.answers = {}
+    st.session_state.quiz_progress_previous = 0.0
 
 
 def reset_manual_state() -> None:
     st.session_state.manual_letters = {}
+    st.session_state.manual_progress_previous = 0.0
 
 
 def pair_key(left: str, right: str) -> str:
@@ -494,6 +498,19 @@ def render_html(markup: str) -> None:
         st.html(clean_markup)
     else:
         st.markdown(clean_markup, unsafe_allow_html=True)
+
+
+def progress_bar_markup(progress: float, state_key: str) -> str:
+    target = max(0.0, min(100.0, progress))
+    start = float(st.session_state.get(state_key, 0.0))
+    start = max(0.0, min(100.0, start))
+    st.session_state[state_key] = target
+
+    return (
+        '<div class="progress-track">'
+        f'<div class="progress-fill" style="--progress-start: {start:.1f}%; --progress-target: {target:.1f}%;"></div>'
+        "</div>"
+    )
 
 
 def inject_css() -> None:
@@ -529,8 +546,8 @@ def inject_css() -> None:
 
         .main .block-container {
             max-width: 1180px;
-            padding-top: 1.4rem;
-            padding-bottom: 5rem;
+            padding-top: 0.45rem;
+            padding-bottom: 2.2rem;
         }
 
         header[data-testid="stHeader"] {
@@ -752,9 +769,9 @@ def inject_css() -> None:
             color: rgba(246, 251, 255, 0.84);
             font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
                 "Apple SD Gothic Neo", sans-serif;
-            font-size: clamp(1rem, 1.9vw, 1.24rem);
+            font-size: clamp(1.18rem, 2.35vw, 1.68rem);
             line-height: 1.5;
-            font-weight: 520;
+            font-weight: 300;
             text-align: center;
         }
 
@@ -767,7 +784,7 @@ def inject_css() -> None:
 
         .app-footer {
             width: min(100%, 1760px);
-            margin: 3.2rem auto 0;
+            margin: 1.35rem auto 0;
             padding: 1.5rem clamp(1rem, 4vw, 2.5rem) 0;
             display: grid;
             grid-template-columns: minmax(150px, 1fr) minmax(260px, 520px) minmax(150px, 1fr);
@@ -866,8 +883,8 @@ def inject_css() -> None:
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            margin-bottom: 3.2rem;
-            padding: 0.9rem 1rem;
+            margin-bottom: 1.45rem;
+            padding: 0.72rem 1rem;
             border-radius: 999px;
             color: rgba(246, 251, 255, 0.86);
             background: rgba(9, 16, 32, 0.58);
@@ -916,10 +933,14 @@ def inject_css() -> None:
             max-width: 860px;
         }
 
+        .quiz-shell .question-stage {
+            margin-bottom: 1.2rem;
+        }
+
         .progress-track {
             height: 8px;
             max-width: 520px;
-            margin: 0 auto 2.4rem;
+            margin: 0 auto 1.35rem;
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.08);
             overflow: hidden;
@@ -927,10 +948,49 @@ def inject_css() -> None:
         }
 
         .progress-fill {
+            position: relative;
             height: 100%;
+            width: var(--progress-target, 0%);
             border-radius: inherit;
             background: linear-gradient(90deg, var(--cyan), var(--blue), var(--violet));
             box-shadow: 0 0 26px rgba(110, 231, 255, 0.38);
+            overflow: hidden;
+            animation: progress-fill-grow 1.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+            will-change: width, filter;
+        }
+
+        .progress-fill::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.36) 46%,
+                transparent 78%
+            );
+            transform: translateX(-120%);
+            animation: progress-sheen 1.8s ease-in-out infinite;
+            opacity: 0.72;
+        }
+
+        @keyframes progress-sheen {
+            0% { transform: translateX(-120%); }
+            58%, 100% { transform: translateX(120%); }
+        }
+
+        @keyframes progress-fill-grow {
+            from {
+                width: var(--progress-start, 0%);
+                filter: saturate(0.92) brightness(0.94);
+            }
+            68% {
+                filter: saturate(1.14) brightness(1.08);
+            }
+            to {
+                width: var(--progress-target, 0%);
+                filter: saturate(1) brightness(1);
+            }
         }
 
         .question-number {
@@ -940,12 +1000,20 @@ def inject_css() -> None:
             margin-bottom: 0.8rem;
         }
 
+        .quiz-shell .question-number {
+            margin-bottom: 0.42rem;
+        }
+
         .question-title {
             color: var(--ink);
             font-size: clamp(2.4rem, 6vw, 4.7rem);
             line-height: 1.05;
             font-weight: 820;
             margin: 0 auto;
+        }
+
+        .quiz-shell .question-title {
+            font-size: clamp(2.15rem, 5.2vw, 4.1rem);
         }
 
         .choice-grid {
@@ -1029,6 +1097,12 @@ def inject_css() -> None:
             -webkit-backdrop-filter: blur(18px);
         }
 
+        .quiz-shell .endpoint-card {
+            min-height: 146px;
+            padding: 1.15rem;
+            border-radius: 22px;
+        }
+
         .endpoint-card.right {
             background:
                 radial-gradient(circle at 96% 0%, rgba(167, 139, 250, 0.18), transparent 42%),
@@ -1044,6 +1118,10 @@ def inject_css() -> None:
             margin-bottom: 0.9rem;
         }
 
+        .quiz-shell .endpoint-topline {
+            margin-bottom: 0.55rem;
+        }
+
         .endpoint-code {
             display: inline-grid;
             place-items: center;
@@ -1054,6 +1132,11 @@ def inject_css() -> None:
             color: var(--ink);
             font-size: 1.1rem;
             font-weight: 840;
+        }
+
+        .quiz-shell .endpoint-code {
+            width: 2.35rem;
+            height: 2.35rem;
         }
 
         .endpoint-side {
@@ -1068,6 +1151,10 @@ def inject_css() -> None:
             line-height: 1.18;
             font-weight: 820;
             margin-bottom: 0.55rem;
+        }
+
+        .quiz-shell .endpoint-title {
+            margin-bottom: 0.35rem;
         }
 
         .endpoint-body {
@@ -1088,6 +1175,10 @@ def inject_css() -> None:
             font-weight: 700;
         }
 
+        .quiz-shell .likert-guide {
+            margin-bottom: 0.5rem;
+        }
+
         .likert-selected {
             max-width: 980px;
             margin: 0.85rem auto 0;
@@ -1101,12 +1192,21 @@ def inject_css() -> None:
             font-weight: 720;
         }
 
+        .quiz-shell .likert-selected {
+            margin-top: 0.55rem;
+            padding: 0.72rem 1rem;
+        }
+
         .nav-row {
             max-width: 980px;
             margin: 1.8rem auto 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.8rem;
+        }
+
+        .quiz-shell .nav-row {
+            margin-top: 1rem;
         }
 
         .result-wrap {
@@ -1674,7 +1774,7 @@ def inject_css() -> None:
         .manual-stage {
             text-align: center;
             max-width: 980px;
-            margin: 0 auto 2.2rem;
+            margin: 0 auto 1rem;
         }
 
         .manual-title {
@@ -1687,11 +1787,12 @@ def inject_css() -> None:
 
         .manual-copy {
             max-width: 680px;
-            margin: 1rem auto 1.6rem;
+            margin: 0.65rem auto 1rem;
             color: var(--muted);
             font-size: 1.05rem;
             line-height: 1.62;
             font-weight: 460;
+            text-align: center !important;
         }
 
         .manual-code-row {
@@ -1703,7 +1804,7 @@ def inject_css() -> None:
         }
 
         .manual-code-slot {
-            min-height: 5.2rem;
+            min-height: 4.25rem;
             display: grid;
             place-items: center;
             border-radius: 24px;
@@ -1735,9 +1836,13 @@ def inject_css() -> None:
             margin: 0 auto 1.6rem;
         }
 
+        .manual-card-spacer {
+            height: 0.65rem;
+        }
+
         .manual-card {
-            min-height: 212px;
-            padding: 1.2rem;
+            min-height: 178px;
+            padding: 1rem;
             border-radius: 24px;
             background:
                 linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.032)),
@@ -1760,7 +1865,7 @@ def inject_css() -> None:
             color: var(--quiet);
             font-size: 0.82rem;
             font-weight: 760;
-            margin-bottom: 0.7rem;
+            margin-bottom: 0.48rem;
         }
 
         .manual-card-title {
@@ -1768,11 +1873,11 @@ def inject_css() -> None:
             font-size: 1.3rem;
             line-height: 1.18;
             font-weight: 840;
-            margin-bottom: 1rem;
+            margin-bottom: 0.68rem;
         }
 
         .manual-option {
-            padding: 0.75rem 0;
+            padding: 0.55rem 0;
             border-top: 1px solid rgba(255,255,255,0.08);
         }
 
@@ -1790,15 +1895,15 @@ def inject_css() -> None:
         }
 
         .manual-option-desc {
-            margin-top: 0.28rem;
+            margin-top: 0.2rem;
             color: var(--muted);
-            font-size: 0.9rem;
+            font-size: 0.87rem;
             line-height: 1.45;
             font-weight: 420;
         }
 
         .stButton > button {
-            min-height: 3.65rem;
+            min-height: 3.05rem;
             border-radius: 999px;
             border: 1px solid rgba(255, 255, 255, 0.14);
             background:
@@ -1932,6 +2037,8 @@ def inject_css() -> None:
             .main .block-container {
                 padding-left: 1rem;
                 padding-right: 1rem;
+                padding-top: 0.35rem;
+                padding-bottom: 2rem;
             }
 
             .home-wrap {
@@ -1961,7 +2068,7 @@ def inject_css() -> None:
             .home-motto {
                 max-width: 330px;
                 margin: -4.7rem auto 1.2rem;
-                font-size: 0.98rem;
+                font-size: 1.12rem;
                 line-height: 1.54;
             }
 
@@ -1986,7 +2093,7 @@ def inject_css() -> None:
             }
 
             .app-footer {
-                margin-top: 2.5rem;
+                margin-top: 1.35rem;
                 padding-top: 1rem;
                 grid-template-columns: 1fr 1fr;
                 grid-template-areas:
@@ -2019,7 +2126,7 @@ def inject_css() -> None:
             }
 
             .topbar {
-                margin-bottom: 2.6rem;
+                margin-bottom: 1.3rem;
                 font-size: 0.82rem;
             }
 
@@ -2094,13 +2201,14 @@ def inject_css() -> None:
             }
 
             .manual-code-slot {
-                min-height: 4.35rem;
+                min-height: 3.8rem;
                 border-radius: 18px;
                 font-size: 1.7rem;
             }
 
             .manual-card {
                 min-height: 0;
+                padding: 1rem;
                 border-radius: 22px;
             }
         }
@@ -2537,9 +2645,7 @@ def render_manual_input() -> None:
     st.markdown(
         f"""
         <section class="manual-stage">
-            <div class="progress-track">
-                <div class="progress-fill" style="width: {progress:.1f}%;"></div>
-            </div>
+            {progress_bar_markup(progress, "manual_progress_previous")}
             <h1 class="manual-title">결과 입력하기</h1>
             <p class="manual-copy">
                 네 개의 축에서 알파벳을 하나씩 선택하면 결과 코드가 완성됩니다.
@@ -2549,7 +2655,7 @@ def render_manual_input() -> None:
         unsafe_allow_html=True,
     )
     render_manual_slots()
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown('<div class="manual-card-spacer"></div>', unsafe_allow_html=True)
 
     columns = st.columns(len(TYPE_AXIS_PAIRS), gap="small")
     for index, (column, (left, right)) in enumerate(zip(columns, TYPE_AXIS_PAIRS), start=1):
@@ -2664,15 +2770,6 @@ def selected_likert_label(value: int) -> str:
 
 def render_likert_scale(question: dict) -> None:
     selected_value = st.session_state.answers.get(question["id"])
-    st.markdown(
-        """
-        <div class="likert-guide">
-            <span>왼쪽 성향에 가까움</span>
-            <span>오른쪽 성향에 가까움</span>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
 
     columns = st.columns(len(LIKERT_OPTIONS), gap="small")
     for column, (value, title, caption) in zip(columns, LIKERT_OPTIONS):
@@ -2711,7 +2808,7 @@ def advance_to_next_question() -> None:
 
 
 def render_quiz() -> None:
-    st.markdown('<main class="experience-shell">', unsafe_allow_html=True)
+    st.markdown('<main class="experience-shell quiz-shell">', unsafe_allow_html=True)
     render_topbar()
 
     index = st.session_state.current_question
@@ -2720,9 +2817,7 @@ def render_quiz() -> None:
     st.markdown(
         f"""
         <section class="question-stage">
-            <div class="progress-track">
-                <div class="progress-fill" style="width: {progress:.1f}%;"></div>
-            </div>
+            {progress_bar_markup(progress, "quiz_progress_previous")}
             <div class="question-number">Question {index + 1:02d}</div>
             <h1 class="question-title">{escape(question["question"])}</h1>
         </section>
