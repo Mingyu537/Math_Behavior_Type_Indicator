@@ -2647,8 +2647,8 @@ def render_manual_input() -> None:
         <section class="manual-stage">
             {progress_bar_markup(progress, "manual_progress_previous")}
             <h1 class="manual-title">결과 입력하기</h1>
-            <p class="manual-copy">
-                네 개의 축에서 알파벳을 하나씩 선택하면 결과 코드가 완성됩니다.
+            <p class="manual-copy" style="text-align: center;">
+                네 개의 영역에서 알파벳을 하나씩 선택하여 결과를 확인해보세요!
             </p>
         </section>
         """,
