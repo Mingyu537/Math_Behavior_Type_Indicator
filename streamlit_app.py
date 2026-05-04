@@ -1991,7 +1991,7 @@ def inject_css() -> None:
                 grid-template-columns: 1fr 1fr;
                 grid-template-areas:
                     "center center"
-                    "slogan signature";
+                    "signature slogan";
                 align-items: end;
                 row-gap: 1rem;
             }
@@ -2001,12 +2001,12 @@ def inject_css() -> None:
             }
 
             .footer-logo-slot.left {
-                grid-area: slogan;
+                grid-area: signature;
                 justify-content: flex-start;
             }
 
             .footer-logo-slot.right {
-                grid-area: signature;
+                grid-area: slogan;
                 justify-content: flex-end;
             }
 
@@ -2394,8 +2394,8 @@ def render_home() -> None:
 
 
 def render_footer() -> None:
-    signature_uri = logo_data_uri("inu_signature.svg")
-    slogan_uri = logo_data_uri("inu_slogan.svg")
+    signature_uri = logo_data_uri("inu_signature")
+    slogan_uri = logo_data_uri("inu_slogan")
     slogan_markup = (
         f'<img class="footer-corner-logo slogan" src="{slogan_uri}" alt="인천대학교 슬로건">'
         if slogan_uri
@@ -2407,18 +2407,18 @@ def render_footer() -> None:
         else ""
     )
 
-    render_html(
-        f"""
+    footer_markup = f"""
         <footer class="app-footer">
-            <div class="footer-logo-slot left">{slogan_markup}</div>
+            <div class="footer-logo-slot left">{signature_markup}</div>
             <div class="footer-center">
                 <div class="footer-credit">Designed and developed by Mingyu Kim</div>
                 <div class="footer-school">인천대학교 수학교육과</div>
             </div>
-            <div class="footer-logo-slot right">{signature_markup}</div>
+            <div class="footer-logo-slot right">{slogan_markup}</div>
         </footer>
         """
-    )
+    clean_markup = "\n".join(line.strip() for line in footer_markup.strip().splitlines())
+    st.markdown(clean_markup, unsafe_allow_html=True)
 
 
 def render_topbar(progress_label=None) -> None:
@@ -2444,16 +2444,36 @@ def answered_count() -> int:
 
 
 def logo_data_uri(filename: str) -> str:
-    candidate_paths = [
-        LOGO_DIR / filename,
-        Path.cwd() / "assets" / "logos" / filename,
+    requested = Path(filename)
+    candidate_names = [requested.name]
+    if requested.suffix == "":
+        candidate_names = [
+            f"{requested.name}.svg",
+            f"{requested.name}.png",
+            f"{requested.name}.jpg",
+            f"{requested.name}.jpeg",
+        ]
+
+    search_dirs = [
+        LOGO_DIR,
+        FIGURE_DIR,
+        Path.cwd() / "assets" / "logos",
+        Path.cwd() / "assets" / "figures",
     ]
+    candidate_paths = [directory / name for directory in search_dirs for name in candidate_names]
     logo_path = next((path for path in candidate_paths if path.exists()), None)
     if logo_path is None:
         return ""
 
+    mime_by_suffix = {
+        ".svg": "image/svg+xml",
+        ".png": "image/png",
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+    }
+    mime = mime_by_suffix.get(logo_path.suffix.lower(), "image/svg+xml")
     encoded = base64.b64encode(logo_path.read_bytes()).decode("ascii")
-    return f"data:image/svg+xml;base64,{encoded}"
+    return f"data:{mime};base64,{encoded}"
 
 
 def render_manual_slots() -> None:
