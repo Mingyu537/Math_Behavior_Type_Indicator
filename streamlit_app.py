@@ -743,21 +743,45 @@ def inject_css() -> None:
             text-align: center;
         }
 
+        .home-motto {
+            width: 100%;
+            max-width: 720px;
+            margin: -5.6rem auto 1.45rem;
+            position: relative;
+            z-index: 5;
+            color: rgba(246, 251, 255, 0.84);
+            font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+                "Apple SD Gothic Neo", sans-serif;
+            font-size: clamp(1rem, 1.9vw, 1.24rem);
+            line-height: 1.5;
+            font-weight: 520;
+            text-align: center;
+        }
+
         .start-zone {
             max-width: min(540px, calc(100vw - 2rem));
-            margin: -4.1rem auto 5rem;
+            margin: 0 auto 5rem;
             position: relative;
             z-index: 5;
         }
 
         .app-footer {
-            width: min(100%, 760px);
+            width: min(100%, 1760px);
             margin: 3.2rem auto 0;
-            padding: 1.5rem 1rem 0;
-            text-align: center;
+            padding: 1.5rem clamp(1rem, 4vw, 2.5rem) 0;
+            display: grid;
+            grid-template-columns: minmax(150px, 1fr) minmax(260px, 520px) minmax(150px, 1fr);
+            align-items: end;
+            gap: clamp(0.8rem, 3vw, 2.5rem);
             color: rgba(223, 232, 246, 0.62);
             font-family: "Noto Sans KR", "Space Grotesk", -apple-system,
                 BlinkMacSystemFont, sans-serif;
+        }
+
+        .footer-center {
+            width: 100%;
+            justify-self: center;
+            text-align: center;
         }
 
         .footer-credit {
@@ -769,27 +793,34 @@ def inject_css() -> None:
             letter-spacing: 0;
         }
 
-        .footer-logo-row {
-            width: min(100%, 560px);
-            margin: 1rem auto 0.75rem;
+        .footer-logo-slot {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: clamp(1rem, 3vw, 1.8rem);
+            align-items: flex-end;
+            min-height: 1px;
         }
 
-        .footer-logo {
+        .footer-logo-slot.left {
+            justify-content: flex-start;
+        }
+
+        .footer-logo-slot.right {
+            justify-content: flex-end;
+        }
+
+        .footer-corner-logo {
             display: block;
             height: auto;
             object-fit: contain;
+            opacity: 0.9;
+            filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.16));
         }
 
-        .footer-logo.signature {
-            width: clamp(160px, 28vw, 245px);
+        .footer-corner-logo.signature {
+            width: clamp(160px, 19vw, 270px);
         }
 
-        .footer-logo.slogan {
-            width: clamp(150px, 25vw, 225px);
+        .footer-corner-logo.slogan {
+            width: clamp(150px, 18vw, 260px);
         }
 
         .footer-school {
@@ -1105,6 +1136,14 @@ def inject_css() -> None:
             line-height: 1.68;
             font-weight: 520;
             text-align: center !important;
+        }
+
+        .result-copy span {
+            display: block;
+        }
+
+        .result-copy span + span {
+            margin-top: 0.12rem;
         }
 
         .score-grid {
@@ -1919,6 +1958,13 @@ def inject_css() -> None:
                 line-height: 1.58;
             }
 
+            .home-motto {
+                max-width: 330px;
+                margin: -4.7rem auto 1.2rem;
+                font-size: 0.98rem;
+                line-height: 1.54;
+            }
+
             .orbital-frame {
                 width: 720px;
                 left: 50%;
@@ -1935,27 +1981,41 @@ def inject_css() -> None:
             .node-d { width: 62px; height: 62px; right: 13%; bottom: 17%; }
 
             .start-zone {
-                margin-top: -3.8rem;
+                margin-top: 0;
                 margin-bottom: 4rem;
             }
 
             .app-footer {
                 margin-top: 2.5rem;
                 padding-top: 1rem;
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas:
+                    "center center"
+                    "slogan signature";
+                align-items: end;
+                row-gap: 1rem;
             }
 
-            .footer-logo-row {
-                max-width: 330px;
-                gap: 0.9rem;
-                flex-wrap: wrap;
+            .footer-center {
+                grid-area: center;
             }
 
-            .footer-logo.signature {
-                width: min(220px, 72vw);
+            .footer-logo-slot.left {
+                grid-area: slogan;
+                justify-content: flex-start;
             }
 
-            .footer-logo.slogan {
-                width: min(205px, 68vw);
+            .footer-logo-slot.right {
+                grid-area: signature;
+                justify-content: flex-end;
+            }
+
+            .footer-corner-logo.signature {
+                width: min(190px, 43vw);
+            }
+
+            .footer-corner-logo.slogan {
+                width: min(180px, 41vw);
             }
 
             .topbar {
@@ -2110,6 +2170,7 @@ def inject_css() -> None:
             }
 
             .home-copy,
+            .home-motto,
             .app-footer,
             .footer-school {
                 color: rgba(31, 48, 74, 0.66);
@@ -2316,6 +2377,7 @@ def render_home() -> None:
         """,
         unsafe_allow_html=True,
     )
+    render_html('<div class="home-motto">수학으로 세상을 읽고, 교육으로 내일을 잇다.</div>')
     st.markdown('<div class="start-zone">', unsafe_allow_html=True)
     left_col, right_col = st.columns(2, gap="small")
     with left_col:
@@ -2334,29 +2396,28 @@ def render_home() -> None:
 def render_footer() -> None:
     signature_uri = logo_data_uri("inu_signature.svg")
     slogan_uri = logo_data_uri("inu_slogan.svg")
-    logo_markup = ""
-    if signature_uri or slogan_uri:
-        logo_items = []
-        if signature_uri:
-            logo_items.append(
-                f'<img class="footer-logo signature" src="{signature_uri}" alt="인천대학교 시그니처 로고">'
-            )
-        if slogan_uri:
-            logo_items.append(
-                f'<img class="footer-logo slogan" src="{slogan_uri}" alt="인천대학교 슬로건 로고">'
-            )
-        logo_markup = f'<div class="footer-logo-row">{"".join(logo_items)}</div>'
+    slogan_markup = (
+        f'<img class="footer-corner-logo slogan" src="{slogan_uri}" alt="인천대학교 슬로건">'
+        if slogan_uri
+        else ""
+    )
+    signature_markup = (
+        f'<img class="footer-corner-logo signature" src="{signature_uri}" alt="인천대학교 로고">'
+        if signature_uri
+        else ""
+    )
 
-    st.markdown(
+    render_html(
         f"""
         <footer class="app-footer">
-            <div class="footer-credit">Designed and developed by Mingyu Kim</div>
-            {logo_markup}
-            <div class="footer-school">인천대학교 수학교육과</div>
-            <div class="footer-motto">수학으로 세상을 읽고, 교육으로 내일을 잇다</div>
+            <div class="footer-logo-slot left">{slogan_markup}</div>
+            <div class="footer-center">
+                <div class="footer-credit">Designed and developed by Mingyu Kim</div>
+                <div class="footer-school">인천대학교 수학교육과</div>
+            </div>
+            <div class="footer-logo-slot right">{signature_markup}</div>
         </footer>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
 
@@ -2528,8 +2589,8 @@ def render_manual_result() -> None:
         <section class="result-hero">
             <h1 class="result-title">입력한 수학 MBTI는 {escape(type_code)}</h1>
             <p class="result-copy">
-                {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.
-                아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.
+                <span>{escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.</span>
+                <span>아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.</span>
             </p>
         </section>
         """,
@@ -3407,8 +3468,8 @@ def render_result() -> None:
         <section class="result-hero">
             <h1 class="result-title">당신의 수학 MBTI는 {escape(type_code)}</h1>
             <p class="result-copy">
-                {escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.
-                아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.
+                <span>{escape(result["person"])}처럼 수학을 바라보는 경향이 있습니다.</span>
+                <span>아래 카드는 앞면과 뒷면으로 결과를 보여줍니다.</span>
             </p>
         </section>
         """,
